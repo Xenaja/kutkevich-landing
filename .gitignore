@@ -1,0 +1,58 @@
+# Лишние фото и файлы в visual/ (используются только 4 файла)
+visual/Шоколад февраль 2026/DSC_2387.jpg
+visual/Шоколад февраль 2026/DSC_2460.jpg
+visual/Шоколад февраль 2026/DSC_2463.jpg
+visual/Шоколад февраль 2026/DSC_2483.jpg
+visual/Шоколад февраль 2026/DSC_2485.jpg
+visual/Шоколад февраль 2026/DSC_2517.jpg
+visual/Шоколад февраль 2026/DSC_2551-2.jpg
+visual/Шоколад февраль 2026/DSC_2551.jpg
+visual/Шоколад февраль 2026/DSC_2552-2.jpg
+visual/Шоколад февраль 2026/DSC_2552.jpg
+visual/Шоколад февраль 2026/DSC_2555.jpg
+visual/Шоколад февраль 2026/DSC_2614.jpg
+visual/Шоколад февраль 2026/DSC_2642.jpg
+visual/Шоколад февраль 2026/DSC_2662-1.jpg
+visual/Шоколад февраль 2026/DSC_2662.jpg
+visual/Шоколад февраль 2026/DSC_2717-2.jpg
+visual/Шоколад февраль 2026/DSC_2717.jpg
+visual/Шоколад февраль 2026/DSC_2720-2.jpg
+visual/Шоколад февраль 2026/DSC_2720.jpg
+visual/Шоколад февраль 2026/DSC_2737.jpg
+visual/Шоколад февраль 2026/DSC_2747.jpg
+visual/Шоколад февраль 2026/DSC_2751.jpg
+visual/Шоколад февраль 2026/DSC_2754.jpg
+visual/Шоколад февраль 2026/DSC_2770.jpg
+visual/Шоколад февраль 2026/DSC_2819.jpg
+visual/Шоколад февраль 2026/конфеты видео.mp4
+visual/Шоколад февраль 2026/цукаты видео.mp4
+visual/Шоколад февраль 2026/Конфеты анимация ии1.mov
+visual/Шоколад февраль 2026/Конфеты анимация ии2.mov
+visual/DSC04278.jpg
+visual/DSC04398.jpg
+visual/RSI_2249.jpg
+visual/RSI_2257.jpg
+visual/RSI_2352.jpg
+visual/Лого печать.jpg
+visual/шоколад-01.jpg
+visual/шоколад-02.jpg
+visual/IMG_2321-3.jpg
+visual/КП цукаты мармелад (3).pdf
+visual/визитка печать обычная.pdf
+visual/логобук KUTKEVICH (1).pdf
+
+# Растровые логотипы (высокое разрешение, для печати — не нужны на сайте)
+logo/растр/
+
+# Каталоги и документы
+catalogeus/
+brif.docx
+
+# Черновые файлы разработки
+content-brief.html
+demo-animations.html
+hero-prototype.html
+landing-content.md
+запустить-сервер.bat
+тексты-лендинга.txt
+Тексты ленд на согласование.rtf

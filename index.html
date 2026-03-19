@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUTKEVICH Chocolate store — Авторский шоколад и цукаты</title>
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1a1410;
+    --brown: #2d1f0e;
+    --gold: #c9993a;
+    --gold-light: #e8c87a;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d4;
+    --text: #2d1f0e;
+    --text-muted: #7a6650;
+    --white: #faf8f4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 300;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Poiret One', sans-serif;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(250, 248, 244, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: none;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(26,20,16,0.08); }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    color: var(--brown) !important;
+    padding: 10px 24px;
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
+    border: 1px solid var(--brown);
+    transition: background 0.25s, color 0.25s !important;
+  }
+  .nav-cta:hover { background: var(--brown) !important; color: var(--gold) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 57% 43%;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 48px 60px 80px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+  }
+  .hero-eyebrow::before { display: none; }
+  .hero-title {
+    margin-bottom: 10px;
+    color: var(--dark);
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+    opacity: 0;
+  }
+  .hero-title-big {
+    display: block;
+    font-size: clamp(76px, 8.5vw, 120px);
+    line-height: 1;
+  }
+  .hero-title-small {
+    display: block;
+    font-size: clamp(42px, 4.6vw, 66px);
+    line-height: 1.2;
+    color: var(--text-muted);
+  }
+  .hero-title-italic {
+    font-family: 'Poiret One', sans-serif;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--gold);
+    display: block;
+    margin-bottom: 72px;
+    letter-spacing: 0.08em;
+    opacity: 0;
+  }
+  .hero-sub {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 18px;
+    opacity: 0;
+  }
+  .hero-stat {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    margin-bottom: 8px;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-stat::before {
+    content: '';
+    display: block;
+    width: 20px; height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .hero-sub {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin-bottom: 20px;
+    opacity: 0;
+  }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; margin-top: 36px; }
+
+  .btn-primary {
+    background: var(--brown);
+    color: var(--gold);
+    padding: 16px 36px;
+    font-family: 'Geologica', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--brown);
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--gold);
+    color: var(--brown);
+    border-color: var(--gold);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--brown);
+    padding: 16px 36px;
+    font-family: 'Geologica', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--brown);
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover {
+    background: var(--brown);
+    color: var(--gold);
+  }
+
+  /* Hero right: слайдер */
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--cream-dark);
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(250,248,244,0.18) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    z-index: 1;
+  }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* Точки-индикаторы */
+  .hero-dots {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+  }
+  .hero-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(201,153,58,0.35);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .hero-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+
+  /* ── СЕКЦИИ ── */
+  section { padding: 100px 80px; }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-size: clamp(36px, 4vw, 60px);
+    margin-bottom: 16px;
+    color: var(--dark);
+    letter-spacing: 0.03em;
+  }
+  .section-lead {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 540px;
+  }
+
+  /* ── СЕКЦИЯ 2: ТРИ ЦИТРУСА ── */
+  .citrus-section {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .citrus-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,153,58,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .citrus-section .section-eyebrow { color: var(--gold-light); }
+  .citrus-section .section-eyebrow::before { background: var(--gold-light); }
+  .citrus-section .section-title { color: var(--cream); }
+  .citrus-section .section-lead { color: rgba(245,240,232,0.55); }
+
+  .citrus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .citrus-card {
+    background: rgba(255,255,255,0.04);
+    padding: 44px 36px;
+    border: 1px solid rgba(201,153,58,0.12);
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .citrus-card:hover { background: rgba(201,153,58,0.08); border-color: rgba(201,153,58,0.3); }
+  .citrus-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+  .citrus-card:hover::after { transform: scaleX(1); }
+  .citrus-num {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 64px;
+    color: rgba(201,153,58,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .citrus-name {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .citrus-chocolate {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 20px;
+  }
+  .citrus-desc {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.75);
+  }
+  .citrus-context {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(201,153,58,0.7);
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+  .citrus-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,153,58,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  .citrus-quote {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 22px;
+    color: rgba(245,240,232,0.5);
+    max-width: 440px;
+  }
+  .citrus-fact { text-align: right; }
+  .citrus-fact-number {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .citrus-fact-label {
+    font-size: 12px;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* ── СЕКЦИЯ 3: ДЛЯ КОГО ── */
+  .segments-section { background: var(--cream); }
+  .segments-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .segment-card {
+    background: var(--white);
+    padding: 48px 44px;
+    border: 1px solid rgba(201,153,58,0.1);
+    transition: border-color 0.3s;
+    position: relative;
+  }
+  .segment-card:hover { border-color: rgba(201,153,58,0.35); }
+  .segment-icon { margin-bottom: 24px; }
+  .segment-tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .segment-title {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .segment-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .segment-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .segment-list li {
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .segment-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+  .segment-highlight {
+    background: rgba(201,153,58,0.06);
+    border: 1px solid rgba(201,153,58,0.2);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text);
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* ── СЕКЦИЯ 3б: МАРКЕТПЛЕЙСЫ ── */
+  .retail-section { background: var(--dark); }
+  .retail-section .section-eyebrow { color: var(--gold-light); }
+  .retail-section .section-eyebrow::before { background: var(--gold-light); }
+  .retail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .retail-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,153,58,0.12);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .retail-card:hover { background: rgba(201,153,58,0.07); border-color: rgba(201,153,58,0.3); }
+  .retail-icon { font-size: 28px; margin-bottom: 4px; }
+  .retail-name {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 24px;
+    color: var(--cream);
+  }
+  .retail-items { font-size: 13px; color: rgba(245,240,232,0.45); line-height: 1.6; }
+  .retail-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,153,58,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.3s;
+    align-self: flex-start;
+  }
+  .retail-link:hover { border-color: var(--gold); }
+  .retail-footnote {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(201,153,58,0.12);
+    font-size: 13px;
+    color: rgba(245,240,232,0.35);
+    line-height: 1.7;
+  }
+
+  /* ── СЕКЦИЯ 4: АССОРТИМЕНТ ── */
+  .assortment-section { background: var(--white); }
+  .assortment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .assortment-card {
+    padding: 36px 32px;
+    border: 1px solid rgba(201,153,58,0.12);
+    transition: border-color 0.3s;
+  }
+  .assortment-card:hover { border-color: rgba(201,153,58,0.3); }
+  .assortment-badge {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin-bottom: 20px;
+  }
+  .badge-flagship { background: var(--dark); color: var(--gold-light); }
+  .badge-new { background: rgba(201,153,58,0.15); color: var(--gold); }
+  .badge-fresh { background: rgba(201,153,58,0.08); color: var(--text-muted); }
+  .assortment-title {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 22px;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+  .assortment-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .assortment-items li {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .assortment-items li::before { content: '·'; color: var(--gold); flex-shrink: 0; }
+  .assortment-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,153,58,0.12);
+    line-height: 1.6;
+  }
+  .assortment-context {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    margin-top: 10px;
+  }
+
+  /* ── СЕКЦИЯ 5: ПОЧЕМУ МЫ ── */
+  .why-section { background: var(--cream-dark); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .why-card {
+    background: var(--white);
+    padding: 36px 32px;
+    border: 1px solid rgba(201,153,58,0.08);
+  }
+  .why-number {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 52px;
+    color: rgba(201,153,58,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+    transition: color 0.6s ease;
+  }
+  .why-card.reveal.visible .why-number {
+    color: var(--gold);
+  }
+
+  @keyframes numberPop {
+    from { opacity: 0; transform: scale(0.7) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .why-card.reveal.visible .why-number {
+    animation: numberPop 0.6s ease forwards;
+  }
+  .why-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  .why-body { font-size: 13px; line-height: 1.7; color: var(--text-muted); }
+
+  /* ── СЕКЦИЯ 6: ВАЛЕРИЯ ── */
+  .founder-section {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+  .founder-left {
+    background: rgba(255,255,255,0.03);
+    border-right: 1px solid rgba(201,153,58,0.1);
+    overflow: hidden;
+    position: relative;
+    min-height: 600px;
+  }
+  .founder-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  .founder-left::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, rgba(26,20,16,0.6) 100%);
+    pointer-events: none;
+  }
+  .founder-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,153,58,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: rgba(245,240,232,0.2);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .founder-photo-placeholder .icon { font-size: 40px; }
+  .founder-right {
+    padding: 100px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .founder-right .section-eyebrow { color: var(--gold-light); }
+  .founder-right .section-eyebrow::before { background: var(--gold-light); }
+  .founder-quote {
+    font-family: 'Poiret One', sans-serif;
+    font-size: clamp(17px, 1.9vw, 23px);
+    line-height: 1.7;
+    color: rgba(245,240,232,0.8);
+    margin: 28px 0 36px;
+  }
+  .founder-quote p + p { margin-top: 20px; }
+  .founder-name {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .founder-title-text {
+    font-size: 12px;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── СЕКЦИЯ 7: ДОСТАВКА ── */
+  .delivery-section { background: var(--white); padding: 80px; }
+  .delivery-inner {
+    background: var(--cream);
+    border: 1px solid rgba(201,153,58,0.15);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .delivery-title {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 36px;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+  .delivery-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .delivery-note { font-size: 13px; color: var(--text-muted); font-style: italic; }
+  .delivery-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .delivery-stat {
+    text-align: center;
+    padding: 28px 20px;
+    background: var(--white);
+    border: 1px solid rgba(201,153,58,0.12);
+  }
+  .delivery-stat-num {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 42px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .delivery-stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+  }
+
+  /* ── ФОРМА ── */
+  .form-section {
+    background: var(--cream-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+  .form-left {
+    padding: 100px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .form-left .section-title { margin-bottom: 20px; }
+  .form-left .section-lead { margin-bottom: 0; }
+  .contacts-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,153,58,0.2);
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .contact-item a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+  .contact-item a:hover { color: var(--gold); }
+  .contact-icon { font-size: 16px; }
+
+  .form-right {
+    background: var(--white);
+    padding: 100px 80px;
+    border-left: 1px solid rgba(201,153,58,0.12);
+  }
+  .form-group { margin-bottom: 24px; }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid rgba(201,153,58,0.2);
+    padding: 14px 16px;
+    font-family: 'Geologica', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text);
+    transition: border-color 0.3s;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
+  .form-select.is-placeholder { color: var(--text-muted); }
+  .form-select option { color: var(--text); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M6 8L0 0h12z' fill='%23c9993a'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 28px;
+    cursor: pointer;
+  }
+  .form-checkbox input { margin-top: 2px; accent-color: var(--gold); }
+  .form-checkbox span { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .form-checkbox a { color: var(--gold); text-decoration: none; }
+  .form-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+  .form-success {
+    display: none;
+    background: rgba(201,153,58,0.08);
+    border: 1px solid rgba(201,153,58,0.2);
+    padding: 20px 24px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── ФУТЕР ── */
+  footer { background: var(--dark); padding: 60px 80px 40px; }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+  }
+  .footer-brand-name {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 12px;
+    letter-spacing: 0.1em;
+  }
+  .footer-brand-desc { font-size: 13px; line-height: 1.7; color: rgba(245,240,232,0.4); }
+  .footer-heading {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13px; color: rgba(245,240,232,0.5); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(201,153,58,0.1);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy { font-size: 12px; color: rgba(245,240,232,0.25); letter-spacing: 0.05em; }
+
+  /* ── АНИМАЦИИ ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeUp 0.7s ease forwards; }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Cursor trail */
+  .trail-dot {
+    position: fixed;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ── АДАПТИВ ── */
+  @media (max-width: 1024px) {
+    nav { padding: 16px 32px; }
+    .nav-links { display: none; }
+    section { padding: 72px 40px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 80px 40px; }
+    .hero-right { min-height: 360px; }
+    .citrus-grid { grid-template-columns: 1fr; }
+    .segments-grid { grid-template-columns: 1fr; }
+    .retail-grid { grid-template-columns: 1fr; }
+    .assortment-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .founder-section { grid-template-columns: 1fr; }
+    .founder-left { min-height: 360px; }
+    .founder-right { padding: 60px 40px; }
+    .delivery-section { padding: 60px 40px; }
+    .delivery-inner { grid-template-columns: 1fr; }
+    .form-section { grid-template-columns: 1fr; }
+    .form-left { padding: 72px 40px 40px; }
+    .form-right { padding: 40px 40px 72px; }
+    footer { padding: 60px 40px 40px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 60px 20px; }
+    .hero-left { padding: 100px 20px 60px; }
+    .hero-buttons { flex-direction: column; }
+    .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+    .assortment-grid, .why-grid { grid-template-columns: 1fr; }
+    .citrus-footer { flex-direction: column; }
+    .delivery-section { padding: 40px 20px; }
+    .delivery-inner { padding: 36px 20px; }
+    .delivery-stats { grid-template-columns: 1fr 1fr; }
+    footer { padding: 48px 20px 32px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .form-left { padding: 60px 20px 32px; }
+    .form-right { padding: 32px 20px 60px; }
+    .founder-right { padding: 48px 20px; }
+    .citrus-card, .segment-card { padding: 32px 20px; }
+    .form-buttons { flex-direction: column; }
+    .form-buttons button { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <img src="./logo/SVG/коричневый на прозрачном.svg" alt="KUTKEVICH">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#citrus">Продукт</a></li>
+    <li><a href="#segments">Для бизнеса</a></li>
+    <li><a href="#retail">Частным</a></li>
+    <li><a href="#assortment">Ассортимент</a></li>
+    <li><a href="#founder">О нас</a></li>
+    <li><a href="#contact" class="nav-cta">Запросить прайс</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" style="padding:0;" id="hero">
+  <div class="hero-left">
+
+    <div class="hero-eyebrow" id="h-eyebrow"></div>
+
+    <h1 class="display hero-title" id="h-title1">
+      <span class="hero-title-big">Авторский</span>
+      <span class="hero-title-small">шоколад и цукаты,</span>
+    </h1>
+
+    <span class="hero-title-italic" id="h-title2">
+      за которыми возвращаются
+    </span>
+
+    <p class="hero-sub" id="h-sub">
+      KUTKEVICH Chocolate store — единственный производитель в России
+      с тремя видами цитрусовых цукатов в одном наборе.
+    </p>
+
+    <div class="hero-stat" id="h-utp">
+      Ручная работа, натуральный состав, брендированная упаковка
+    </div>
+    <div class="hero-stat" id="h-stat2">
+      180 дней хранения при 14–21°С, без холодильника
+    </div>
+    <div class="hero-stat" id="h-stat3">
+      Санкт-Петербург, производство полного цикла
+    </div>
+
+    <div class="hero-buttons" id="h-btns">
+      <a href="#contact" class="btn-primary">Запросить прайс</a>
+      <a href="#contact" class="btn-secondary">Получить пробный набор</a>
+    </div>
+
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-slide active">
+      <img src="./visual/Шоколад февраль 2026/DSC_2514.jpg" alt="KUTKEVICH">
+    </div>
+    <div class="hero-slide">
+      <img src="./visual/DSC04398 — копия.jpg" alt="KUTKEVICH">
+    </div>
+
+    <div class="hero-slide">
+      <img src="./visual/photo_4_2026-03-19_15-18-33.jpg" alt="KUTKEVICH">
+    </div>
+    <div class="hero-dots">
+      <div class="hero-dot active" onclick="goSlide(0)"></div>
+      <div class="hero-dot" onclick="goSlide(1)"></div>
+      <div class="hero-dot" onclick="goSlide(2)"></div>
+      <div class="hero-dot" onclick="goSlide(3)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── СЕКЦИЯ 2: ТРИ ЦИТРУСА ── -->
+<section class="citrus-section" id="citrus">
+  <div class="section-eyebrow reveal">Флагманский продукт</div>
+  <h2 class="display section-title reveal">Три цитруса<br>Один характер</h2>
+  <p class="section-lead reveal">
+    Наш флагман — и то, с чего всё началось. KUTKEVICH — единственный производитель в России,
+    кто объединяет апельсин, лимон и грейпфрут в одном наборе. Это не маркетинговое заявление — это факт,
+    который мы обнаружили уже после запуска.
+  </p>
+
+  <div class="citrus-grid">
+    <div class="citrus-card reveal">
+      <div class="citrus-num">01</div>
+      <div class="citrus-name">Апельсин</div>
+      <div class="citrus-chocolate">в тёмном шоколаде</div>
+      <p class="citrus-desc">«Мягкий. Сладковатый. Понятный. Он нравится почти всем — это знакомство.»</p>
+      <p class="citrus-context">Идеален как комплимент к кофе — знакомый вкус, без сюрпризов. Гости берут второй.</p>
+    </div>
+    <div class="citrus-card reveal">
+      <div class="citrus-num">02</div>
+      <div class="citrus-name">Лимон</div>
+      <div class="citrus-chocolate">в тёмном шоколаде</div>
+      <p class="citrus-desc">«Яркий. Чуть дерзкий. Даёт тот самый баланс с шоколадом. Без него было бы слишком сладко.»</p>
+      <p class="citrus-context">Контраст с эспрессо. Тот, кто попробовал — запоминает.</p>
+    </div>
+    <div class="citrus-card reveal">
+      <div class="citrus-num">03</div>
+      <div class="citrus-name">Грейпфрут</div>
+      <div class="citrus-chocolate">в молочном шоколаде</div>
+      <p class="citrus-desc">«Бунтарь. Лёгкая горчинка. Глубина. Его либо обожают, либо сначала удивляются.»</p>
+      <p class="citrus-context">Для аудитории, которая ценит нюансы. Возвращаются именно за ним.</p>
+    </div>
+  </div>
+
+  <div class="citrus-footer reveal">
+    <p class="citrus-quote">«Сладость. Кислинка. Горчинка. Как в жизни, если честно.» — Валерия</p>
+    <div class="citrus-fact">
+      <div class="citrus-fact-number">№1</div>
+      <div class="citrus-fact-label">Набор трёх цитрусов —<br>самый частый повторный заказ</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── СЕКЦИЯ 3: ДЛЯ КОГО ── -->
+<section class="segments-section" id="segments">
+  <div class="section-eyebrow reveal">Для бизнеса</div>
+  <h2 class="display section-title reveal">Для кого мы работаем</h2>
+  <p class="section-lead reveal">
+    Создаём продукты под конкретный формат бизнеса — не универсальные решения, а те, которые работают именно у вас.
+  </p>
+
+  <div class="segments-grid">
+    <div class="segment-card reveal">
+      <div class="segment-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#c9993a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="24" height="19"/><path d="M4 10 L16 3 L28 10"/><rect x="13" y="21" width="6" height="8"/><rect x="8" y="14" width="4" height="4"/><rect x="20" y="14" width="4" height="4"/></svg></div>
+      <div class="segment-tag">Отели и загородные резиденции</div>
+      <h3 class="segment-title">Комплимент, который гость запомнит</h3>
+      <p class="segment-body">
+        Небольшая коробочка на подушке или к ужину — это не просто угощение. Это деталь,
+        которая отделяет хороший отель от незабываемого. Гость уходит — воспоминание остаётся.
+      </p>
+      <ul class="segment-list">
+        <li>Конфеты ручной работы в брендированных коробках</li>
+        <li>Цукаты в шоколаде как комплимент к чаю и кофе</li>
+        <li>Мини-упаковки с логотипом: горячее тиснение — золото, шампань, платина</li>
+        <li>Индивидуальный дизайн под интерьерную концепцию</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Обсудить проект</a>
+    </div>
+
+    <div class="segment-card reveal">
+      <div class="segment-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#c9993a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14 h14 l-2 10 H9 Z"/><path d="M21 16 h3 a3 3 0 0 1 0 6 h-3"/><path d="M11 10 q1-3 0-5"/><path d="M16 10 q1-3 0-5"/></svg></div>
+      <div class="segment-tag">Кофейни</div>
+      <h3 class="segment-title">Превратите каждую чашку в историю</h3>
+      <p class="segment-body">
+        Цукаты к кофе, авторский мармелад, конфеты ручной работы. И особый формат —
+        «Ответ от Вселенной»: гость тянет конфету из вазочки, под наклейкой — персональное послание.
+        Делает фото. Отмечает вашу кофейню. Возвращается.
+      </p>
+      <div class="segment-highlight">
+        «Ответ от Вселенной» — виральная механика без бюджета на рекламу. Подробности — при запросе.
+      </div>
+      <ul class="segment-list">
+        <li>Цукаты в шоколаде — к кофе и как позиция в меню</li>
+        <li>Мармелад в белом шоколаде (три вкуса)</li>
+        <li>Линейка без сахара — для гостей с ограничениями</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Обсудить проект</a>
+    </div>
+
+    <div class="segment-card reveal">
+      <div class="segment-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#c9993a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="13" width="24" height="16"/><path d="M4 13 L7 5 h18 l3 8"/><line x1="4" y1="13" x2="28" y2="13"/><rect x="13" y="19" width="6" height="10"/><path d="M8 13 q0 4 4 4 4 0 4-4"/><path d="M16 13 q0 4 4 4 4 0 4-4"/></svg></div>
+      <div class="segment-tag">Магазины и ритейл</div>
+      <h3 class="segment-title">Готовое решение для полки ЗОЖ-сегмента</h3>
+      <p class="segment-body">
+        Авторские цукаты, мармелад, линейка без сахара — всё с натуральным составом.
+        Срок хранения 180 дней, красивая упаковка, стабильные поставки.
+        Сертификат соответствия, закрывающие документы.
+      </p>
+      <ul class="segment-list">
+        <li>Цукаты в шоколаде и без (6 позиций)</li>
+        <li>Линейка без сахара — на сиропе топинамбура</li>
+        <li>Цитрусовый мармелад в белом шоколаде (три вкуса)</li>
+        <li>Срок хранения 180 дней при 14–21°С без холодильника</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Обсудить проект</a>
+    </div>
+
+    <div class="segment-card reveal">
+      <div class="segment-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#c9993a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 l6-6 4 2 4-2 6 6"/><path d="M3 18 l4 4 3-2 3 2 3-2 3 2 4-4"/><path d="M10 14 l2-5 8 0 2 5"/></svg></div>
+      <div class="segment-tag">Корпоративные клиенты</div>
+      <h3 class="segment-title">Подарок, который говорит о вас</h3>
+      <p class="segment-body">
+        Новогодние наборы, комплименты партнёрам, угощения к конференциям.
+        Индивидуальная разработка: концепция, вкусы, упаковка под ваш стиль.
+        Официальный договор, точные сроки.
+      </p>
+      <ul class="segment-list">
+        <li>Подарочные наборы к праздникам под ключ</li>
+        <li>Брендированная упаковка с вашим логотипом</li>
+        <li>Разработка эксклюзивных вкусов под концепцию бренда</li>
+        <li>Крупные тиражи, официальный договор, EDO</li>
+      </ul>
+      <a href="#contact" class="btn-primary">Обсудить проект</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── СЕКЦИЯ 3б: ЧАСТНЫМ ПОКУПАТЕЛЯМ ── -->
+<section class="retail-section" id="retail">
+  <div class="section-eyebrow reveal">Частным покупателям</div>
+  <h2 class="display section-title reveal" style="color:var(--cream);">Покупаете для себя<br>или в подарок?</h2>
+  <p class="section-lead reveal" style="color:rgba(245,240,232,0.55);">
+    Весь ассортимент KUTKEVICH Chocolate store доступен на маркетплейсах — с доставкой по всей России.
+  </p>
+
+  <div class="retail-grid">
+    <div class="retail-card reveal">
+      <div class="retail-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 8h20l-2.5 13H8.5L6 8Z" stroke="#c9993a" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M11 8c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="11.5" cy="25.5" r="1.5" fill="#c9993a"/>
+          <circle cx="20.5" cy="25.5" r="1.5" fill="#c9993a"/>
+        </svg>
+      </div>
+      <div class="retail-name">Wildberries</div>
+      <div class="retail-items">Цукаты, мармелад, конфеты, зефир</div>
+      <a href="#" class="retail-link">Перейти в магазин →</a>
+    </div>
+    <div class="retail-card reveal">
+      <div class="retail-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 8h20l-2.5 13H8.5L6 8Z" stroke="#c9993a" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M11 8c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="11.5" cy="25.5" r="1.5" fill="#c9993a"/>
+          <circle cx="20.5" cy="25.5" r="1.5" fill="#c9993a"/>
+        </svg>
+      </div>
+      <div class="retail-name">Ozon</div>
+      <div class="retail-items">Цукаты, мармелад, конфеты, зефир</div>
+      <a href="#" class="retail-link">Перейти в магазин →</a>
+    </div>
+    <div class="retail-card reveal">
+      <div class="retail-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 8h20l-2.5 13H8.5L6 8Z" stroke="#c9993a" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M11 8c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="11.5" cy="25.5" r="1.5" fill="#c9993a"/>
+          <circle cx="20.5" cy="25.5" r="1.5" fill="#c9993a"/>
+        </svg>
+      </div>
+      <div class="retail-name">Яндекс Маркет</div>
+      <div class="retail-items">Цукаты, мармелад, конфеты, зефир</div>
+      <a href="#" class="retail-link">Перейти в магазин →</a>
+    </div>
+  </div>
+
+  <div class="retail-footnote reveal">
+    Читайте отзывы, смотрите фото и заказывайте удобным способом.
+  </div>
+</section>
+
+<!-- ── СЕКЦИЯ 4: АССОРТИМЕНТ ── -->
+<section class="assortment-section" id="assortment">
+  <div class="section-eyebrow reveal">Ассортимент</div>
+  <h2 class="display section-title reveal">Каждая позиция —<br><em style="font-style:normal;color:var(--gold)">с характером</em></h2>
+  <p class="section-lead reveal">Ручная работа. Натуральный состав. Производство полного цикла в Санкт-Петербурге.</p>
+
+  <div class="assortment-grid">
+    <div class="assortment-card reveal">
+      <span class="assortment-badge badge-flagship">Флагман</span>
+      <h3 class="assortment-title">Цукаты в шоколаде</h3>
+      <ul class="assortment-items">
+        <li>Апельсин в тёмном шоколаде</li>
+        <li>Лимон в тёмном шоколаде</li>
+        <li>Грейпфрут в молочном шоколаде</li>
+        <li>Набор трёх видов</li>
+      </ul>
+      <div class="assortment-meta">Фасовка: 60г и 90г<br>Хранение: 180 суток при 14–21°С</div>
+      <div class="assortment-context">— Топ продаж в корпоративном сегменте</div>
+    </div>
+
+    <div class="assortment-card reveal">
+      <span class="assortment-badge badge-new">Новинка</span>
+      <h3 class="assortment-title">Без сахара</h3>
+      <ul class="assortment-items">
+        <li>Цукаты апельсина в шоколаде</li>
+        <li>Цукаты лимона в шоколаде</li>
+      </ul>
+      <div class="assortment-meta">На сиропе топинамбура<br>Фасовка: 60г</div>
+      <div class="assortment-context">— Категория ЗОЖ растёт — продукт готов к ней</div>
+    </div>
+
+    <div class="assortment-card reveal">
+      <span class="assortment-badge badge-fresh">Свежий вкус</span>
+      <h3 class="assortment-title">Цитрусовый мармелад в белом шоколаде</h3>
+      <ul class="assortment-items">
+        <li>Лимон – базилик</li>
+        <li>Апельсин – ваниль</li>
+        <li>Грейпфрут – малина</li>
+        <li>Набор трёх вкусов</li>
+      </ul>
+      <div class="assortment-meta">Свежевыжатый сок, пектин, белый шоколад 32%<br>Фасовка: 75г и 105г</div>
+      <div class="assortment-context">— Идеально к кофе, в подарочный набор</div>
+    </div>
+
+    <div class="assortment-card reveal">
+      <span class="assortment-badge badge-fresh">Ручная работа</span>
+      <h3 class="assortment-title">Конфеты ручной работы</h3>
+      <ul class="assortment-items">
+        <li>Миндальный трюфель</li>
+        <li>Сливочная карамель</li>
+        <li>Фундук-корица</li>
+        <li>Ассорти в подарочной коробке, 110г</li>
+      </ul>
+      <div class="assortment-meta">Подарочная коробка с брендированием</div>
+      <div class="assortment-context">— Корпоративный подарок под ключ</div>
+    </div>
+
+    <div class="assortment-card reveal">
+      <span class="assortment-badge badge-fresh">Классика</span>
+      <h3 class="assortment-title">Зефир</h3>
+      <ul class="assortment-items">
+        <li>Классический</li>
+        <li>В шоколаде</li>
+      </ul>
+      <div class="assortment-meta">Натуральный состав</div>
+      <div class="assortment-context">— Дополнение к наборам и меню кофеен</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── СЕКЦИЯ 5: ПОЧЕМУ МЫ ── -->
+<section class="why-section">
+  <div class="section-eyebrow reveal">Почему выбирают</div>
+  <h2 class="display section-title reveal">Почему выбирают нас</h2>
+  <p class="section-lead reveal">Не потому что так принято писать на сайтах. А потому что это реально важно для вашего бизнеса.</p>
+
+  <div class="why-grid">
+    <div class="why-card reveal" style="--num-delay:0s">
+      <div class="why-number" id="counter180">0</div>
+      <div class="why-title">дней хранения без холодильника</div>
+      <p class="why-body">При 14–21°С. Идеально для ритейла, мини-баров, корпоративных запасов. Никаких проблем с логистикой и остатками.</p>
+    </div>
+    <div class="why-card reveal" style="--num-delay:0.15s">
+      <div class="why-number" id="counterN1">№0</div>
+      <div class="why-title">Единственный производитель в России</div>
+      <p class="why-body">Апельсин, лимон, грейпфрут в шоколаде — три вида цукатов в одном наборе. Мы обнаружили это уже после запуска: когда делаешь продукт с характером, уникальность приходит сама.</p>
+    </div>
+    <div class="why-card reveal" style="--num-delay:0.3s">
+      <div class="why-number" id="counterCheck" style="opacity:0;transform:scale(0.7) translateY(10px);">✓</div>
+      <div class="why-title">Полный цикл и документы</div>
+      <p class="why-body">Производство в Санкт-Петербурге от закупки фруктов до упаковки. Сертификат соответствия, официальный договор, EDO. Готовы к аудитам ритейлеров и сетевых партнёров.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── СЕКЦИЯ 6: ВАЛЕРИЯ ── -->
+<section class="founder-section" id="founder" style="padding:0;">
+  <div class="founder-left">
+    <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
+  </div>
+  <div class="founder-right">
+    <div class="section-eyebrow reveal">Основатель бренда</div>
+    <h2 class="display section-title reveal" style="color:var(--cream);margin-top:16px;">Валерия Куткевич</h2>
+    <div class="founder-quote reveal">
+      <p>В 2022 году я попробовала итальянские цукаты и заглазировала их в шоколад. Это был настоящий взрыв вкуса. С того момента я знала: хочу создавать такой продукт сама.</p>
+      <p>Я выверяла технологию месяцами — особенно с лимоном: корки нужно обработать так, чтобы получились мягкими и сочными, не горькими. Нашла свой рецепт. Запустила производство. И только потом, изучив рынок, обнаружила: я — единственный производитель в России, кто делает три вида цитрусовых цукатов в одном наборе.</p>
+      <p>Это не было целью. Это стало результатом — когда делаешь продукт с характером, он сам приобретает уникальность.</p>
+    </div>
+    <div class="reveal">
+      <div class="founder-name">— Валерия Куткевич</div>
+      <div class="founder-title-text">Основатель KUTKEVICH Chocolate store · Санкт-Петербург · 3 года в деле</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── СЕКЦИЯ 7: ДОСТАВКА ── -->
+<div class="delivery-section">
+  <div class="delivery-inner reveal">
+    <div>
+      <div class="section-eyebrow" style="padding:0;margin-bottom:16px;">Доставка</div>
+      <h2 class="display section-title">Доставляем<br>по всей России</h2>
+      <p class="delivery-body">Производство в Санкт-Петербурге. Отправляем транспортными компаниями в любую точку страны.</p>
+      <p class="delivery-note">Условия доставки, минимальный заказ для B2B и возможность самовывоза — уточните при запросе.</p>
+    </div>
+    <div class="delivery-stats">
+      <div class="delivery-stat">
+        <div class="delivery-stat-num">180</div>
+        <div class="delivery-stat-label">дней хранения<br>без холодильника</div>
+      </div>
+      <div class="delivery-stat">
+        <div class="delivery-stat-num">RU</div>
+        <div class="delivery-stat-label">доставка<br>по всей России</div>
+      </div>
+      <div class="delivery-stat">
+        <div class="delivery-stat-num">ТК</div>
+        <div class="delivery-stat-label">транспортными<br>компаниями</div>
+      </div>
+      <div class="delivery-stat">
+        <div class="delivery-stat-num">B2B</div>
+        <div class="delivery-stat-label">условия при<br>запросе</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ФОРМА ── -->
+<section class="form-section" id="contact" style="padding:0;">
+  <div class="form-left">
+    <div class="section-eyebrow reveal">Контакт</div>
+    <h2 class="display section-title reveal">Обсудим<br>ваш проект</h2>
+    <p class="section-lead reveal">Расскажите о задаче — Валерия лично изучит запрос и ответит в течение 24 часов.</p>
+    <div class="contacts-block reveal">
+      <div class="contact-item">
+        <span class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8Z" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <a href="https://wa.me/79112951931">WhatsApp / Telegram: +7 (911) 295-19-31</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="#c9993a" stroke-width="1.5"/>
+            <path d="M3 7l9 6 9-6" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <a href="mailto:lera@kutkevich.org">lera@kutkevich.org</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 5L2 12.5l7 1M21 5l-5.5 15-6.5-8.5M21 5L9 13.5m0 0V19l3.5-3" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <a href="https://t.me/KUTKEVICH">Telegram-канал: @KUTKEVICH</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-right">
+    <div id="formWrap">
+      <div class="form-group">
+        <label class="form-label" for="name">Имя *</label>
+        <input class="form-input" type="text" id="name" placeholder="Как вас зовут">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="contact-field">Телефон или Email *</label>
+        <input class="form-input" type="text" id="contact-field" placeholder="+7 или email">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="type">Тип сотрудничества</label>
+        <select class="form-select" id="type">
+          <option value="">Выберите формат</option>
+          <option>Отель / загородная резиденция</option>
+          <option>Кофейня</option>
+          <option>Магазин / ритейл</option>
+          <option>Корпоративный заказ</option>
+          <option>Хочу пробный набор</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Ваш запрос</label>
+        <textarea class="form-textarea" id="message" placeholder="Объём, сроки, пожелания"></textarea>
+      </div>
+      <label class="form-checkbox">
+        <input type="checkbox" id="privacy">
+        <span>Согласен(на) с <a href="#">политикой конфиденциальности</a></span>
+      </label>
+      <div class="form-buttons">
+        <button class="btn-primary" onclick="submitForm('kp')">Запросить КП</button>
+        <button class="btn-primary" onclick="submitForm('sample')">Получить пробный набор</button>
+      </div>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <strong>Спасибо!</strong> Валерия лично изучит ваш запрос и свяжется с вами в течение 24 часов.
+    </div>
+  </div>
+</section>
+
+<!-- ── ФУТЕР ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="./logo/SVG/золото на прозрачном.svg" alt="KUTKEVICH" style="height:64px;width:auto;display:block;margin-bottom:16px;">
+      <p class="footer-brand-desc">Авторский шоколад и цукаты премиум-класса. Производство полного цикла. Санкт-Петербург, Россия.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Навигация</div>
+      <ul class="footer-links">
+        <li><a href="#citrus">О продукте</a></li>
+        <li><a href="#assortment">Ассортимент</a></li>
+        <li><a href="#segments">Для бизнеса</a></li>
+        <li><a href="#founder">О нас</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Связаться</div>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/79112951931">WhatsApp / Telegram</a></li>
+        <li><a href="mailto:lera@kutkevich.org">lera@kutkevich.org</a></li>
+        <li><a href="https://t.me/KUTKEVICH">@KUTKEVICH</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© KUTKEVICH, 2026</span>
+    <a href="#" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<!-- ── CURSOR TRAIL ── -->
+<script>
+// Cursor trail (gold dots)
+var N = 12, trailDots = [], trailPts = [], mx = 0, my = 0;
+for (var i = 0; i < N; i++) {
+  var d = document.createElement('div');
+  d.className = 'trail-dot';
+  document.body.appendChild(d);
+  trailDots.push(d);
+  trailPts.push({x: 0, y: 0});
+}
+document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
+(function trailLoop() {
+  var x = mx, y = my;
+  for (var i = 0; i < N; i++) {
+    var p = trailPts[i];
+    trailPts[i] = {x: x, y: y};
+    x = p.x; y = p.y;
+    var a = (1 - i / N) * 0.35;
+    var s = 1 - i / N * 0.6;
+    trailDots[i].style.cssText = 'left:' + trailPts[i].x + 'px;top:' + trailPts[i].y + 'px;opacity:' + a + ';transform:translate(-50%,-50%) scale(' + s + ')';
+  }
+  requestAnimationFrame(trailLoop);
+})();
+
+// Hero слайдер
+var slides = document.querySelectorAll('.hero-slide');
+var dots = document.querySelectorAll('.hero-dot');
+var currentSlide = 0;
+var slideTimer;
+
+function goSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+  clearInterval(slideTimer);
+  slideTimer = setInterval(nextSlide, 4500);
+}
+function nextSlide() {
+  goSlide((currentSlide + 1) % slides.length);
+}
+slideTimer = setInterval(nextSlide, 4500);
+
+// Hero анимация (последовательная)
+var heroEls = [
+  {el: document.getElementById('h-eyebrow'),  delay: 100},
+  {el: document.getElementById('h-title1'),   delay: 280},
+  {el: document.getElementById('h-title2'),   delay: 500},
+  {el: document.getElementById('h-sub'),      delay: 700},
+  {el: document.getElementById('h-utp'),      delay: 880},
+  {el: document.getElementById('h-stat2'),    delay: 980},
+  {el: document.getElementById('h-stat3'),    delay: 1060},
+  {el: document.getElementById('h-btns'),     delay: 1160}
+];
+heroEls.forEach(function(item) {
+  setTimeout(function() {
+    item.el.style.animation = 'fadeUp 0.7s ease forwards';
+  }, item.delay);
+});
+
+// Счётчик 180 дней
+var counterDone = false;
+function animateCounter(el, target, duration, cb) {
+  var start = 0;
+  var step = Math.ceil(target / (duration / 16));
+  var timer = setInterval(function() {
+    start += step;
+    if (start >= target) {
+      start = target;
+      clearInterval(timer);
+    }
+    if (cb) cb(start);
+    else el.textContent = start;
+  }, 16);
+}
+
+// Scroll reveal + counter trigger
+var revealEls = document.querySelectorAll('.reveal');
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(function(el) { observer.observe(el); });
+
+// Counter observer — все три карточки
+var whyDone = false;
+var whyObs = new IntersectionObserver(function(entries) {
+  if (entries[0].isIntersecting && !whyDone) {
+    whyDone = true;
+
+    // Карточка 1: 0 → 180
+    animateCounter(document.getElementById('counter180'), 180, 1400);
+
+    // Карточка 2: №0 → №1
+    setTimeout(function() {
+      animateCounter({ textContent: '№0' }, 1, 600, function(val) {
+        document.getElementById('counterN1').textContent = '№' + val;
+      });
+    }, 150);
+
+    // Карточка 3: ✓ появляется с анимацией
+    setTimeout(function() {
+      var el = document.getElementById('counterCheck');
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'scale(1) translateY(0)';
+    }, 300);
+
+    whyObs.disconnect();
+  }
+}, { threshold: 0.3 });
+var firstWhyCard = document.querySelector('.why-card');
+if (firstWhyCard) whyObs.observe(firstWhyCard);
+
+// Nav scroll
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Форма
+function submitForm(type) {
+  var name = document.getElementById('name').value.trim();
+  var contact = document.getElementById('contact-field').value.trim();
+  var privacy = document.getElementById('privacy').checked;
+  if (!name || !contact) { alert('Пожалуйста, заполните имя и контакт'); return; }
+  if (!privacy) { alert('Пожалуйста, согласитесь с политикой конфиденциальности'); return; }
+  document.getElementById('formWrap').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+// Select placeholder colour
+const typeSelect = document.getElementById('type');
+function updateSelectColor() {
+  typeSelect.classList.toggle('is-placeholder', typeSelect.value === '');
+}
+updateSelectColor();
+typeSelect.addEventListener('change', updateSelectColor);
+</script>
+</body>
+</html>
