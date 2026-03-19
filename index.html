@@ -253,7 +253,7 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity 1.2s ease;
+    transition: opacity 2.2s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
   }
   .hero-slide.active { opacity: 1; }
@@ -921,21 +921,85 @@
     transform: translate(-50%, -50%);
   }
 
+  /* ── ГАМБУРГЕР ── */
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+  .nav-burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  nav.scrolled .nav-burger span { background: var(--brown); }
+
+  /* ── МОБИЛЬНОЕ МЕНЮ ── */
+  .nav-mobile {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--dark);
+    z-index: 98;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .nav-mobile.open { opacity: 1; pointer-events: all; }
+  .nav-mobile-links { list-style: none; text-align: center; }
+  .nav-mobile-links li { margin-bottom: 28px; }
+  .nav-mobile-links a {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 32px;
+    color: rgba(245,240,232,0.75);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    display: block;
+    padding: 8px 24px;
+    transition: color 0.2s;
+  }
+  .nav-mobile-links a:hover, .nav-mobile-links a:active { color: var(--gold); }
+  .nav-mobile-cta {
+    font-size: 14px !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase;
+    color: var(--gold) !important;
+    border: 1px solid rgba(201,153,58,0.4);
+    margin-top: 12px;
+  }
+
   /* ── АДАПТИВ ── */
   @media (max-width: 1024px) {
     nav { padding: 16px 32px; }
     .nav-links { display: none; }
+    .nav-burger { display: flex; }
     section { padding: 72px 40px; }
     .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 80px 40px; }
-    .hero-right { min-height: 360px; }
+    .hero-left { padding: 100px 40px 60px; }
+    .hero-right { min-height: 400px; }
     .citrus-grid { grid-template-columns: 1fr; }
     .segments-grid { grid-template-columns: 1fr; }
     .retail-grid { grid-template-columns: 1fr; }
     .assortment-grid { grid-template-columns: 1fr 1fr; }
     .why-grid { grid-template-columns: 1fr 1fr; }
     .founder-section { grid-template-columns: 1fr; }
-    .founder-left { min-height: 360px; }
+    .founder-left { min-height: 420px; }
     .founder-right { padding: 60px 40px; }
     .delivery-section { padding: 60px 40px; }
     .delivery-inner { grid-template-columns: 1fr; }
@@ -946,23 +1010,41 @@
     .footer-inner { grid-template-columns: 1fr; gap: 40px; }
   }
   @media (max-width: 640px) {
-    section { padding: 60px 20px; }
-    .hero-left { padding: 100px 20px 60px; }
-    .hero-buttons { flex-direction: column; }
-    .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+    nav { padding: 14px 20px; }
+    section { padding: 56px 20px; }
+    .hero-left { padding: 88px 20px 48px; }
+    .hero-right { min-height: 320px; }
+    .hero-title-big { font-size: clamp(52px, 13vw, 76px); }
+    .hero-title-small { font-size: clamp(30px, 7.5vw, 46px); }
+    .hero-title-italic { font-size: clamp(16px, 4.5vw, 22px); margin-bottom: 40px; }
+    .hero-sub { font-size: 14px; }
+    .hero-buttons { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-secondary { text-align: center; width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; }
     .assortment-grid, .why-grid { grid-template-columns: 1fr; }
     .citrus-footer { flex-direction: column; }
     .delivery-section { padding: 40px 20px; }
-    .delivery-inner { padding: 36px 20px; }
+    .delivery-inner { padding: 32px 20px; }
     .delivery-stats { grid-template-columns: 1fr 1fr; }
+    .delivery-stat { padding: 20px 12px; }
+    .delivery-stat-num { font-size: 32px; }
     footer { padding: 48px 20px 32px; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    .form-left { padding: 60px 20px 32px; }
-    .form-right { padding: 32px 20px 60px; }
-    .founder-right { padding: 48px 20px; }
-    .citrus-card, .segment-card { padding: 32px 20px; }
+    .form-left { padding: 56px 20px 28px; }
+    .form-right { padding: 28px 20px 56px; }
+    .founder-right { padding: 40px 20px; }
+    .founder-left { min-height: 300px; }
+    .citrus-card, .segment-card { padding: 28px 20px; }
     .form-buttons { flex-direction: column; }
-    .form-buttons button { width: 100%; text-align: center; }
+    .form-buttons button { width: 100%; min-height: 52px; }
+    .form-input, .form-select, .form-textarea { padding: 14px 16px; min-height: 52px; font-size: 16px; }
+    .form-textarea { min-height: 110px; }
+    .section-title { font-size: clamp(28px, 8vw, 44px); }
+    .segment-card .btn-primary { min-height: 52px; }
+    .retail-card { padding: 28px 20px; }
+    .why-card { padding: 28px 20px; }
+    .assortment-card { padding: 28px 20px; }
+    .nav-mobile-links a { font-size: 26px; }
+    .nav-mobile-links li { margin-bottom: 20px; }
   }
 </style>
 </head>
@@ -981,7 +1063,21 @@
     <li><a href="#founder">О нас</a></li>
     <li><a href="#contact" class="nav-cta">Запросить прайс</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile" id="navMobile" aria-hidden="true">
+  <ul class="nav-mobile-links">
+    <li><a href="#citrus" onclick="closeMobileNav()">Продукт</a></li>
+    <li><a href="#segments" onclick="closeMobileNav()">Для бизнеса</a></li>
+    <li><a href="#retail" onclick="closeMobileNav()">Частным клиентам</a></li>
+    <li><a href="#assortment" onclick="closeMobileNav()">Ассортимент</a></li>
+    <li><a href="#founder" onclick="closeMobileNav()">О нас</a></li>
+    <li><a href="#contact" onclick="closeMobileNav()" class="nav-mobile-cta">Запросить прайс</a></li>
+  </ul>
+</div>
 
 <!-- ── HERO ── -->
 <section class="hero" style="padding:0;" id="hero">
@@ -1022,14 +1118,14 @@
 
   <div class="hero-right">
     <div class="hero-slide active">
-      <img src="./visual/Шоколад февраль 2026/DSC_2514.jpg" alt="KUTKEVICH">
+      <img src="./visual/Шоколад февраль 2026/DSC_2514.jpg" alt="KUTKEVICH" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-slide">
-      <img src="./visual/DSC04398 — копия.jpg" alt="KUTKEVICH">
+      <img src="./visual/DSC04398 — копия.jpg" alt="KUTKEVICH" loading="lazy">
     </div>
 
     <div class="hero-slide">
-      <img src="./visual/photo_4_2026-03-19_15-18-33.jpg" alt="KUTKEVICH">
+      <img src="./visual/photo_4_2026-03-19_15-18-33.jpg" alt="KUTKEVICH" loading="lazy">
     </div>
     <div class="hero-dots">
       <div class="hero-dot active" onclick="goSlide(0)"></div>
@@ -1320,7 +1416,7 @@
 <!-- ── СЕКЦИЯ 6: ВАЛЕРИЯ ── -->
 <section class="founder-section" id="founder" style="padding:0;">
   <div class="founder-left">
-    <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
+    <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
   </div>
   <div class="founder-right">
     <div class="section-eyebrow reveal">Основатель бренда</div>
@@ -1477,28 +1573,30 @@
 
 <!-- ── CURSOR TRAIL ── -->
 <script>
-// Cursor trail (gold dots)
-var N = 12, trailDots = [], trailPts = [], mx = 0, my = 0;
-for (var i = 0; i < N; i++) {
-  var d = document.createElement('div');
-  d.className = 'trail-dot';
-  document.body.appendChild(d);
-  trailDots.push(d);
-  trailPts.push({x: 0, y: 0});
-}
-document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
-(function trailLoop() {
-  var x = mx, y = my;
+// Cursor trail (gold dots) — только на устройствах с мышью
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  var N = 12, trailDots = [], trailPts = [], mx = 0, my = 0;
   for (var i = 0; i < N; i++) {
-    var p = trailPts[i];
-    trailPts[i] = {x: x, y: y};
-    x = p.x; y = p.y;
-    var a = (1 - i / N) * 0.35;
-    var s = 1 - i / N * 0.6;
-    trailDots[i].style.cssText = 'left:' + trailPts[i].x + 'px;top:' + trailPts[i].y + 'px;opacity:' + a + ';transform:translate(-50%,-50%) scale(' + s + ')';
+    var d = document.createElement('div');
+    d.className = 'trail-dot';
+    document.body.appendChild(d);
+    trailDots.push(d);
+    trailPts.push({x: 0, y: 0});
   }
-  requestAnimationFrame(trailLoop);
-})();
+  document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
+  (function trailLoop() {
+    var x = mx, y = my;
+    for (var i = 0; i < N; i++) {
+      var p = trailPts[i];
+      trailPts[i] = {x: x, y: y};
+      x = p.x; y = p.y;
+      var a = (1 - i / N) * 0.35;
+      var s = 1 - i / N * 0.6;
+      trailDots[i].style.cssText = 'left:' + trailPts[i].x + 'px;top:' + trailPts[i].y + 'px;opacity:' + a + ';transform:translate(-50%,-50%) scale(' + s + ')';
+    }
+    requestAnimationFrame(trailLoop);
+  })();
+}
 
 // Hero слайдер
 var slides = document.querySelectorAll('.hero-slide');
@@ -1513,12 +1611,12 @@ function goSlide(n) {
   slides[currentSlide].classList.add('active');
   dots[currentSlide].classList.add('active');
   clearInterval(slideTimer);
-  slideTimer = setInterval(nextSlide, 4500);
+  slideTimer = setInterval(nextSlide, 6000);
 }
 function nextSlide() {
   goSlide((currentSlide + 1) % slides.length);
 }
-slideTimer = setInterval(nextSlide, 4500);
+slideTimer = setInterval(nextSlide, 6000);
 
 // Hero анимация (последовательная)
 var heroEls = [
@@ -1594,6 +1692,24 @@ var whyObs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.3 });
 var firstWhyCard = document.querySelector('.why-card');
 if (firstWhyCard) whyObs.observe(firstWhyCard);
+
+// Мобильное меню — гамбургер
+var navBurger = document.getElementById('navBurger');
+var navMobile = document.getElementById('navMobile');
+navBurger.addEventListener('click', function() {
+  var open = navBurger.classList.toggle('open');
+  navMobile.classList.toggle('open');
+  navBurger.setAttribute('aria-expanded', open);
+  navMobile.setAttribute('aria-hidden', !open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+function closeMobileNav() {
+  navBurger.classList.remove('open');
+  navMobile.classList.remove('open');
+  navBurger.setAttribute('aria-expanded', 'false');
+  navMobile.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
 
 // Nav scroll — переключение фона и логотипа
 var heroHeight = document.querySelector('.hero') ? document.querySelector('.hero').offsetHeight : 600;
