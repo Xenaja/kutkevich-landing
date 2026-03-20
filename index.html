@@ -1102,8 +1102,8 @@
   .nav-burger span {
     display: block;
     width: 22px;
-    height: 1.5px;
-    background: var(--gold);
+    height: 2px;
+    background: #c8a04a;
     transition: transform 0.3s, opacity 0.3s;
   }
   .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -1181,14 +1181,16 @@
     .hero-left { padding: 130px 24px 44px; justify-content: flex-start; min-height: 100svh; }
     .hero-right { height: 100svh; }
     .hero-slide img { object-position: center center; }
-    .hero-eyebrow { font-size: 9.5px; letter-spacing: 0.07em; white-space: nowrap; margin-top: 0; margin-bottom: 24px; }
+    .hero-eyebrow { font-size: 9.5px; letter-spacing: 0.07em; white-space: nowrap; margin-top: 0; margin-bottom: 10px; }
     .hero-title-big { font-size: clamp(52px, 13vw, 76px); }
     .hero-title-small { font-size: clamp(30px, 7.5vw, 46px); }
-    .hero-title-italic { font-size: clamp(16px, 4.5vw, 22px); margin-bottom: 20px; }
-    .hero-sub { font-size: 14px; margin-bottom: 8px; }
+    .hero-title { margin-bottom: 2px; }
+    .hero-title-italic { font-size: clamp(16px, 4.5vw, 22px); letter-spacing: 0.09em; margin-bottom: 20px; }
+    .hero-sub { font-size: 17px; font-weight: 600; border-left: 3px solid #c8a04a; padding-left: 14px; margin-bottom: 8px; }
     .hero-descriptor { font-size: 10px; margin-bottom: 0; }
-    .hero-buttons { flex-direction: column; gap: 10px; margin-top: auto; padding-top: 28px; }
+    .hero-buttons { flex-direction: column; gap: 10px; margin-top: 32px; padding-top: 0; }
     .btn-primary, .btn-secondary { text-align: center; width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; }
+    .btn-secondary { background: rgba(200,160,74,0.12); border: 2px solid rgba(200,160,74,0.75); color: rgba(245,240,232,0.95); }
     .assortment-grid, .why-grid { grid-template-columns: 1fr; }
     .citrus-footer { flex-direction: column; }
     .delivery-section { padding: 40px 20px; }
