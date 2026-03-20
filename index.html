@@ -590,11 +590,26 @@
     margin-top: 60px;
   }
   .assortment-card {
-    padding: 36px 32px;
     border: 1px solid rgba(201,153,58,0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: border-color 0.3s;
   }
   .assortment-card:hover { border-color: rgba(201,153,58,0.3); }
+  .assortment-card-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .assortment-card-body {
+    padding: 28px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
   .assortment-badge {
     display: inline-block;
     font-size: 9px;
@@ -1138,7 +1153,8 @@
     .segment-card .btn-primary { min-height: 52px; }
     .retail-card { padding: 28px 20px; }
     .why-card { padding: 28px 20px; }
-    .assortment-card { padding: 28px 20px; }
+    .assortment-card-body { padding: 20px 16px; }
+    .assortment-card-img { height: 200px; }
     .nav-mobile-links a { font-size: 26px; }
     .nav-mobile-links li { margin-bottom: 20px; }
   }
@@ -1496,64 +1512,79 @@
 
   <div class="assortment-grid">
     <div class="assortment-card reveal">
-      <span class="assortment-badge badge-flagship">Флагман</span>
-      <h3 class="assortment-title">Цукаты в шоколаде</h3>
-      <ul class="assortment-items">
-        <li>Апельсин в тёмном шоколаде</li>
-        <li>Лимон в тёмном шоколаде</li>
-        <li>Грейпфрут в молочном шоколаде</li>
-        <li>Набор трёх видов</li>
-      </ul>
-      <div class="assortment-meta">Фасовка: 60г и 90г<br>Хранение: 180 суток при 14–21°С</div>
-      <div class="assortment-context">— Топ продаж в корпоративном сегменте</div>
+      <img class="assortment-card-img" src="./visual/Шоколад февраль 2026/DSC_2551-2.jpg" alt="Цукаты в шоколаде" loading="lazy">
+      <div class="assortment-card-body">
+        <span class="assortment-badge badge-flagship">Флагман</span>
+        <h3 class="assortment-title">Цукаты в шоколаде</h3>
+        <ul class="assortment-items">
+          <li>Апельсин в тёмном шоколаде</li>
+          <li>Лимон в тёмном шоколаде</li>
+          <li>Грейпфрут в молочном шоколаде</li>
+          <li>Набор трёх видов</li>
+        </ul>
+        <div class="assortment-meta">Фасовка: 60г и 90г<br>Хранение: 180 суток при 14–21°С</div>
+        <div class="assortment-context">— Топ продаж в корпоративном сегменте</div>
+      </div>
     </div>
 
     <div class="assortment-card reveal">
-      <span class="assortment-badge badge-new">Новинка</span>
-      <h3 class="assortment-title">Без сахара</h3>
-      <ul class="assortment-items">
-        <li>Цукаты апельсина в шоколаде</li>
-        <li>Цукаты лимона в шоколаде</li>
-      </ul>
-      <div class="assortment-meta">На сиропе топинамбура<br>Фасовка: 60г</div>
-      <div class="assortment-context">— Категория ЗОЖ растёт — продукт готов к ней</div>
+      <img class="assortment-card-img" src="./visual/Шоколад февраль 2026/DSC_2747.jpg" alt="Цукаты без сахара" loading="lazy">
+      <div class="assortment-card-body">
+        <span class="assortment-badge badge-new">Новинка</span>
+        <h3 class="assortment-title">Без сахара</h3>
+        <ul class="assortment-items">
+          <li>Цукаты апельсина в шоколаде</li>
+          <li>Цукаты лимона в шоколаде</li>
+        </ul>
+        <div class="assortment-meta">На сиропе топинамбура<br>Фасовка: 60г</div>
+        <div class="assortment-context">— Категория ЗОЖ растёт — продукт готов к ней</div>
+      </div>
     </div>
 
     <div class="assortment-card reveal">
-      <span class="assortment-badge badge-fresh">Свежий вкус</span>
-      <h3 class="assortment-title">Цитрусовый мармелад в белом шоколаде</h3>
-      <ul class="assortment-items">
-        <li>Лимон – базилик</li>
-        <li>Апельсин – ваниль</li>
-        <li>Грейпфрут – малина</li>
-        <li>Набор трёх вкусов</li>
-      </ul>
-      <div class="assortment-meta">Свежевыжатый сок, пектин, белый шоколад 32%<br>Фасовка: 75г и 105г</div>
-      <div class="assortment-context">— Идеально к кофе, в подарочный набор</div>
+      <img class="assortment-card-img" src="./visual/Шоколад февраль 2026/DSC_2552-2.jpg" alt="Цитрусовый мармелад" loading="lazy">
+      <div class="assortment-card-body">
+        <span class="assortment-badge badge-fresh">Свежий вкус</span>
+        <h3 class="assortment-title">Цитрусовый мармелад в белом шоколаде</h3>
+        <ul class="assortment-items">
+          <li>Лимон – базилик</li>
+          <li>Апельсин – ваниль</li>
+          <li>Грейпфрут – малина</li>
+          <li>Набор трёх вкусов</li>
+        </ul>
+        <div class="assortment-meta">Свежевыжатый сок, пектин, белый шоколад 32%<br>Фасовка: 75г и 105г</div>
+        <div class="assortment-context">— Идеально к кофе, в подарочный набор</div>
+      </div>
     </div>
 
     <div class="assortment-card reveal">
-      <span class="assortment-badge badge-fresh">Ручная работа</span>
-      <h3 class="assortment-title">Конфеты ручной работы</h3>
-      <ul class="assortment-items">
-        <li>Миндальный трюфель</li>
-        <li>Сливочная карамель</li>
-        <li>Фундук-корица</li>
-        <li>Ассорти в подарочной коробке, 110г</li>
-      </ul>
-      <div class="assortment-meta">Подарочная коробка с брендированием</div>
-      <div class="assortment-context">— Корпоративный подарок под ключ</div>
+      <img class="assortment-card-img" src="./visual/Шоколад февраль 2026/DSC_2770.jpg" alt="Конфеты ручной работы" loading="lazy" style="object-position: center top;">
+      <div class="assortment-card-body">
+        <span class="assortment-badge badge-fresh">Ручная работа</span>
+        <h3 class="assortment-title">Конфеты ручной работы</h3>
+        <ul class="assortment-items">
+          <li>Миндальный трюфель</li>
+          <li>Сливочная карамель</li>
+          <li>Фундук-корица</li>
+          <li>Ассорти в подарочной коробке, 110г</li>
+        </ul>
+        <div class="assortment-meta">Подарочная коробка с брендированием</div>
+        <div class="assortment-context">— Корпоративный подарок под ключ</div>
+      </div>
     </div>
 
     <div class="assortment-card reveal">
-      <span class="assortment-badge badge-fresh">Классика</span>
-      <h3 class="assortment-title">Зефир</h3>
-      <ul class="assortment-items">
-        <li>Классический</li>
-        <li>В шоколаде</li>
-      </ul>
-      <div class="assortment-meta">Натуральный состав</div>
-      <div class="assortment-context">— Дополнение к наборам и меню кофеен</div>
+      <img class="assortment-card-img" src="./visual/Шоколад февраль 2026/DSC_2387.jpg" alt="Зефир" loading="lazy">
+      <div class="assortment-card-body">
+        <span class="assortment-badge badge-fresh">Классика</span>
+        <h3 class="assortment-title">Зефир</h3>
+        <ul class="assortment-items">
+          <li>Классический</li>
+          <li>В шоколаде</li>
+        </ul>
+        <div class="assortment-meta">Натуральный состав</div>
+        <div class="assortment-context">— Дополнение к наборам и меню кофеен</div>
+      </div>
     </div>
   </div>
 </section>
