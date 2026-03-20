@@ -132,20 +132,19 @@
     line-height: 1;
     background: linear-gradient(
       105deg,
-      #9a6b2a 0%,
-      #d4a843 15%,
-      #f0e090 30%,
-      #fdf5d0 44%,
+      #c09030 0%,
+      #c09030 22%,
+      #f0e090 42%,
+      #fdf8e0 50%,
       #f0e090 58%,
-      #d4a843 72%,
-      #9a6b2a 86%,
-      #d4a843 100%
+      #c09030 78%,
+      #c09030 100%
     );
-    background-size: 250% auto;
+    background-size: 400% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: foil-shimmer 5s linear infinite;
+    animation: foil-shimmer 7s ease-in-out infinite alternate;
   }
   .hero-title-small {
     display: block;
@@ -320,8 +319,8 @@
     background: var(--gold);
   }
   @keyframes foil-shimmer {
-    0%   { background-position: 200% center; }
-    100% { background-position: -200% center; }
+    0%   { background-position: 0% center; }
+    100% { background-position: 100% center; }
   }
   .section-title {
     font-size: clamp(36px, 4vw, 60px);
@@ -329,20 +328,19 @@
     letter-spacing: 0.03em;
     background: linear-gradient(
       105deg,
-      #7a5020 0%,
-      #c99a3a 16%,
-      #e8d070 30%,
-      #f8eecc 44%,
-      #e8d070 58%,
-      #c99a3a 72%,
-      #7a5020 86%,
-      #c99a3a 100%
+      #b8882a 0%,
+      #b8882a 25%,
+      #eedfa0 45%,
+      #fdf5d8 52%,
+      #eedfa0 59%,
+      #b8882a 75%,
+      #b8882a 100%
     );
-    background-size: 250% auto;
+    background-size: 400% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: foil-shimmer 6s linear infinite;
+    animation: foil-shimmer 9s ease-in-out infinite alternate;
   }
   .section-lead {
     font-size: 16px;
