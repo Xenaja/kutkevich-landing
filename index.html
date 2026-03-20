@@ -112,11 +112,12 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     display: flex;
     align-items: center;
     gap: 12px;
     opacity: 0;
+    animation: fadeUp 0.7s 0.15s ease forwards;
   }
   .hero-eyebrow::before { display: none; }
   .hero-title {
@@ -1797,7 +1798,6 @@ slideTimer = setInterval(nextSlide, 6000);
 
 // Hero анимация (последовательная)
 var heroEls = [
-  {el: document.getElementById('h-eyebrow'),  delay: 100},
   {el: document.getElementById('h-title1'),   delay: 280},
   {el: document.getElementById('h-title2'),   delay: 480},
   {el: document.getElementById('h-sub'),      delay: 680},
