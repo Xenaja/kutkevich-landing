@@ -130,6 +130,22 @@
     display: block;
     font-size: clamp(76px, 8.5vw, 120px);
     line-height: 1;
+    background: linear-gradient(
+      105deg,
+      #9a6b2a 0%,
+      #d4a843 15%,
+      #f0e090 30%,
+      #fdf5d0 44%,
+      #f0e090 58%,
+      #d4a843 72%,
+      #9a6b2a 86%,
+      #d4a843 100%
+    );
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: foil-shimmer 5s linear infinite;
   }
   .hero-title-small {
     display: block;
@@ -303,11 +319,30 @@
     width: 32px; height: 1px;
     background: var(--gold);
   }
+  @keyframes foil-shimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
   .section-title {
     font-size: clamp(36px, 4vw, 60px);
     margin-bottom: 16px;
-    color: var(--dark);
     letter-spacing: 0.03em;
+    background: linear-gradient(
+      105deg,
+      #7a5020 0%,
+      #c99a3a 16%,
+      #e8d070 30%,
+      #f8eecc 44%,
+      #e8d070 58%,
+      #c99a3a 72%,
+      #7a5020 86%,
+      #c99a3a 100%
+    );
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: foil-shimmer 6s linear infinite;
   }
   .section-lead {
     font-size: 16px;
@@ -332,7 +367,7 @@
   }
   .citrus-section .section-eyebrow { color: var(--gold-light); }
   .citrus-section .section-eyebrow::before { background: var(--gold-light); }
-  .citrus-section .section-title { color: var(--cream); }
+  .citrus-section .section-title { /* shimmer handles color */ }
   .citrus-section .section-lead { color: rgba(245,240,232,0.55); }
 
   .citrus-grid {
