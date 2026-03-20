@@ -120,10 +120,10 @@
   }
   .hero-eyebrow::before { display: none; }
   .hero-title {
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     color: var(--cream);
     letter-spacing: 0.01em;
-    line-height: 1.05;
+    line-height: 1.0;
     opacity: 0;
   }
   .hero-title-big {
@@ -154,11 +154,13 @@
   }
   .hero-title-italic {
     font-family: 'Poiret One', sans-serif;
-    font-size: clamp(20px, 2vw, 28px);
+    font-style: italic;
+    font-size: clamp(52px, 5.8vw, 84px);
     color: var(--gold);
     display: block;
-    margin-bottom: 72px;
-    letter-spacing: 0.08em;
+    margin-bottom: 48px;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
     opacity: 0;
   }
   .hero-sub {
@@ -1075,11 +1077,9 @@
     section { padding: 56px 20px; }
     .hero-left { padding: 88px 20px 36px; justify-content: flex-start; min-height: 100svh; }
     .hero-right { min-height: 260px; }
-    .hero-title-big { font-size: clamp(48px, 12vw, 72px); }
-    .hero-title-small { font-size: clamp(28px, 7vw, 42px); }
-    .hero-title-italic { font-size: clamp(15px, 4vw, 20px); margin-bottom: 24px; }
+    .hero-title-big { font-size: clamp(44px, 11vw, 64px); }
+    .hero-title-italic { font-size: clamp(36px, 9vw, 56px); margin-bottom: 28px; }
     .hero-sub { font-size: 14px; margin-bottom: 10px; }
-    .hero-stat { font-size: 12px; margin-bottom: 6px; }
     .hero-buttons { flex-direction: column; gap: 10px; margin-top: auto; padding-top: 24px; }
     .btn-primary, .btn-secondary { text-align: center; width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; }
     .assortment-grid, .why-grid { grid-template-columns: 1fr; }
@@ -1107,6 +1107,33 @@
     .assortment-card { padding: 28px 20px; }
     .nav-mobile-links a { font-size: 26px; }
     .nav-mobile-links li { margin-bottom: 20px; }
+  }
+
+  /* ── HERO STRIP ── */
+  .hero-strip {
+    background: #0e0705;
+    display: flex;
+    border-top: 1px solid rgba(201,153,58,0.2);
+    border-bottom: 1px solid rgba(201,153,58,0.2);
+  }
+  .hero-strip-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px 32px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.65);
+    border-right: 1px solid rgba(201,153,58,0.15);
+  }
+  .hero-strip-item:last-child { border-right: none; }
+  @media (max-width: 640px) {
+    .hero-strip { flex-direction: column; }
+    .hero-strip-item { border-right: none; border-bottom: 1px solid rgba(201,153,58,0.15); padding: 18px 20px; justify-content: flex-start; }
+    .hero-strip-item:last-child { border-bottom: none; }
   }
 </style>
 </head>
@@ -1145,35 +1172,22 @@
 <section class="hero" style="padding:0;" id="hero">
   <div class="hero-left">
 
-    <div class="hero-eyebrow" id="h-eyebrow"></div>
+    <div class="hero-eyebrow" id="h-eyebrow">Авторский шоколад · Санкт-Петербург</div>
 
     <h1 class="display hero-title" id="h-title1">
-      <span class="hero-title-big">Авторский</span>
-      <span class="hero-title-small">шоколад и цукаты,</span>
+      <span class="hero-title-big">Шоколад,</span>
+      <span class="hero-title-big">за которым</span>
     </h1>
 
-    <span class="hero-title-italic" id="h-title2">
-      за которыми возвращаются
-    </span>
+    <span class="hero-title-italic" id="h-title2">возвращаются</span>
 
     <p class="hero-sub" id="h-sub">
-      KUTKEVICH Chocolate store — единственный производитель в России
-      с тремя видами цитрусовых цукатов в одном наборе.
+      Единственный производитель в России трёх цитрусовых цукатов в одном наборе
     </p>
-
-    <div class="hero-stat" id="h-utp">
-      Ручная работа, натуральный состав, брендированная упаковка
-    </div>
-    <div class="hero-stat" id="h-stat2">
-      180 дней хранения при 14–21°С, без холодильника
-    </div>
-    <div class="hero-stat" id="h-stat3">
-      Санкт-Петербург, производство полного цикла
-    </div>
 
     <div class="hero-buttons" id="h-btns">
       <a href="#contact" class="btn-primary">Запросить прайс</a>
-      <a href="#contact" class="btn-secondary">Получить пробный набор</a>
+      <a href="#contact" class="btn-secondary">Пробный набор</a>
     </div>
 
   </div>
@@ -1197,6 +1211,22 @@
     </div>
   </div>
 </section>
+
+<!-- ── HERO STRIP ── -->
+<div class="hero-strip">
+  <div class="hero-strip-item reveal">
+    <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><rect x="4" y="0" width="5.66" height="5.66" rx="0.5" transform="rotate(45 4 0)" fill="var(--gold)"/></svg>
+    Ручная работа · натуральный состав
+  </div>
+  <div class="hero-strip-item reveal">
+    <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><rect x="4" y="0" width="5.66" height="5.66" rx="0.5" transform="rotate(45 4 0)" fill="var(--gold)"/></svg>
+    180 дней хранения без холодильника
+  </div>
+  <div class="hero-strip-item reveal">
+    <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><rect x="4" y="0" width="5.66" height="5.66" rx="0.5" transform="rotate(45 4 0)" fill="var(--gold)"/></svg>
+    Брендирование под ваш бизнес
+  </div>
+</div>
 
 <!-- ── СЕКЦИЯ 2: ТРИ ЦИТРУСА ── -->
 <section class="citrus-section" id="citrus">
@@ -1690,12 +1720,9 @@ slideTimer = setInterval(nextSlide, 6000);
 var heroEls = [
   {el: document.getElementById('h-eyebrow'),  delay: 100},
   {el: document.getElementById('h-title1'),   delay: 280},
-  {el: document.getElementById('h-title2'),   delay: 500},
-  {el: document.getElementById('h-sub'),      delay: 700},
-  {el: document.getElementById('h-utp'),      delay: 880},
-  {el: document.getElementById('h-stat2'),    delay: 980},
-  {el: document.getElementById('h-stat3'),    delay: 1060},
-  {el: document.getElementById('h-btns'),     delay: 1160}
+  {el: document.getElementById('h-title2'),   delay: 480},
+  {el: document.getElementById('h-sub'),      delay: 680},
+  {el: document.getElementById('h-btns'),     delay: 860}
 ];
 heroEls.forEach(function(item) {
   setTimeout(function() {
