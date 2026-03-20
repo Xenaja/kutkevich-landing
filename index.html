@@ -1597,17 +1597,17 @@
 
   <div class="why-grid">
     <div class="why-card reveal" style="--num-delay:0s">
-      <div class="why-number" id="counter180">0</div>
+      <div class="why-number">180</div>
       <div class="why-title">дней хранения без холодильника</div>
       <p class="why-body">При 14–21°С. Идеально для ритейла, мини-баров, корпоративных запасов. Никаких проблем с логистикой и остатками.</p>
     </div>
     <div class="why-card reveal" style="--num-delay:0.15s">
-      <div class="why-number" id="counterN1">№0</div>
+      <div class="why-number">№1</div>
       <div class="why-title">Единственный производитель в России</div>
       <p class="why-body">Апельсин, лимон, грейпфрут в шоколаде — три вида цукатов в одном наборе. Мы обнаружили это уже после запуска: когда делаешь продукт с характером, уникальность приходит сама.</p>
     </div>
     <div class="why-card reveal" style="--num-delay:0.3s">
-      <div class="why-number" id="counterCheck" style="opacity:0;transform:scale(0.7) translateY(10px);">✓</div>
+      <div class="why-number">✓</div>
       <div class="why-title">Полный цикл и документы</div>
       <p class="why-body">Производство в Санкт-Петербурге от закупки фруктов до упаковки. Сертификат соответствия, официальный договор, EDO. Готовы к аудитам ритейлеров и сетевых партнёров.</p>
     </div>
@@ -1848,21 +1848,6 @@ heroEls.forEach(function(item) {
 });
 
 // Счётчик 180 дней
-var counterDone = false;
-function animateCounter(el, target, duration, cb) {
-  var start = 0;
-  var step = Math.ceil(target / (duration / 16));
-  var timer = setInterval(function() {
-    start += step;
-    if (start >= target) {
-      start = target;
-      clearInterval(timer);
-    }
-    if (cb) cb(start);
-    else el.textContent = start;
-  }, 16);
-}
-
 // Scroll reveal + counter trigger
 var revealEls = document.querySelectorAll('.reveal');
 var observer = new IntersectionObserver(function(entries) {
@@ -1875,35 +1860,6 @@ var observer = new IntersectionObserver(function(entries) {
 }, { threshold: 0.12 });
 revealEls.forEach(function(el) { observer.observe(el); });
 
-// Counter observer — все три карточки
-var whyDone = false;
-var whyObs = new IntersectionObserver(function(entries) {
-  if (entries[0].isIntersecting && !whyDone) {
-    whyDone = true;
-
-    // Карточка 1: 0 → 180
-    animateCounter(document.getElementById('counter180'), 180, 1400);
-
-    // Карточка 2: №0 → №1
-    setTimeout(function() {
-      animateCounter({ textContent: '№0' }, 1, 600, function(val) {
-        document.getElementById('counterN1').textContent = '№' + val;
-      });
-    }, 150);
-
-    // Карточка 3: ✓ появляется с анимацией
-    setTimeout(function() {
-      var el = document.getElementById('counterCheck');
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      el.style.opacity = '1';
-      el.style.transform = 'scale(1) translateY(0)';
-    }, 300);
-
-    whyObs.disconnect();
-  }
-}, { threshold: 0.3 });
-var firstWhyCard = document.querySelector('.why-card');
-if (firstWhyCard) whyObs.observe(firstWhyCard);
 
 // Мобильное меню — гамбургер
 var navBurger = document.getElementById('navBurger');
