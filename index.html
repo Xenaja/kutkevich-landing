@@ -112,7 +112,7 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 32px;
+    margin-bottom: 64px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -194,7 +194,18 @@
     line-height: 1.75;
     color: rgba(245,240,232,0.55);
     max-width: 440px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    opacity: 0;
+    border-left: 1.5px solid rgba(201,153,58,0.45);
+    padding-left: 16px;
+  }
+  .hero-descriptor {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    padding-left: 18px;
+    margin-bottom: 0;
     opacity: 0;
   }
   .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; margin-top: auto; }
@@ -1236,6 +1247,7 @@
     <p class="hero-sub" id="h-sub">
       Единственный производитель в России трёх цитрусовых цукатов в одном наборе
     </p>
+    <p class="hero-descriptor" id="h-desc">Для бизнеса и просто удовольствия</p>
 
     <div class="hero-buttons" id="h-btns">
       <a href="#contact" class="btn-primary">Запросить прайс</a>
@@ -1801,7 +1813,8 @@ var heroEls = [
   {el: document.getElementById('h-title1'),   delay: 280},
   {el: document.getElementById('h-title2'),   delay: 480},
   {el: document.getElementById('h-sub'),      delay: 680},
-  {el: document.getElementById('h-btns'),     delay: 860}
+  {el: document.getElementById('h-desc'),     delay: 800},
+  {el: document.getElementById('h-btns'),     delay: 960}
 ];
 heroEls.forEach(function(item) {
   setTimeout(function() {
