@@ -286,7 +286,7 @@
   }
 
   /* ── СЕКЦИИ ── */
-  section { padding: 100px 80px; }
+  section { padding: 100px 80px; scroll-margin-top: 72px; }
   .section-eyebrow {
     font-size: 11px;
     letter-spacing: 0.2em;
@@ -909,6 +909,32 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* ── КНОПКА НАВЕРХ ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    background: var(--gold);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.35s, transform 0.35s, background 0.25s;
+    pointer-events: none;
+    z-index: 90;
+  }
+  .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+  .back-to-top:hover { background: var(--brown); }
+  .back-to-top svg { display: block; }
+  @media (max-width: 640px) {
+    .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+  }
+
   /* Cursor trail */
   .trail-dot {
     position: fixed;
@@ -986,13 +1012,15 @@
 
   /* ── АДАПТИВ ── */
   @media (max-width: 1024px) {
-    nav { padding: 16px 32px; }
+    nav { padding: 16px 32px; background: rgba(26,15,8,0.97); backdrop-filter: blur(8px); }
+    nav.scrolled { background: rgba(250,248,244,0.97); }
+    nav.scrolled .nav-burger span { background: var(--brown); }
     .nav-links { display: none; }
     .nav-burger { display: flex; }
     section { padding: 72px 40px; }
     .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 100px 40px 60px; }
-    .hero-right { min-height: 400px; }
+    .hero-left { padding: 100px 40px 60px; min-height: 100svh; }
+    .hero-right { min-height: 380px; }
     .citrus-grid { grid-template-columns: 1fr; }
     .segments-grid { grid-template-columns: 1fr; }
     .retail-grid { grid-template-columns: 1fr; }
@@ -1012,13 +1040,14 @@
   @media (max-width: 640px) {
     nav { padding: 14px 20px; }
     section { padding: 56px 20px; }
-    .hero-left { padding: 88px 20px 48px; }
-    .hero-right { min-height: 320px; }
-    .hero-title-big { font-size: clamp(52px, 13vw, 76px); }
-    .hero-title-small { font-size: clamp(30px, 7.5vw, 46px); }
-    .hero-title-italic { font-size: clamp(16px, 4.5vw, 22px); margin-bottom: 40px; }
-    .hero-sub { font-size: 14px; }
-    .hero-buttons { flex-direction: column; gap: 12px; }
+    .hero-left { padding: 88px 20px 36px; justify-content: flex-start; min-height: 100svh; }
+    .hero-right { min-height: 260px; }
+    .hero-title-big { font-size: clamp(48px, 12vw, 72px); }
+    .hero-title-small { font-size: clamp(28px, 7vw, 42px); }
+    .hero-title-italic { font-size: clamp(15px, 4vw, 20px); margin-bottom: 24px; }
+    .hero-sub { font-size: 14px; margin-bottom: 10px; }
+    .hero-stat { font-size: 12px; margin-bottom: 6px; }
+    .hero-buttons { flex-direction: column; gap: 10px; margin-top: auto; padding-top: 24px; }
     .btn-primary, .btn-secondary { text-align: center; width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; }
     .assortment-grid, .why-grid { grid-template-columns: 1fr; }
     .citrus-footer { flex-direction: column; }
@@ -1571,6 +1600,12 @@
   </div>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Наверх">
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <path d="M9 14V4M4 9l5-5 5 5" stroke="#1a0f08" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
 <!-- ── CURSOR TRAIL ── -->
 <script>
 // Cursor trail (gold dots) — только на устройствах с мышью
@@ -1743,6 +1778,16 @@ function updateSelectColor() {
 }
 updateSelectColor();
 typeSelect.addEventListener('change', updateSelectColor);
+
+// Кнопка наверх
+var backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 400) backBtn.classList.add('visible');
+  else backBtn.classList.remove('visible');
+});
+backBtn.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
