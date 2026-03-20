@@ -282,7 +282,7 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 3.5s ease-in-out;
     z-index: 1;
   }
   .hero-slide.active { opacity: 1; }
@@ -291,6 +291,12 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
+  }
+  .hero-slide.active img {
+    transform: scale(1.06);
+    transition: transform 9s ease-in-out;
   }
   /* Точки-индикаторы */
   .hero-dots {
@@ -1801,12 +1807,12 @@ function goSlide(n) {
   slides[currentSlide].classList.add('active');
   dots[currentSlide].classList.add('active');
   clearInterval(slideTimer);
-  slideTimer = setInterval(nextSlide, 6000);
+  slideTimer = setInterval(nextSlide, 7000);
 }
 function nextSlide() {
   goSlide((currentSlide + 1) % slides.length);
 }
-slideTimer = setInterval(nextSlide, 6000);
+slideTimer = setInterval(nextSlide, 7000);
 
 // Hero анимация (последовательная)
 var heroEls = [
