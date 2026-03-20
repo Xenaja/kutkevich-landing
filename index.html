@@ -970,16 +970,43 @@
     .back-to-top { bottom: 20px; right: 20px; width: 44px; height: 44px; }
   }
 
-  /* Cursor trail */
-  .trail-dot {
-    position: fixed;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0;
-    transform: translate(-50%, -50%);
+  /* ── LIQUID CURSOR (desktop only) ── */
+  @media (hover: hover) and (pointer: fine) {
+    * { cursor: none !important; }
+    #cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(201,153,58,0.65);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.22s ease, height 0.22s ease,
+                  border-color 0.22s ease, background 0.22s ease;
+      will-change: left, top;
+    }
+    #cursor-dot {
+      position: fixed;
+      top: 0; left: 0;
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      will-change: left, top;
+    }
+    #cursor-ring.is-hover {
+      width: 54px; height: 54px;
+      border-color: rgba(201,153,58,0.9);
+      background: rgba(201,153,58,0.07);
+    }
+    #cursor-ring.is-click {
+      width: 22px; height: 22px;
+      border-color: var(--gold);
+      background: rgba(201,153,58,0.15);
+    }
   }
 
   /* ── ГАМБУРГЕР ── */
@@ -1160,6 +1187,8 @@
 </style>
 </head>
 <body>
+<div id="cursor-ring"></div>
+<div id="cursor-dot"></div>
 
 <!-- ── NAV ── -->
 <nav id="mainNav">
@@ -1711,31 +1740,39 @@
   </svg>
 </button>
 
-<!-- ── CURSOR TRAIL ── -->
+<!-- ── LIQUID CURSOR ── -->
 <script>
-// Cursor trail (gold dots) — только на устройствах с мышью
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  var N = 12, trailDots = [], trailPts = [], mx = 0, my = 0;
-  for (var i = 0; i < N; i++) {
-    var d = document.createElement('div');
-    d.className = 'trail-dot';
-    document.body.appendChild(d);
-    trailDots.push(d);
-    trailPts.push({x: 0, y: 0});
-  }
-  document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; });
-  (function trailLoop() {
-    var x = mx, y = my;
-    for (var i = 0; i < N; i++) {
-      var p = trailPts[i];
-      trailPts[i] = {x: x, y: y};
-      x = p.x; y = p.y;
-      var a = (1 - i / N) * 0.35;
-      var s = 1 - i / N * 0.6;
-      trailDots[i].style.cssText = 'left:' + trailPts[i].x + 'px;top:' + trailPts[i].y + 'px;opacity:' + a + ';transform:translate(-50%,-50%) scale(' + s + ')';
-    }
-    requestAnimationFrame(trailLoop);
+  var ring = document.getElementById('cursor-ring');
+  var dot  = document.getElementById('cursor-dot');
+  var rx = 0, ry = 0, mx = 0, my = 0;
+
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
+  });
+
+  (function ringLoop() {
+    rx += (mx - rx) * 0.13;
+    ry += (my - ry) * 0.13;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(ringLoop);
   })();
+
+  document.querySelectorAll('a, button, [role="button"], .hero-dot, .nav-burger').forEach(function(el) {
+    el.addEventListener('mouseenter', function() { ring.classList.add('is-hover'); });
+    el.addEventListener('mouseleave', function() { ring.classList.remove('is-hover'); });
+  });
+
+  document.addEventListener('mousedown', function() {
+    ring.classList.remove('is-hover');
+    ring.classList.add('is-click');
+  });
+  document.addEventListener('mouseup', function() {
+    ring.classList.remove('is-click');
+  });
 }
 
 // Hero слайдер
