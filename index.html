@@ -730,7 +730,9 @@
     background: var(--white);
     padding: 36px 32px;
     border: 1px solid rgba(201,153,58,0.08);
+    transition: border-color 0.3s;
   }
+  .why-card:hover, .why-card.active { border-color: rgba(201,153,58,0.3); }
   .why-number {
     font-family: 'Poiret One', sans-serif;
     font-size: 52px;
@@ -2034,7 +2036,7 @@ if (window.matchMedia('(hover: none)').matches) {
         entry.target.classList.remove('active');
       }
     });
-  }, { threshold: 0.45 });
+  }, { threshold: 0.2 });
   allCards.forEach(function(card) { cardObserver.observe(card); });
 }
 
