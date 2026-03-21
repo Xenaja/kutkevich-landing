@@ -539,7 +539,7 @@
     transition: border-color 0.3s;
     position: relative;
   }
-  .segment-card:hover { border-color: rgba(201,153,58,0.35); }
+  .segment-card:hover, .segment-card.active { border-color: rgba(201,153,58,0.35); }
   .segment-icon { margin-bottom: 24px; }
   .segment-tag {
     font-size: 10px;
@@ -611,7 +611,7 @@
     gap: 12px;
     transition: background 0.3s, border-color 0.3s;
   }
-  .retail-card:hover { background: rgba(201,153,58,0.07); border-color: rgba(201,153,58,0.3); }
+  .retail-card:hover, .retail-card.active { background: rgba(201,153,58,0.07); border-color: rgba(201,153,58,0.3); }
   .retail-icon { font-size: 28px; margin-bottom: 4px; }
   .retail-name {
     font-family: 'Poiret One', sans-serif;
@@ -657,7 +657,7 @@
     flex-direction: column;
     transition: border-color 0.3s;
   }
-  .assortment-card:hover { border-color: rgba(201,153,58,0.3); }
+  .assortment-card:hover, .assortment-card.active { border-color: rgba(201,153,58,0.3); }
   .assortment-card-img {
     width: 100%;
     height: 260px;
@@ -1244,7 +1244,7 @@
     gap: 14px;
     transition: background 0.3s, border-color 0.3s;
   }
-  .hero-strip-card:hover {
+  .hero-strip-card:hover, .hero-strip-card.active {
     background: rgba(201,153,58,0.07);
     border-color: rgba(201,153,58,0.35);
   }
@@ -2021,10 +2021,12 @@ var observer = new IntersectionObserver(function(entries) {
 }, { threshold: 0.12 });
 revealEls.forEach(function(el) { observer.observe(el); });
 
-// Цитрусовые карточки — активация при скролле на тач-устройствах
+// Карточки — активация при скролле на тач-устройствах
 if (window.matchMedia('(hover: none)').matches) {
-  var citrusCards = document.querySelectorAll('.citrus-card');
-  var citrusObserver = new IntersectionObserver(function(entries) {
+  var allCards = document.querySelectorAll(
+    '.citrus-card, .hero-strip-card, .retail-card, .segment-card, .assortment-card, .why-card'
+  );
+  var cardObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
@@ -2032,8 +2034,8 @@ if (window.matchMedia('(hover: none)').matches) {
         entry.target.classList.remove('active');
       }
     });
-  }, { threshold: 0.55 });
-  citrusCards.forEach(function(card) { citrusObserver.observe(card); });
+  }, { threshold: 0.45 });
+  allCards.forEach(function(card) { cardObserver.observe(card); });
 }
 
 // Мобильное меню — гамбургер
