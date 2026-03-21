@@ -449,7 +449,8 @@
     position: relative;
     overflow: hidden;
   }
-  .citrus-card:hover { background: rgba(201,153,58,0.08); border-color: rgba(201,153,58,0.3); }
+  .citrus-card:hover,
+  .citrus-card.active { background: rgba(201,153,58,0.08); border-color: rgba(201,153,58,0.3); }
   .citrus-card::after {
     content: '';
     position: absolute;
@@ -457,10 +458,11 @@
     height: 2px;
     background: var(--gold);
     transform: scaleX(0);
-    transition: transform 0.4s;
+    transition: transform 0.5s ease;
     transform-origin: left;
   }
-  .citrus-card:hover::after { transform: scaleX(1); }
+  .citrus-card:hover::after,
+  .citrus-card.active::after { transform: scaleX(1); }
   .citrus-num {
     font-family: 'Poiret One', sans-serif;
     font-size: 64px;
@@ -2019,6 +2021,20 @@ var observer = new IntersectionObserver(function(entries) {
 }, { threshold: 0.12 });
 revealEls.forEach(function(el) { observer.observe(el); });
 
+// Цитрусовые карточки — активация при скролле на тач-устройствах
+if (window.matchMedia('(hover: none)').matches) {
+  var citrusCards = document.querySelectorAll('.citrus-card');
+  var citrusObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      } else {
+        entry.target.classList.remove('active');
+      }
+    });
+  }, { threshold: 0.55 });
+  citrusCards.forEach(function(card) { citrusObserver.observe(card); });
+}
 
 // Мобильное меню — гамбургер
 var navBurger = document.getElementById('navBurger');
