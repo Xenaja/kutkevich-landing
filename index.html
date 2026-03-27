@@ -191,22 +191,23 @@
     letter-spacing: 0.03em;
     background: linear-gradient(
       105deg,
-      #8a5e20    0%,
-      #c8913a   12%,
-      #e8c87a   24%,
-      #ffffff   30%,
-      #ffe8a0   34%,
-      #c8913a   50%,
-      #8a5e20   68%,
-      #c8913a   82%,
-      #e8c87a   92%,
-      #8a5e20  100%
+      #6b4a1a   0%,
+      #a07030  12%,
+      #c8913a  24%,
+      #ddb86a  32%,
+      #c8a050  40%,
+      #a07030  52%,
+      #7a5520  62%,
+      #a07030  74%,
+      #c8913a  84%,
+      #ddb86a  92%,
+      #6b4a1a 100%
     );
-    background-size: 280% 100%;
+    background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: foil-shimmer 2.5s ease-in-out infinite;
+    animation: foil-shimmer 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   }
   .hero-title-small {
     display: block;
@@ -470,7 +471,7 @@
   .citrus-num {
     font-family: 'Poiret One', sans-serif;
     font-size: 64px;
-    color: rgba(201,153,58,0.15);
+    color: rgba(200,145,58,0.10);
     line-height: 1;
     margin-bottom: 16px;
   }
@@ -496,7 +497,7 @@
   .citrus-context {
     margin-top: 16px;
     font-size: 12px;
-    color: rgba(201,153,58,0.7);
+    color: rgba(245,237,224,0.55);
     letter-spacing: 0.05em;
     line-height: 1.5;
   }
@@ -717,7 +718,7 @@
   }
   .assortment-context {
     font-size: 11px;
-    color: var(--gold);
+    color: var(--text-muted);
     letter-spacing: 0.06em;
     margin-top: 10px;
   }
