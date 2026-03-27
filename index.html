@@ -1026,6 +1026,7 @@
     margin: 0 auto 36px;
   }
   .cta-mid-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .cta-mid-btns .btn-primary { width: 260px; text-align: center; box-sizing: border-box; }
   @media (max-width: 640px) {
     .cta-mid { padding: 56px 24px; }
     .cta-mid-btns { flex-direction: column; align-items: stretch; }
@@ -1764,7 +1765,7 @@
   <p class="cta-mid-sub reveal">Пришлём предложение под ваш формат — с ассортиментом,<br>вариантами упаковки и условиями сотрудничества.</p>
   <div class="cta-mid-btns reveal">
     <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Корпоративный заказ'){s.selectedIndex=i;break;}}}">Конфеты для вашего бизнеса</a>
-    <a href="#contact" class="btn-secondary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Магазин / ритейл'){s.selectedIndex=i;break;}}}">Цукаты и мармелад</a>
+    <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Магазин / ритейл'){s.selectedIndex=i;break;}}}">Цукаты и мармелад</a>
   </div>
 </section>
 
