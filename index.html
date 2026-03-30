@@ -1327,6 +1327,120 @@
     .hero-strip-grid { grid-template-columns: 1fr; gap: 16px; }
     .hero-strip-card { padding: 28px 20px; }
   }
+
+  /* ── COMPARE LABEL ── */
+  .compare-label {
+    font-family: 'Geologica', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,153,58,0.5);
+    text-align: center;
+    padding: 24px 0 0;
+  }
+
+  /* ── HERO STRIP ВАРИАНТ 1 ── */
+  .hero-strip-v1 {
+    background: var(--dark);
+    padding: 72px 80px 80px;
+    border-top: 1px solid rgba(201,153,58,0.15);
+  }
+  .strip-v1-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+  .strip-v1-card {
+    padding: 48px 40px;
+    border: 1px solid rgba(201,153,58,0.13);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .strip-v1-card + .strip-v1-card { border-left: none; }
+  .strip-v1-card:hover {
+    background: rgba(201,153,58,0.05);
+    border-color: rgba(201,153,58,0.3);
+  }
+  .strip-v1-num {
+    font-family: 'Poiret One', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: rgba(201,153,58,0.35);
+  }
+  .strip-v1-heading {
+    font-family: 'Poiret One', sans-serif;
+    font-size: clamp(18px, 1.8vw, 24px);
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    line-height: 1.35;
+  }
+  .strip-v1-sub {
+    font-size: 13px;
+    color: rgba(245,240,232,0.45);
+    line-height: 1.85;
+    font-style: italic;
+    margin-top: auto;
+  }
+  @media (max-width: 1024px) {
+    .hero-strip-v1 { padding: 56px 40px; }
+  }
+  @media (max-width: 640px) {
+    .hero-strip-v1 { padding: 48px 20px; }
+    .strip-v1-grid { grid-template-columns: 1fr; }
+    .strip-v1-card { padding: 28px 20px; }
+    .strip-v1-card + .strip-v1-card { border-left: 1px solid rgba(201,153,58,0.13); border-top: none; }
+  }
+
+  /* ── HERO STRIP ВАРИАНТ 2 ── */
+  .hero-strip-v2 {
+    background: var(--dark);
+    padding: 72px 80px 80px;
+    border-top: 1px solid rgba(201,153,58,0.15);
+  }
+  .strip-v2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+  .strip-v2-card {
+    padding: 64px 48px;
+    text-align: center;
+    border-right: 1px solid rgba(201,153,58,0.13);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    transition: background 0.3s;
+  }
+  .strip-v2-card:last-child { border-right: none; }
+  .strip-v2-card:hover { background: rgba(201,153,58,0.04); }
+  .strip-v2-line {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    flex-shrink: 0;
+  }
+  .strip-v2-phrase {
+    font-family: 'Poiret One', sans-serif;
+    font-size: clamp(18px, 1.9vw, 26px);
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  @media (max-width: 1024px) {
+    .hero-strip-v2 { padding: 56px 40px; }
+    .strip-v2-card { padding: 48px 28px; }
+  }
+  @media (max-width: 640px) {
+    .hero-strip-v2 { padding: 48px 20px; }
+    .strip-v2-grid { grid-template-columns: 1fr; }
+    .strip-v2-card { padding: 36px 20px; border-right: none; border-bottom: 1px solid rgba(201,153,58,0.13); }
+    .strip-v2-card:last-child { border-bottom: none; }
+  }
 </style>
 </head>
 <body>
@@ -1462,6 +1576,55 @@
       </svg>
       <div class="hero-strip-title">Брендирование</div>
       <div class="hero-strip-text">Упаковка под ваш корпоративный стиль — для бизнес-подарков</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ВАРИАНТ 1: ЭМОЦИОНАЛЬНЫЙ ── -->
+<div class="compare-label">Вариант 1</div>
+<section class="hero-strip-v1">
+  <div class="strip-v1-grid">
+
+    <div class="strip-v1-card reveal">
+      <div class="strip-v1-num">01</div>
+      <div class="strip-v1-heading">Конфеты как изысканная роскошь</div>
+      <div class="strip-v1-sub">Каждая деталь достойна вашего внимания</div>
+    </div>
+
+    <div class="strip-v1-card reveal">
+      <div class="strip-v1-num">02</div>
+      <div class="strip-v1-heading">Вкус и эмоции, которые запомнятся</div>
+      <div class="strip-v1-sub">Я создаю воспоминания</div>
+    </div>
+
+    <div class="strip-v1-card reveal">
+      <div class="strip-v1-num">03</div>
+      <div class="strip-v1-heading">Осознанный стиль жизни</div>
+      <div class="strip-v1-sub">Именно вы делаете свой выбор</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ВАРИАНТ 2: МАНИФЕСТ ── -->
+<div class="compare-label">Вариант 2</div>
+<section class="hero-strip-v2">
+  <div class="strip-v2-grid">
+
+    <div class="strip-v2-card reveal">
+      <div class="strip-v2-line"></div>
+      <div class="strip-v2-phrase">Выверенные технологии</div>
+    </div>
+
+    <div class="strip-v2-card reveal">
+      <div class="strip-v2-line"></div>
+      <div class="strip-v2-phrase">Чистый состав</div>
+    </div>
+
+    <div class="strip-v2-card reveal">
+      <div class="strip-v2-line"></div>
+      <div class="strip-v2-phrase">Эстетика во всём</div>
     </div>
 
   </div>
