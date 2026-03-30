@@ -203,11 +203,11 @@
       #e0d0b8  93%,
       #6b4a1a 100%
     );
-    background-size: 320% auto;
+    background-size: 400% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: foil-shimmer 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    animation: foil-shimmer 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
   .hero-title-small {
     display: block;
@@ -394,6 +394,7 @@
   }
   @keyframes foil-shimmer {
     0%   { background-position: 0% center; }
+    55%  { background-position: 0% center; }
     100% { background-position: 100% center; }
   }
   .section-title {
