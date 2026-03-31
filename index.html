@@ -1507,7 +1507,8 @@
         <span>Цукаты</span><span class="eyebrow-dot">·</span><span>Мармелад</span><span class="eyebrow-dot">·</span><span>Конфеты</span>
       </div>
       <h1 class="display hero-title" id="h-title1">
-        <span class="hero-title-big">Авторские сладости</span>
+        <span class="hero-title-big hero-title-line1">Авторские</span>
+        <span class="hero-title-big hero-title-line2">сладости</span>
         <span class="hero-title-small">из шоколада,</span>
       </h1>
     </div>
@@ -2207,18 +2208,49 @@ slideTimer = setInterval(nextSlide, 7000);
 
 // Выравнивание eyebrow по ширине первой строки заголовка
 function syncEyebrow() {
-  var titleBig = document.querySelector('.hero-title-big');
-  var group    = document.querySelector('.hero-title-group');
-  if (!titleBig || !group) return;
-  group.style.width = ''; // сброс перед измерением
-  var range = document.createRange();
-  range.selectNodeContents(titleBig);
-  var rects = range.getClientRects();
-  var maxW = 0;
-  for (var i = 0; i < rects.length; i++) {
-    if (rects[i].width > maxW) maxW = rects[i].width;
+  var line1 = document.querySelector('.hero-title-line1');
+  var line2 = document.querySelector('.hero-title-line2');
+  var group = document.querySelector('.hero-title-group');
+  if (!line1 || !line2 || !group) return;
+
+  // Сброс перед измерением
+  line1.style.letterSpacing = '';
+  line2.style.letterSpacing = '';
+  group.style.width = '';
+
+  // На мобайле не выравниваем — слова и так крупные
+  if (window.innerWidth <= 640) return;
+
+  // Измеряем реальную ширину текста через off-screen клон
+  function measureText(el) {
+    var cs = window.getComputedStyle(el);
+    var t = document.createElement('span');
+    t.style.cssText = 'position:absolute;left:-9999px;top:0;white-space:nowrap;' +
+      'font-size:' + cs.fontSize + ';font-family:' + cs.fontFamily + ';' +
+      'font-weight:' + cs.fontWeight + ';letter-spacing:' + cs.letterSpacing + ';' +
+      'text-transform:' + cs.textTransform;
+    t.textContent = el.textContent.trim();
+    document.body.appendChild(t);
+    var w = t.getBoundingClientRect().width;
+    document.body.removeChild(t);
+    return w;
   }
-  if (maxW > 0) group.style.width = Math.ceil(maxW) + 'px';
+
+  var w1 = measureText(line1);
+  var w2 = measureText(line2);
+  var targetW = Math.max(w1, w2);
+
+  // Устанавливаем ширину группы = ширине самого широкого слова
+  group.style.width = Math.ceil(targetW) + 'px';
+
+  // Добавляем letter-spacing узкому слову чтобы сравнять
+  var narrow = w1 < w2 ? line1 : (w2 < w1 ? line2 : null);
+  if (narrow) {
+    var narrowW = Math.min(w1, w2);
+    var n = narrow.textContent.trim().length;
+    var curLS = parseFloat(window.getComputedStyle(narrow).letterSpacing) || 0;
+    narrow.style.letterSpacing = (curLS + (targetW - narrowW) / n) + 'px';
+  }
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(syncEyebrow);
 window.addEventListener('resize', syncEyebrow);
