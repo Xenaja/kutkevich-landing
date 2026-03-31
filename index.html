@@ -518,8 +518,19 @@
     padding-top: 40px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     gap: 40px;
+  }
+  .typewriter-cursor {
+    display: inline-block;
+    color: rgba(245,240,232,0.7);
+    animation: tw-blink 0.75s step-end infinite;
+    font-weight: 200;
+    margin-left: 2px;
+  }
+  @keyframes tw-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
   .citrus-quote {
     font-family: 'Poiret One', sans-serif;
@@ -2284,6 +2295,31 @@ var observer = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.12 });
 revealEls.forEach(function(el) { observer.observe(el); });
+
+// Typewriter — цитата в секции цитрусов
+(function() {
+  var el = document.querySelector('.citrus-quote');
+  if (!el) return;
+  var fullText = el.textContent.trim();
+  el.innerHTML = '<span class="typewriter-cursor">|</span>';
+  var cursor = el.querySelector('.typewriter-cursor');
+  var i = 0, started = false;
+  var twObs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      twObs.disconnect();
+      setTimeout(function type() {
+        if (i < fullText.length) {
+          cursor.insertAdjacentText('beforebegin', fullText[i++]);
+          setTimeout(type, 42);
+        } else {
+          setTimeout(function() { cursor.style.display = 'none'; }, 1800);
+        }
+      }, 400);
+    }
+  }, { threshold: 0.4 });
+  twObs.observe(el);
+})();
 
 // Карточки — активация при скролле на тач-устройствах
 if (window.matchMedia('(hover: none)').matches) {
