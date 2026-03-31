@@ -588,11 +588,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
+    transition: transform 0.35s ease, background 0.2s, border-color 0.2s;
     font-family: 'Geologica', sans-serif;
     font-weight: 300;
   }
   .seg-card-toggle:hover { background: rgba(201,153,58,0.1); border-color: var(--gold); }
+  .seg-card.open .seg-card-toggle { transform: rotate(45deg); }
   .seg-card-icon { margin-bottom: 20px; }
   .seg-card-tag {
     font-size: 10px;
@@ -2400,7 +2401,6 @@ function segCardToggle(idx) {
   var isOpen = card.classList.contains('open');
   card.classList.toggle('open', !isOpen);
   var btn = card.querySelector('.seg-card-toggle');
-  btn.textContent = isOpen ? '+' : '×';
   btn.setAttribute('aria-expanded', String(!isOpen));
 }
 
