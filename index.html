@@ -2208,20 +2208,21 @@ slideTimer = setInterval(nextSlide, 7000);
 
 // Выравнивание eyebrow по ширине первой строки заголовка
 function syncEyebrow() {
-  var line1 = document.querySelector('.hero-title-line1');
-  var line2 = document.querySelector('.hero-title-line2');
-  var group = document.querySelector('.hero-title-group');
-  if (!line1 || !line2 || !group) return;
+  var line1   = document.querySelector('.hero-title-line1');
+  var line2   = document.querySelector('.hero-title-line2');
+  var group   = document.querySelector('.hero-title-group');
+  var eyebrow = document.getElementById('h-eyebrow');
+  var italic  = document.querySelector('.hero-title-italic');
+  if (!line1 || !line2 || !group || !eyebrow) return;
 
-  // Сброс перед измерением
+  // Сброс
   line1.style.letterSpacing = '';
   line2.style.letterSpacing = '';
   group.style.width = '';
+  eyebrow.style.width = '';
 
-  // На мобайле не выравниваем — слова и так крупные
   if (window.innerWidth <= 640) return;
 
-  // Измеряем реальную ширину текста через off-screen клон
   function measureText(el) {
     var cs = window.getComputedStyle(el);
     var t = document.createElement('span');
@@ -2236,20 +2237,24 @@ function syncEyebrow() {
     return w;
   }
 
+  // Выравниваем АВТОРСКИЕ и СЛАДОСТИ по ширине между собой
   var w1 = measureText(line1);
   var w2 = measureText(line2);
-  var targetW = Math.max(w1, w2);
+  var titleW = Math.max(w1, w2);
+  group.style.width = Math.ceil(titleW) + 'px';
 
-  // Устанавливаем ширину группы = ширине самого широкого слова
-  group.style.width = Math.ceil(targetW) + 'px';
-
-  // Добавляем letter-spacing узкому слову чтобы сравнять
   var narrow = w1 < w2 ? line1 : (w2 < w1 ? line2 : null);
   if (narrow) {
     var narrowW = Math.min(w1, w2);
     var n = narrow.textContent.trim().length;
     var curLS = parseFloat(window.getComputedStyle(narrow).letterSpacing) || 0;
-    narrow.style.letterSpacing = (curLS + (targetW - narrowW) / n) + 'px';
+    narrow.style.letterSpacing = (curLS + (titleW - narrowW) / n) + 'px';
+  }
+
+  // Eyebrow — по ширине "за которыми возвращаются"
+  if (italic) {
+    var italicW = measureText(italic);
+    eyebrow.style.width = Math.ceil(italicW) + 'px';
   }
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(function() {
