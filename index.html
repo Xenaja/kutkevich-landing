@@ -2252,7 +2252,9 @@ function syncEyebrow() {
     narrow.style.letterSpacing = (curLS + (targetW - narrowW) / n) + 'px';
   }
 }
-(document.fonts ? document.fonts.ready : Promise.resolve()).then(syncEyebrow);
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(function() {
+  requestAnimationFrame(function() { requestAnimationFrame(syncEyebrow); });
+});
 window.addEventListener('resize', syncEyebrow);
 
 // Hero анимация (последовательная)
