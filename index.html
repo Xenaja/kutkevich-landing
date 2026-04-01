@@ -572,13 +572,18 @@
     position: relative;
   }
   .seg-card.open { background: rgba(201,153,58,0.04); }
-  /* более специфичное правило перекрывает .reveal (одинаковая специфичность) */
   .seg-grid .seg-card {
+    opacity: 0;
+    transform: translateY(24px);
     transition: background 0.3s, opacity 0.7s ease, transform 0.7s ease;
   }
   .seg-grid .seg-card:nth-child(2) { transition-delay: 0.1s; }
   .seg-grid .seg-card:nth-child(3) { transition-delay: 0.15s; }
   .seg-grid .seg-card:nth-child(4) { transition-delay: 0.2s; }
+  .seg-grid .seg-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
   .seg-card-toggle {
     position: absolute;
     top: 36px;
@@ -1795,7 +1800,7 @@
   <div class="seg-grid">
 
     <!-- Отели -->
-    <div class="seg-card reveal">
+    <div class="seg-card">
       <button class="seg-card-toggle" onclick="segCardToggle(0)" aria-expanded="false">+</button>
       <div class="seg-card-icon">
         <svg viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="44">
@@ -1837,7 +1842,7 @@
     </div>
 
     <!-- Кофейни -->
-    <div class="seg-card reveal">
+    <div class="seg-card">
       <button class="seg-card-toggle" onclick="segCardToggle(1)" aria-expanded="false">+</button>
       <div class="seg-card-icon">
         <svg viewBox="5 6 31 28" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -1871,7 +1876,7 @@
     </div>
 
     <!-- Ритейл -->
-    <div class="seg-card reveal">
+    <div class="seg-card">
       <button class="seg-card-toggle" onclick="segCardToggle(2)" aria-expanded="false">+</button>
       <div class="seg-card-icon">
         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -1910,7 +1915,7 @@
     </div>
 
     <!-- Корпораты -->
-    <div class="seg-card reveal">
+    <div class="seg-card">
       <button class="seg-card-toggle" onclick="segCardToggle(3)" aria-expanded="false">+</button>
       <div class="seg-card-icon">
         <svg viewBox="2 7 36 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -2397,6 +2402,20 @@ revealEls.forEach(function(el) { observer.observe(el); });
     }
   }, { threshold: 0.4 });
   twObs.observe(el);
+})();
+
+// Reveal — карточки «Для кого»
+(function() {
+  var segCards = document.querySelectorAll('.seg-grid .seg-card');
+  var segObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        segObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  segCards.forEach(function(card) { segObs.observe(card); });
 })();
 
 // Карточки «Для кого» — раскрытие по клику на +
