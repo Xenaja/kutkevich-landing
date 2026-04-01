@@ -570,9 +570,15 @@
     background: var(--dark);
     padding: 40px 36px;
     position: relative;
-    transition: background 0.3s, opacity 0.7s ease, transform 0.7s ease;
   }
   .seg-card.open { background: rgba(201,153,58,0.04); }
+  /* более специфичное правило перекрывает .reveal (одинаковая специфичность) */
+  .seg-grid .seg-card {
+    transition: background 0.3s, opacity 0.7s ease, transform 0.7s ease;
+  }
+  .seg-grid .seg-card:nth-child(2) { transition-delay: 0.1s; }
+  .seg-grid .seg-card:nth-child(3) { transition-delay: 0.15s; }
+  .seg-grid .seg-card:nth-child(4) { transition-delay: 0.2s; }
   .seg-card-toggle {
     position: absolute;
     top: 36px;
