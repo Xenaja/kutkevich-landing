@@ -10,6 +10,7 @@
 <meta name="keywords" content="авторский шоколад Санкт-Петербург, цукаты в шоколаде, корпоративные подарки шоколад, шоколад ручной работы СПб, цитрусовые цукаты, шоколад b2b, KUTKEVICH">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://xenaja.github.io/kutkevich-landing/">
+<link rel="sitemap" type="application/xml" href="./sitemap.xml">
 
 <!-- Геотеги (Яндекс + Google) -->
 <meta name="geo.region" content="RU-SPE">
@@ -30,6 +31,12 @@
 
 <!-- Яндекс.Браузер таблетка -->
 <meta name="yandex-tableau-widget" content="logo=https://xenaja.github.io/kutkevich-landing/logo/SVG/золото на прозрачном.svg, color=#1a0f08">
+
+<!-- Favicon -->
+<link rel="icon" href="./logo/SVG/золото на прозрачном.svg" type="image/svg+xml">
+<link rel="icon" href="./logo/растр/300ppi/Ресурс 51@300x-8 60х60.png" sizes="any">
+<link rel="apple-touch-icon" href="./logo/растр/основной/300ppi/золото на темном_2@300x-100.jpg">
+<meta name="theme-color" content="#1c1006">
 
 <!-- JSON-LD схема для Яндекс и Google -->
 <script type="application/ld+json">
@@ -64,8 +71,8 @@
   :root {
     --dark: #1c1006;
     --brown: #2d1f0e;
-    --gold: #c9993a;
-    --gold-light: #e8c87a;
+    --gold: #c4a060;
+    --gold-light: #e2cfaa;
     --cream: #f5f0e8;
     --cream-dark: #ede5d4;
     --text: #2d1f0e;
@@ -418,13 +425,13 @@
   .founder-section .section-title {
     background: linear-gradient(
       105deg,
-      #b8882a 0%,
-      #b8882a 25%,
-      #eedfa0 45%,
-      #fdf5d8 52%,
-      #eedfa0 59%,
-      #b8882a 75%,
-      #b8882a 100%
+      #a08858 0%,
+      #a08858 25%,
+      #e0d0aa 45%,
+      #f0e8d8 52%,
+      #e0d0aa 59%,
+      #a08858 75%,
+      #a08858 100%
     );
     background-size: 400% auto;
     -webkit-background-clip: text;
@@ -1347,11 +1354,11 @@
     nav { padding: 14px 20px; }
     section { padding: 56px 20px; }
     .hero { padding-top: 0; }
-    .hero-left { padding: 90px 24px 44px; justify-content: flex-start; min-height: 100svh; }
+    .hero-left { padding: 90px 24px max(44px, calc(28px + env(safe-area-inset-bottom, 0px))); justify-content: flex-start; min-height: 100svh; }
     .hero-right { height: clamp(300px, 100vw, 480px); }
     .hero-title-group { width: auto; }
     .hero-slide img { object-position: center center; }
-    .hero-eyebrow { font-size: 9.5px; letter-spacing: 0.07em; white-space: nowrap; margin-top: 0; margin-bottom: 16px; }
+    .hero-eyebrow { font-size: 9.5px; letter-spacing: 0.06em; white-space: normal; flex-wrap: wrap; row-gap: 4px; column-gap: 6px; justify-content: flex-start; margin-top: 0; margin-bottom: 16px; }
     .hero-title-italic { margin-bottom: 20px; }
     .hero-title-big { font-size: clamp(52px, 13vw, 76px); }
     .hero-title-small { font-size: clamp(30px, 7.5vw, 46px); }
@@ -1386,6 +1393,13 @@
     .assortment-card-img { height: 200px; }
     .nav-mobile-links a { font-size: 26px; }
     .nav-mobile-links li { margin-bottom: 20px; }
+  }
+  @media (max-width: 375px) {
+    .hero-title-big { font-size: clamp(42px, 11.5vw, 54px); }
+    .hero-title-small { font-size: clamp(26px, 7vw, 36px); }
+    .hero-title-italic { font-size: clamp(14px, 4vw, 18px); }
+    .hero-sub { font-size: 13px; }
+    .hero-eyebrow { font-size: 9px; }
   }
 
   /* ── HERO STRIP ── */
@@ -1611,7 +1625,7 @@
     <span class="hero-title-italic" id="h-title2">за которыми возвращаются</span>
 
     <p class="hero-sub" id="h-sub">
-      KUTKEVICH — единственный производитель в России, кто делает три вида цитрусовых цукатов и собирает их в одном наборе
+      Единственные в России цукаты из трёх цитрусов в одном наборе
     </p>
 
 
@@ -1770,8 +1784,8 @@
       <div class="citrus-num">01</div>
       <div class="citrus-name">Апельсин</div>
       <div class="citrus-chocolate">в тёмном шоколаде</div>
-      <p class="citrus-desc">«Мягкий. Сладковатый. Понятный. Он нравится почти всем — это знакомство.»</p>
-      <p class="citrus-context">Идеален как комплимент к кофе — знакомый вкус, без сюрпризов. Гости берут второй.</p>
+      <p class="citrus-desc">«Мягкий. Сладковатый. Понятный. Нравится почти всем — беспроигрышный вариант.»</p>
+      <p class="citrus-context">«Идеален как комплимент к кофе. Тот самый вкус, который хотят ещё.»</p>
     </div>
     <div class="citrus-card reveal">
       <div class="citrus-num">02</div>
@@ -1784,13 +1798,13 @@
       <div class="citrus-num">03</div>
       <div class="citrus-name">Грейпфрут</div>
       <div class="citrus-chocolate">в молочном шоколаде</div>
-      <p class="citrus-desc">«Бунтарь. Лёгкая горчинка. Глубина. Его либо обожают, либо сначала удивляются.»</p>
+      <p class="citrus-desc">«Бунтарь. Лёгкая горчинка. Глубина. Его либо обожают сразу, либо сначала удивляются, но влюбляются все равно.»</p>
       <p class="citrus-context">Для аудитории, которая ценит нюансы. Возвращаются именно за ним.</p>
     </div>
   </div>
 
   <div class="citrus-footer reveal">
-    <p class="citrus-quote">«Сладость. Кислинка. Горчинка. Как в жизни, если честно.» — Валерия Куткевич</p>
+    <p class="citrus-quote">«Сладость. Кислинка. Горчинка. Как в жизни, если честно.» — Валерия Куткевич, основательница бренда</p>
     <div class="citrus-fact">
       <div class="citrus-fact-number">№1</div>
       <div class="citrus-fact-label">Набор трёх цитрусов —<br>самый частый повторный заказ</div>
@@ -1830,10 +1844,10 @@
         </svg>
       </div>
       <div class="seg-card-tag">Отели и резиденции</div>
-      <h3 class="seg-card-title">Комплимент, который гость запомнит</h3>
+      <h3 class="seg-card-title">Деталь, которую гость запомнит</h3>
       <div class="seg-card-divider"></div>
       <ul class="seg-card-preview">
-        <li>Конфеты на подушку и к ужину</li>
+        <li>Комплимент в номер или дополнение к ужину</li>
         <li>Брендирование под стиль отеля</li>
       </ul>
       <div class="seg-card-body">
@@ -1913,7 +1927,7 @@
         <div class="seg-card-body-inner">
           <p class="seg-card-text">Авторские цукаты, мармелад, линейка без сахара — всё с натуральным составом. Красивая упаковка, стабильные поставки, закрывающие документы.</p>
           <ul class="seg-card-list">
-            <li>Цукаты в шоколаде и без — хранение до 6 месяцев при 18–21°С</li>
+            <li>Без сахара, без консервантов</li>
             <li>Линейка без сахара — на сиропе топинамбура</li>
             <li>Цитрусовый мармелад в белом шоколаде (три вкуса)</li>
             <li>Сертификат соответствия, закрывающие документы</li>
@@ -1935,7 +1949,7 @@
           <line x1="20" y1="23" x2="20" y2="21" stroke="#C8A96E" stroke-width="0.9" stroke-linecap="round"/>
         </svg>
       </div>
-      <div class="seg-card-tag">Корпоративным</div>
+      <div class="seg-card-tag">Корпоративным клиентам</div>
       <h3 class="seg-card-title">Подарок, который говорит о вас</h3>
       <div class="seg-card-divider"></div>
       <ul class="seg-card-preview">
@@ -2020,14 +2034,14 @@
       <img class="assortment-card-img" src="./visual/Шоколад февраль 2026/DSC_2747.jpg" alt="Цукаты без сахара" loading="lazy" style="object-position: center 55%;">
       <div class="assortment-card-body">
         <span class="assortment-badge badge-new">Новинка</span>
-        <h3 class="assortment-title">Без сахара</h3>
+        <h3 class="assortment-title">На сиропе топинамбура</h3>
         <ul class="assortment-items">
           <li>Цукаты апельсина в шоколаде</li>
           <li>Цукаты лимона в шоколаде</li>
           <li>На сиропе топинамбура</li>
         </ul>
         <div class="assortment-meta">Без сахара · На сиропе топинамбура</div>
-        <div class="assortment-context">— Для гостей с особыми предпочтениями</div>
+        <div class="assortment-context">— Для клиентов на ЗОЖ</div>
       </div>
     </div>
 
@@ -2064,7 +2078,6 @@
 <section class="why-section">
   <div class="section-eyebrow reveal">Наши преимущества</div>
   <h2 class="display section-title reveal">Почему выбирают нас</h2>
-  <p class="section-lead reveal">Не потому что так принято писать на сайтах. А потому что это реально важно для вашего бизнеса.</p>
 
   <div class="why-grid">
     <div class="why-card reveal" style="--num-delay:0s">
@@ -2112,8 +2125,12 @@
     <div>
       <div class="section-eyebrow" style="padding:0;margin-bottom:16px;">Доставка</div>
       <h2 class="display section-title">Доставляем<br>по всей России</h2>
-      <p class="delivery-body">Производство в Санкт-Петербурге. Отправляем транспортными компаниями в любую точку страны.</p>
-      <p class="delivery-note">Условия доставки, минимальный заказ для B2B и возможность самовывоза — уточните при запросе.</p>
+      <p class="delivery-body"><strong>B2B-клиентам:</strong><br>
+      Минимальный заказ: от 5 000 ₽<br>
+      Срок сборки заказа: от 2 дней<br>
+      Доставка: любой транспортной компанией</p>
+      <p class="delivery-note"><strong>Частным покупателям:</strong><br>
+      Wildberries, Ozon — доставка от 1 дня</p>
     </div>
     <div class="delivery-stats">
       <div class="delivery-stat">
