@@ -711,6 +711,8 @@
     border: 1px solid rgba(201,153,58,0.35);
     color: rgba(201,153,58,0.8);
     text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
   }
   .seg-card .btn-primary:hover {
     background: rgba(201,153,58,0.1);
@@ -1392,6 +1394,7 @@
     .form-textarea { min-height: 110px; }
     .section-title { font-size: clamp(28px, 8vw, 44px); }
     .segment-card .btn-primary { min-height: 52px; }
+    .seg-card .btn-primary { display: block; width: 100%; text-align: center; min-height: 48px; line-height: 48px; padding: 0 24px; }
     .retail-card { padding: 28px 20px; }
     .why-card { padding: 28px 20px; }
     .assortment-card-body { padding: 20px 16px; }
@@ -1714,7 +1717,7 @@
     <li><a href="#retail">Частным клиентам</a></li>
     <li><a href="#assortment">Ассортимент</a></li>
     <li><a href="#founder">О нас</a></li>
-    <li><a href="#contact" class="nav-cta">Запросить прайс</a></li>
+    <li><a href="#contact" class="nav-cta">Запросить КП</a></li>
   </ul>
   <button class="nav-burger" id="navBurger" aria-label="Открыть меню" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -1728,7 +1731,7 @@
     <li><a href="#retail" onclick="closeMobileNav()">Частным клиентам</a></li>
     <li><a href="#assortment" onclick="closeMobileNav()">Ассортимент</a></li>
     <li><a href="#founder" onclick="closeMobileNav()">О нас</a></li>
-    <li><a href="#contact" onclick="closeMobileNav()" class="nav-mobile-cta">Запросить прайс</a></li>
+    <li><a href="#contact" onclick="closeMobileNav()" class="nav-mobile-cta">Запросить КП</a></li>
   </ul>
 </div>
 
@@ -1755,7 +1758,7 @@
 
 
     <div class="hero-buttons" id="h-btns">
-      <a href="#contact" class="btn-primary">Запросить прайс</a>
+      <a href="#contact" class="btn-primary">Запросить КП</a>
       <a href="#contact" class="btn-secondary">Пробный набор</a>
     </div>
 
@@ -2019,7 +2022,7 @@
             <li>Индивидуальный дизайн под интерьерную концепцию</li>
             <li>Цукаты как комплимент к чаю и кофе</li>
           </ul>
-          <a href="#contact" class="btn-primary">Рассчитать комплимент</a>
+          <a href="#contact" class="btn-primary">Шоколадные конфеты</a>
         </div>
       </div>
     </div>
