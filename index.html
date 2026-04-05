@@ -66,6 +66,11 @@
 }
 </script>
 
+<!-- Preconnect: шрифты загружаются быстрее -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload: первое фото hero -->
+<link rel="preload" as="image" href="./photos/hero/DSC_2555.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1761,13 +1766,13 @@
       <img src="./photos/hero/DSC_2555.jpg" alt="Цукаты в тёмном шоколаде KUTKEVICH — авторский шоколад Санкт-Петербург" loading="eager" fetchpriority="high">
     </div>
     <div class="hero-slide">
-      <img src="./photos/hero/RSI_0249.jpg" alt="Шоколадные изделия ручной работы KUTKEVICH" loading="lazy">
+      <img src="./photos/hero/RSI_0249.jpg" alt="Шоколадные изделия ручной работы KUTKEVICH" loading="lazy" decoding="async">
     </div>
     <div class="hero-slide">
-      <img src="./photos/hero/IMG_2350-2.jpg" alt="Авторские конфеты и цукаты KUTKEVICH" loading="lazy">
+      <img src="./photos/hero/IMG_2350-2.jpg" alt="Авторские конфеты и цукаты KUTKEVICH" loading="lazy" decoding="async">
     </div>
     <div class="hero-slide">
-      <img src="./photos/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="lazy">
+      <img src="./photos/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="lazy" decoding="async">
     </div>
     <div class="hero-dots">
       <div class="hero-dot active" onclick="goSlide(0)"></div>
@@ -1939,17 +1944,17 @@
   <div class="section-eyebrow reveal">Галерея</div>
   <h2 class="display section-title reveal">Вкус и эстетика<br><em style="font-style:normal;color:var(--gold)">в деталях</em></h2>
   <div class="gallery-grid">
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC01914.jpg" alt="Цукаты в шоколаде KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC01752.jpg" alt="Цукаты в стакане KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2584-2.jpg" alt="Мармелад ручной работы KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2858-2.jpg" alt="Мармелад и чай KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2416.jpg" alt="Авторские конфеты в кафе KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_7344.jpg" alt="Конфеты ручной работы KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/RSI_0209.jpg" alt="Подарочная коробка KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2803-2.jpg" alt="Цитрусовые цукаты KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC04349.jpg" alt="Производство KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC_2662.jpg" alt="Авторский шоколад KUTKEVICH" loading="lazy"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2321-3.jpg" alt="Мармелад KUTKEVICH" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/DSC01914.jpg" alt="Цукаты в шоколаде KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/DSC01752.jpg" alt="Цукаты в стакане KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2584-2.jpg" alt="Мармелад ручной работы KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2858-2.jpg" alt="Мармелад и чай KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2416.jpg" alt="Авторские конфеты в кафе KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_7344.jpg" alt="Конфеты ручной работы KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/RSI_0209.jpg" alt="Подарочная коробка KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2803-2.jpg" alt="Цитрусовые цукаты KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/DSC04349.jpg" alt="Производство KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/DSC_2662.jpg" alt="Авторский шоколад KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2321-3.jpg" alt="Мармелад KUTKEVICH" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
@@ -2179,7 +2184,7 @@
 
   <div class="assortment-grid">
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/konfety.jpg" alt="Конфеты ручной работы" loading="lazy" style="object-position: center 55%;">
+      <img class="assortment-card-img" src="./photos/assortment/konfety.jpg" alt="Конфеты ручной работы" loading="lazy" decoding="async" style="object-position: center 55%;">
       <div class="assortment-card-body">
         <span class="assortment-badge badge-flagship">Классика</span>
         <h3 class="assortment-title">Конфеты ручной работы</h3>
@@ -2194,7 +2199,7 @@
     </div>
 
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/tsukaty.jpg" alt="Цукаты в шоколаде" loading="lazy" style="object-position: center 55%;">
+      <img class="assortment-card-img" src="./photos/assortment/tsukaty.jpg" alt="Цукаты в шоколаде" loading="lazy" decoding="async" style="object-position: center 55%;">
       <div class="assortment-card-body">
         <span class="assortment-badge badge-flagship">Флагман</span>
         <h3 class="assortment-title">Цукаты в шоколаде</h3>
@@ -2209,7 +2214,7 @@
     </div>
 
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/bez-sahara.jpg" alt="Цукаты без сахара на сиропе топинамбура" loading="lazy" style="object-position: center 55%;">
+      <img class="assortment-card-img" src="./photos/assortment/bez-sahara.jpg" alt="Цукаты без сахара на сиропе топинамбура" loading="lazy" decoding="async" style="object-position: center 55%;">
       <div class="assortment-card-body">
         <span class="assortment-badge badge-new">Новинка</span>
         <h3 class="assortment-title">На сиропе топинамбура</h3>
@@ -2224,7 +2229,7 @@
     </div>
 
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/marmelad.jpg" alt="Цитрусовый мармелад в белом шоколаде" loading="lazy" style="object-position: center 60%;">
+      <img class="assortment-card-img" src="./photos/assortment/marmelad.jpg" alt="Цитрусовый мармелад в белом шоколаде" loading="lazy" decoding="async" style="object-position: center 60%;">
       <div class="assortment-card-body">
         <span class="assortment-badge badge-fresh">Свежий вкус</span>
         <h3 class="assortment-title">Цитрусовый мармелад в белом шоколаде</h3>
@@ -2279,7 +2284,7 @@
 <!-- ── СЕКЦИЯ 6: ВАЛЕРИЯ ── -->
 <section class="founder-section" id="founder" style="padding:0;">
   <div class="founder-left">
-    <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
+    <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
   </div>
   <div class="founder-right">
     <div class="section-eyebrow reveal">Основатель бренда</div>
