@@ -1573,6 +1573,87 @@
     .strip-v2-card:last-child { border-bottom: none; }
   }
 
+  /* ── КЕЙСЫ ── */
+  .cases-section {
+    background: var(--dark);
+    padding: 100px 80px;
+    scroll-margin-top: 72px;
+  }
+  .cases-section .section-eyebrow { color: var(--gold-light); }
+  .cases-section .section-eyebrow::before { background: var(--gold-light); }
+  .cases-section .section-title { color: var(--cream); }
+  .cases-section .section-lead {
+    color: rgba(245,240,232,0.60);
+    max-width: 620px;
+    margin-bottom: 60px;
+  }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 56px;
+  }
+  .case-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,153,58,0.12);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .case-card:hover { background: rgba(201,153,58,0.06); border-color: rgba(201,153,58,0.28); }
+  .case-headline {
+    font-family: 'Poiret One', sans-serif;
+    font-size: clamp(20px, 2vw, 26px);
+    color: var(--cream);
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+  }
+  .case-client {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .case-divider {
+    width: 24px;
+    height: 1px;
+    background: rgba(201,153,58,0.4);
+  }
+  .case-body {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.55);
+  }
+  .cases-footer {
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,153,58,0.12);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .cases-footer-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.55);
+    max-width: 580px;
+  }
+  .cases-footer-text strong {
+    color: rgba(245,240,232,0.80);
+    font-weight: 400;
+  }
+  @media (max-width: 1024px) {
+    .cases-section { padding: 72px 40px; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .cases-footer { flex-direction: column; align-items: flex-start; gap: 24px; }
+  }
+  @media (max-width: 640px) {
+    .cases-section { padding: 56px 20px; }
+    .case-card { padding: 28px 20px; }
+  }
+
   /* ── ГАЛЕРЕЯ ── */
   .gallery-section {
     background: var(--dark);
@@ -2030,6 +2111,43 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ── КЕЙСЫ ── -->
+<section class="cases-section" id="cases">
+  <div class="section-eyebrow reveal">Кейсы</div>
+  <h2 class="display section-title reveal">Примеры заказов,<br><em style="font-style:normal;color:var(--gold)">которыми мы гордимся</em></h2>
+  <p class="section-lead reveal">Не только красиво и вкусно. Крупные партии, сжатые сроки, доставка по России — вызовы, с которыми мы справляемся.</p>
+
+  <div class="cases-grid">
+
+    <div class="case-card reveal">
+      <div class="case-client">Setl Group · День строителя</div>
+      <div class="case-headline">5 500 конфет за 2 недели</div>
+      <div class="case-divider"></div>
+      <p class="case-body">Брендированные коробки с конфетами ручной работы для крупного строительного холдинга. Разработали упаковку в корпоративных цветах с тиснением, изготовили и упаковали всю партию в срок. Отправляли в другой город в условиях жаркого лета. Продукт доехал в идеальном виде.</p>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-client">Фонд Максима Шубарева · День донора</div>
+      <div class="case-headline">400 сердец за 3 дня</div>
+      <div class="case-divider"></div>
+      <p class="case-body">Шоколадные сердца из трёх видов шоколада — подарок каждому, кто сдал кровь. Взяли на себя не только производство, но и брендированные открытки с наклейками. Три дня от заявки до отправки в другой город. Всё в срок.</p>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-client">НьюКомп · Новогодние подарки партнёрам</div>
+      <div class="case-headline">190 коробок за 5 дней</div>
+      <div class="case-divider"></div>
+      <p class="case-body">Колотый тёмный шоколад с цельным фундуком как часть корпоративного подарка к Новому году. Упаковали в фирменные коробки, передали заказчику готовыми к вручению.</p>
+    </div>
+
+  </div>
+
+  <div class="cases-footer reveal">
+    <p class="cases-footer-text">Объёмов не боимся — ежемесячно отгружаем партии на маркетплейсы, поэтому крупный заказ для нас стандартная задача, а не исключение. <strong>Брендированная упаковка, сложная логистика, сжатые сроки?</strong> Или не спеша готовитесь к Новому году и пока просто присматриваетесь?<br><br>Расскажите о вашей задаче — подберём решение под ваш формат.</p>
+    <a href="#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Обсудить запрос</a>
   </div>
 </section>
 
