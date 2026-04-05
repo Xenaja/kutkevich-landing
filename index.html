@@ -1605,13 +1605,34 @@
   .case-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(201,153,58,0.12);
-    padding: 36px 32px;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
     transition: background 0.3s, border-color 0.3s;
+    overflow: hidden;
   }
   .case-card:hover { background: rgba(201,153,58,0.06); border-color: rgba(201,153,58,0.28); }
+  .case-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .case-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .case-card:hover .case-img img { transform: scale(1.04); }
+  .case-content {
+    padding: 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+  }
   .case-headline {
     font-family: 'Poiret One', sans-serif;
     font-size: clamp(20px, 2vw, 26px);
@@ -1632,23 +1653,36 @@
   }
   .case-body {
     font-size: 13px;
-    line-height: 1.8;
+    line-height: 1.75;
     color: rgba(245,240,232,0.55);
+  }
+  .case-body li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 4px;
+  }
+  .case-body li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: rgba(201,153,58,0.5);
   }
   .cases-footer {
     padding-top: 40px;
     border-top: 1px solid rgba(201,153,58,0.12);
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 40px;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
   }
   .cases-footer-text {
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.9;
     color: rgba(245,240,232,0.55);
-    max-width: 580px;
+    max-width: 620px;
   }
+  .cases-footer-text p + p { margin-top: 12px; }
   .cases-footer-text strong {
     color: rgba(245,240,232,0.80);
     font-weight: 400;
@@ -1656,11 +1690,10 @@
   @media (max-width: 1024px) {
     .cases-section { padding: 72px 40px; }
     .cases-grid { grid-template-columns: 1fr; }
-    .cases-footer { flex-direction: column; align-items: flex-start; gap: 24px; }
   }
   @media (max-width: 640px) {
     .cases-section { padding: 56px 20px; }
-    .case-card { padding: 28px 20px; }
+    .case-content { padding: 20px; }
   }
 
   /* ── ГАЛЕРЕЯ ── */
@@ -2118,31 +2151,63 @@
   <div class="cases-grid">
 
     <div class="case-card reveal">
-      <div class="case-client">Setl Group · День строителя</div>
-      <div class="case-headline">5 500 конфет за 2 недели</div>
-      <div class="case-divider"></div>
-      <p class="case-body">Брендированные коробки с конфетами ручной работы для крупного строительного холдинга. Разработали упаковку в корпоративных цветах с тиснением, изготовили и упаковали всю партию в срок. Отправляли в другой город в условиях жаркого лета. Продукт доехал в идеальном виде.</p>
+      <div class="case-img">
+        <img src="photos-optimized/keys/setl.jpg" alt="Setl Group — день строителя" loading="lazy" decoding="async">
+      </div>
+      <div class="case-content">
+        <div class="case-headline">5 500 конфет за 2 недели</div>
+        <div class="case-client">Setl Group · День строителя</div>
+        <div class="case-divider"></div>
+        <ul class="case-body">
+          <li>Брендированные коробки с конфетами ручной работы</li>
+          <li>Упаковка в корпоративных цветах с горячим тиснением</li>
+          <li>Доставка в другой город в условиях жаркого лета</li>
+          <li>Продукт доехал в идеальном виде</li>
+        </ul>
+      </div>
     </div>
 
     <div class="case-card reveal">
-      <div class="case-client">Фонд Максима Шубарева · День донора</div>
-      <div class="case-headline">400 сердец за 3 дня</div>
-      <div class="case-divider"></div>
-      <p class="case-body">Шоколадные сердца из трёх видов шоколада — подарок каждому, кто сдал кровь. Взяли на себя не только производство, но и брендированные открытки с наклейками. Три дня от заявки до отправки в другой город. Всё в срок.</p>
+      <div class="case-img">
+        <img src="photos-optimized/keys/den-donora.jpg" alt="Фонд Максима Шубарева — день донора" loading="lazy" decoding="async">
+      </div>
+      <div class="case-content">
+        <div class="case-headline">400 сердец за 3 дня</div>
+        <div class="case-client">Фонд Максима Шубарева · День донора</div>
+        <div class="case-divider"></div>
+        <ul class="case-body">
+          <li>Шоколадные сердца из трёх видов шоколада</li>
+          <li>Брендированные открытки с наклейками</li>
+          <li>Три дня от заявки до отправки в другой город</li>
+          <li>Всё в срок</li>
+        </ul>
+      </div>
     </div>
 
     <div class="case-card reveal">
-      <div class="case-client">НьюКомп · Новогодние подарки партнёрам</div>
-      <div class="case-headline">190 коробок за 5 дней</div>
-      <div class="case-divider"></div>
-      <p class="case-body">Колотый тёмный шоколад с цельным фундуком как часть корпоративного подарка к Новому году. Упаковали в фирменные коробки, передали заказчику готовыми к вручению.</p>
+      <div class="case-img">
+        <img src="photos-optimized/keys/nyukomp.jpg" alt="НьюКомп — новогодние подарки" loading="lazy" decoding="async">
+      </div>
+      <div class="case-content">
+        <div class="case-headline">190 коробок за 5 дней</div>
+        <div class="case-client">НьюКомп · Новогодние подарки партнёрам</div>
+        <div class="case-divider"></div>
+        <ul class="case-body">
+          <li>Колотый тёмный шоколад с цельным фундуком</li>
+          <li>Упаковка в фирменные коробки под ключ</li>
+          <li>Переданы заказчику готовыми к вручению</li>
+        </ul>
+      </div>
     </div>
 
   </div>
 
   <div class="cases-footer reveal">
-    <p class="cases-footer-text">Объёмов не боимся — ежемесячно отгружаем партии на маркетплейсы, поэтому крупный заказ для нас стандартная задача, а не исключение. <strong>Брендированная упаковка, сложная логистика, сжатые сроки?</strong> Или не спеша готовитесь к Новому году и пока просто присматриваетесь?<br><br>Расскажите о вашей задаче — подберём решение под ваш формат.</p>
-    <a href="#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Обсудить запрос</a>
+    <div class="cases-footer-text">
+      <p>Объёмов не боимся — ежемесячно отгружаем партии на маркетплейсы, поэтому крупный корпоративный заказ для нас стандартная задача, а не исключение.</p>
+      <p>Продукт, которым приятно удивить — и который точно будет готов в нужный день. Расскажите о вашей задаче — подберём решение под ваш формат.</p>
+    </div>
+    <a href="#contact" class="btn-primary">Обсудить запрос</a>
   </div>
 </section>
 
