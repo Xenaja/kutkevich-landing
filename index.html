@@ -2420,11 +2420,15 @@
     <div id="formWrap">
       <div class="form-group">
         <label class="form-label" for="name">Имя *</label>
-        <input class="form-input" type="text" id="name" placeholder="Как вас зовут">
+        <input class="form-input" type="text" id="name" placeholder="Как вас зовут" autocomplete="name">
       </div>
       <div class="form-group">
-        <label class="form-label" for="contact-field">Телефон или Email *</label>
-        <input class="form-input" type="text" id="contact-field" placeholder="+7 или email">
+        <label class="form-label" for="contact-field">Телефон *</label>
+        <input class="form-input" type="tel" id="contact-field" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email-field">Email</label>
+        <input class="form-input" type="email" id="email-field" placeholder="name@mail.ru" autocomplete="email">
       </div>
       <div class="form-group">
         <label class="form-label" for="type">Тип сотрудничества</label>
@@ -2444,7 +2448,11 @@
       </div>
       <label class="form-checkbox">
         <input type="checkbox" id="privacy">
-        <span>Согласен(на) с <a href="#">политикой конфиденциальности</a></span>
+        <span>Ознакомлен(а) с <a href="./privacy.html" target="_blank">политикой конфиденциальности</a></span>
+      </label>
+      <label class="form-checkbox">
+        <input type="checkbox" id="personal-data">
+        <span>Согласен(а) на <a href="./privacy.html" target="_blank">обработку персональных данных</a></span>
       </label>
       <div class="form-buttons">
         <button class="btn-primary" onclick="submitForm('kp')">Запросить КП</button>
@@ -2737,8 +2745,10 @@ function submitForm(type) {
   var name = document.getElementById('name').value.trim();
   var contact = document.getElementById('contact-field').value.trim();
   var privacy = document.getElementById('privacy').checked;
-  if (!name || !contact) { alert('Пожалуйста, заполните имя и контакт'); return; }
-  if (!privacy) { alert('Пожалуйста, согласитесь с политикой конфиденциальности'); return; }
+  var personalData = document.getElementById('personal-data').checked;
+  if (!name || !contact) { alert('Пожалуйста, заполните имя и телефон'); return; }
+  if (!privacy) { alert('Пожалуйста, ознакомьтесь с политикой конфиденциальности'); return; }
+  if (!personalData) { alert('Пожалуйста, дайте согласие на обработку персональных данных'); return; }
   document.getElementById('formWrap').style.display = 'none';
   document.getElementById('formSuccess').style.display = 'block';
 }
