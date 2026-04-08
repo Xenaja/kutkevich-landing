@@ -30,12 +30,10 @@
 <meta property="og:site_name" content="KUTKEVICH">
 
 <!-- Яндекс.Браузер таблетка -->
-<meta name="yandex-tableau-widget" content="logo=https://xenaja.github.io/kutkevich-landing/logo/SVG/золото на прозрачном.svg, color=#1a0f08">
+<meta name="yandex-tableau-widget" content="logo=https://xenaja.github.io/kutkevich-landing/logo/SVG/logo-gold.svg, color=#1a0f08">
 
 <!-- Favicon -->
-<link rel="icon" href="./logo/SVG/золото на прозрачном.svg" type="image/svg+xml">
-<link rel="icon" href="./logo/растр/300ppi/Ресурс 51@300x-8 60х60.png" sizes="any">
-<link rel="apple-touch-icon" href="./logo/растр/основной/300ppi/золото на темном_2@300x-100.jpg">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1c1006">
 
 <!-- JSON-LD схема для Яндекс и Google -->
@@ -47,7 +45,7 @@
   "alternateName": "KUTKEVICH",
   "description": "Авторский шоколад и цукаты ручной работы. Единственный производитель трёх видов цитрусовых цукатов в шоколаде в России.",
   "url": "https://xenaja.github.io/kutkevich-landing/",
-  "logo": "https://xenaja.github.io/kutkevich-landing/logo/SVG/золото на прозрачном.svg",
+  "logo": "https://xenaja.github.io/kutkevich-landing/logo/SVG/logo-gold.svg",
   "image": "https://xenaja.github.io/kutkevich-landing/visual/IMG_2803-2.jpg",
   "address": {
     "@type": "PostalAddress",
@@ -87,6 +85,7 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 
   body {
     font-family: 'Geologica', sans-serif;
@@ -1746,7 +1745,7 @@
 <!-- ── NAV ── -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">
-    <img src="./logo/SVG/золото на прозрачном.svg" alt="KUTKEVICH" id="navLogo">
+    <img src="./logo/SVG/logo-gold.svg" alt="KUTKEVICH" id="navLogo">
   </a>
   <ul class="nav-links">
     <li><a href="#citrus">Продукт</a></li>
@@ -2469,7 +2468,7 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <img src="./logo/SVG/золото на прозрачном.svg" alt="KUTKEVICH" style="height:64px;width:auto;display:block;margin-bottom:16px;">
+      <img src="./logo/SVG/logo-gold.svg" alt="KUTKEVICH" style="height:64px;width:auto;display:block;margin-bottom:16px;">
       <p class="footer-brand-desc">Авторский шоколад и цукаты премиум-класса. Производство полного цикла. Санкт-Петербург, Россия.</p>
     </div>
     <div>
@@ -2733,10 +2732,10 @@ window.addEventListener('scroll', function() {
   var navLogo = document.getElementById('navLogo');
   if (window.scrollY > heroHeight * 0.7) {
     nav.classList.add('scrolled');
-    navLogo.src = './logo/SVG/коричневый на прозрачном.svg';
+    navLogo.src = './logo/SVG/logo-brown.svg';
   } else {
     nav.classList.remove('scrolled');
-    navLogo.src = './logo/SVG/золото на прозрачном.svg';
+    navLogo.src = './logo/SVG/logo-gold.svg';
   }
 });
 
