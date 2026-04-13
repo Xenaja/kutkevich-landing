@@ -1736,9 +1736,59 @@
     .gallery-section { padding: 56px 20px; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(5, 180px); gap: 4px; }
   }
+
+  /* ── SKIP-LINK ── */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    z-index: 999999;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 20px; }
+
+  /* ── FOCUS VISIBLE ── */
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+  .form-input:focus-visible,
+  .form-select:focus-visible,
+  .form-textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 0;
+  }
+
+  /* ── КНОПКИ: MIN-HEIGHT ── */
+  .btn-primary, .btn-secondary { min-height: 48px; }
+
+  /* ── PREFERS-REDUCED-MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal.visible {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .animate-in { animation: none !important; }
+    .hero-strip-card,
+    .citrus-card,
+    .retail-card,
+    .assortment-card,
+    .why-card,
+    .seg-card { transition: none !important; }
+  }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Перейти к содержимому</a>
 <div id="cursor-ring"></div>
 <div id="cursor-dot"></div>
 
@@ -1772,7 +1822,8 @@
 </div>
 
 <!-- ── HERO ── -->
-<section class="hero" style="padding:0;" id="hero">
+<section class="hero" style="padding:0;" id="hero" tabindex="-1">
+<span id="main-content"></span>
   <div class="hero-left">
 
     <div class="hero-title-group">
@@ -1789,29 +1840,41 @@
     <span class="hero-title-italic" id="h-title2">за которыми возвращаются</span>
 
     <p class="hero-sub" id="h-sub">
-      Конфеты · Цукаты · Мармелад
+      Конфеты · Цукаты · Мармелад · Подарки
     </p>
 
 
     <div class="hero-buttons" id="h-btns">
       <a href="#contact" class="btn-primary">Запросить КП</a>
-      <a href="#contact" class="btn-secondary">Пробный набор</a>
+      <a href="#contact" class="btn-secondary">Получить пробный набор</a>
     </div>
 
   </div>
 
   <div class="hero-right">
     <div class="hero-slide active">
-      <img src="./photos/hero/DSC_2555.jpg" alt="Цукаты в тёмном шоколаде KUTKEVICH — авторский шоколад Санкт-Петербург" loading="eager" fetchpriority="high">
+      <picture>
+        <source srcset="./photos-optimized/hero/DSC_2555.webp" type="image/webp">
+        <img src="./photos-optimized/hero/DSC_2555.jpg" alt="Цукаты в тёмном шоколаде KUTKEVICH — авторский шоколад Санкт-Петербург" loading="eager" fetchpriority="high">
+      </picture>
     </div>
     <div class="hero-slide">
-      <img src="./photos/hero/RSI_0249.jpg" alt="Шоколадные изделия ручной работы KUTKEVICH" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="./photos-optimized/hero/RSI_0249.webp" type="image/webp">
+        <img src="./photos-optimized/hero/RSI_0249.jpg" alt="Шоколадные изделия ручной работы KUTKEVICH" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="hero-slide">
-      <img src="./photos/hero/IMG_2350-2.jpg" alt="Авторские конфеты и цукаты KUTKEVICH" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="./photos-optimized/hero/IMG_2350-2.webp" type="image/webp">
+        <img src="./photos-optimized/hero/IMG_2350-2.jpg" alt="Авторские конфеты и цукаты KUTKEVICH" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="hero-slide">
-      <img src="./photos/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="lazy" decoding="async">
+      <picture>
+        <source srcset="./photos-optimized/hero/25-konfet.webp" type="image/webp">
+        <img src="./photos-optimized/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="hero-dots">
       <div class="hero-dot active" onclick="goSlide(0)"></div>
@@ -1862,7 +1925,7 @@
       </svg>
       <div class="hero-strip-body">
         <div class="hero-strip-title">Ручная работа</div>
-        <div class="hero-strip-text">Каждое изделие собирается вручную. Внимание к каждой детали.</div>
+        <div class="hero-strip-text">Авторские коллекции, уникальные дизайны. Производим и собираем вручную.</div>
       </div>
     </div>
 
@@ -1878,8 +1941,8 @@
         <circle cx="20" cy="12" r="1.5" fill="#C8A96E" opacity="0.7"/>
       </svg>
       <div class="hero-strip-body">
-        <div class="hero-strip-title">Чистый состав</div>
-        <div class="hero-strip-text">Никаких консервантов и усилителей вкуса. Только то, что должно быть внутри честного продукта.</div>
+        <div class="hero-strip-title">100% чистый состав</div>
+        <div class="hero-strip-text">Осознанный выбор подарка, никаких консервантов и усилителей вкуса.</div>
       </div>
     </div>
 
@@ -1893,7 +1956,47 @@
       </svg>
       <div class="hero-strip-body">
         <div class="hero-strip-title">Избранные ингредиенты</div>
-        <div class="hero-strip-text">Премиальный бельгийский шоколад и свежие фрукты. Без экономии на качестве.</div>
+        <div class="hero-strip-text">Премиальный бельгийский шоколад, свежие фрукты, высококачественные сливки и ореховые пасты – основа наших изделий.</div>
+      </div>
+    </div>
+
+    <div class="hero-strip-card reveal">
+      <svg class="hero-strip-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+        <path d="M20 5 L34 12 L34 22 C34 29.5 27.5 35.5 20 38 C12.5 35.5 6 29.5 6 22 L6 12 Z" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+        <polyline points="13,20 18,25.5 27,15" stroke="#C8A96E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div class="hero-strip-body">
+        <div class="hero-strip-title">Стабильное качество</div>
+        <div class="hero-strip-text">Строгий контроль продукции и соблюдения норм на производстве.</div>
+      </div>
+    </div>
+
+    <div class="hero-strip-card reveal">
+      <svg class="hero-strip-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+        <rect x="8" y="16" width="24" height="18" rx="1.5" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+        <rect x="11" y="12" width="18" height="6" rx="1" stroke="#C8A96E" stroke-width="1" fill="rgba(200,169,110,0.12)"/>
+        <line x1="20" y1="22" x2="20" y2="30" stroke="#C8A96E" stroke-width="1" opacity="0.5"/>
+        <circle cx="20" cy="31" r="2" stroke="#C8A96E" stroke-width="1" fill="rgba(200,169,110,0.2)"/>
+        <line x1="15" y1="24" x2="17" y2="24" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+        <line x1="15" y1="27" x2="17" y2="27" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+        <text x="29" y="9" font-size="7" fill="#C8A96E" opacity="0.7" font-family="sans-serif">°</text>
+      </svg>
+      <div class="hero-strip-body">
+        <div class="hero-strip-title">Легкие условия хранения</div>
+        <div class="hero-strip-text">Хранение от 60 дней при t 14–21°C, вдали от прямых солнечных лучей.</div>
+      </div>
+    </div>
+
+    <div class="hero-strip-card reveal">
+      <svg class="hero-strip-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+        <rect x="6" y="24" width="28" height="10" rx="1.5" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+        <rect x="9" y="16" width="22" height="10" rx="1.5" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.10)"/>
+        <rect x="12" y="8" width="16" height="10" rx="1.5" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.15)"/>
+        <line x1="20" y1="8" x2="20" y2="34" stroke="#C8A96E" stroke-width="0.7" opacity="0.35"/>
+      </svg>
+      <div class="hero-strip-body">
+        <div class="hero-strip-title">Любой объем заказа</div>
+        <div class="hero-strip-text">От 1 единицы из наличия до крупных партий на заказ.</div>
       </div>
     </div>
 
@@ -1906,9 +2009,7 @@
   <div class="section-eyebrow reveal">Флагманский продукт</div>
   <h2 class="display section-title reveal">Три цитруса —<br>один характер</h2>
   <p class="section-lead reveal">
-    Наш флагман. KUTKEVICH — единственный производитель в России,
-    кто объединяет апельсин, лимон и грейпфрут в одном наборе. Это не маркетинговое заявление — это факт,
-    который мы обнаружили уже после запуска.
+    KUTKEVICH — единственный производитель в России, кто объединяет цукаты апельсина, лимона и грейпфрута в одном наборе. Это не маркетинговое заявление — это факт, который мы обнаружили уже после запуска.
   </p>
 
   <div class="citrus-grid">
@@ -1917,29 +2018,29 @@
       <div class="citrus-name">Апельсин</div>
       <div class="citrus-chocolate">в тёмном шоколаде</div>
       <p class="citrus-desc">«Мягкий. Сладковатый. Понятный. Нравится почти всем — беспроигрышный вариант.»</p>
-      <p class="citrus-context">Идеален как комплимент к кофе. Тот самый вкус, который хотят ещё.</p>
+      <p class="citrus-context">Идеальное классическое сочетание вкусов.</p>
     </div>
     <div class="citrus-card reveal">
       <div class="citrus-num">02</div>
       <div class="citrus-name">Лимон</div>
       <div class="citrus-chocolate">в тёмном шоколаде</div>
-      <p class="citrus-desc">«Яркий. Чуть дерзкий. Даёт тот самый баланс с шоколадом. Без него было бы слишком сладко.»</p>
+      <p class="citrus-desc">«Яркий. Дерзкий. Кричащий.»</p>
       <p class="citrus-context">Контраст с эспрессо. Кто попробовал один раз — запоминает навсегда.</p>
     </div>
     <div class="citrus-card reveal">
       <div class="citrus-num">03</div>
       <div class="citrus-name">Грейпфрут</div>
       <div class="citrus-chocolate">в молочном шоколаде</div>
-      <p class="citrus-desc">«Бунтарь. Лёгкая горчинка. Глубина. Его либо обожают сразу, либо сначала удивляются, но влюбляются все равно.»</p>
-      <p class="citrus-context">Для аудитории, которая ценит нюансы. За ним возвращаются.</p>
+      <p class="citrus-desc">«Бунтарь. Лёгкая горчинка. Глубина.»</p>
+      <p class="citrus-context">Для аудитории, которая ценит нюансы. Его либо обожают сразу, либо раскрывают вкус после и влюбляются навсегда.</p>
     </div>
   </div>
 
   <div class="citrus-footer reveal">
-    <p class="citrus-quote">«Сладость. Кислинка. Горчинка. Как в жизни, если честно.» — Валерия Куткевич, основательница бренда</p>
+    <p class="citrus-quote">«Сладость. Кислинка. Горчинка. Как в жизни, если честно» — Валерия Куткевич, основательница бренда</p>
     <div class="citrus-fact">
       <div class="citrus-fact-number">№1</div>
-      <div class="citrus-fact-label">Набор трёх цитрусов —<br>самый частый повторный заказ</div>
+      <div class="citrus-fact-label">Набор трёх цитрусовых цукатов —<br>самый частый повторный заказ</div>
     </div>
   </div>
 </section>
@@ -1949,16 +2050,16 @@
   <div class="section-eyebrow reveal">Галерея</div>
   <h2 class="display section-title reveal">Вкус и эстетика<br><em style="font-style:normal;color:var(--gold)">в деталях</em></h2>
   <div class="gallery-grid">
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC01914.jpg" alt="Цукаты в шоколаде KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC01752.jpg" alt="Цукаты в стакане KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2858-2.jpg" alt="Мармелад и чай KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2416.jpg" alt="Авторские конфеты в кафе KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_7344.jpg" alt="Конфеты ручной работы KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/RSI_0209.jpg" alt="Подарочная коробка KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2803-2.jpg" alt="Цитрусовые цукаты KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC04349.jpg" alt="Производство KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/IMG_2321-3.jpg" alt="Мармелад KUTKEVICH" loading="lazy" decoding="async"></div>
-    <div class="gallery-item reveal"><img src="./photos/gallery/DSC_2662.jpg" alt="Авторский шоколад KUTKEVICH" loading="lazy" decoding="async"></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC01914.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC01914.jpg" alt="Цукаты в шоколаде KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC01752.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC01752.jpg" alt="Цукаты в стакане KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2858-2.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2858-2.jpg" alt="Мармелад и чай KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2416.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2416.jpg" alt="Авторские конфеты в кафе KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_7344.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_7344.jpg" alt="Конфеты ручной работы KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/RSI_0209.webp" type="image/webp"><img src="./photos-optimized/gallery/RSI_0209.jpg" alt="Подарочная коробка KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2803-2.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2803-2.jpg" alt="Цитрусовые цукаты KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC04349.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC04349.jpg" alt="Производство KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2321-3.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2321-3.jpg" alt="Мармелад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC_2662.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC_2662.jpg" alt="Авторский шоколад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
   </div>
 </section>
 
@@ -2133,7 +2234,7 @@
 
     <div class="case-card reveal">
       <div class="case-img">
-        <img src="photos-optimized/keys/setl.jpg" alt="Setl Group — день строителя" loading="lazy" decoding="async">
+        <picture><source srcset="photos-optimized/keys/setl.webp" type="image/webp"><img src="photos-optimized/keys/setl.jpg" alt="Setl Group — день строителя" loading="lazy" decoding="async"></picture>
       </div>
       <div class="case-content">
         <div class="case-headline">5 500 конфет за 2 недели</div>
@@ -2150,7 +2251,7 @@
 
     <div class="case-card reveal">
       <div class="case-img">
-        <img src="photos-optimized/keys/den-donora.jpg" alt="Фонд Максима Шубарева — день донора" loading="lazy" decoding="async">
+        <picture><source srcset="photos-optimized/keys/den-donora.webp" type="image/webp"><img src="photos-optimized/keys/den-donora.jpg" alt="Фонд Максима Шубарева — день донора" loading="lazy" decoding="async"></picture>
       </div>
       <div class="case-content">
         <div class="case-headline">400 сердец за 3 дня</div>
@@ -2167,7 +2268,7 @@
 
     <div class="case-card reveal">
       <div class="case-img">
-        <img src="photos-optimized/keys/nyukomp.jpg" alt="НьюКомп — новогодние подарки" loading="lazy" decoding="async">
+        <picture><source srcset="photos-optimized/keys/nyukomp.webp" type="image/webp"><img src="photos-optimized/keys/nyukomp.jpg" alt="НьюКомп — новогодние подарки" loading="lazy" decoding="async"></picture>
       </div>
       <div class="case-content">
         <div class="case-headline">190 коробок за 5 дней</div>
@@ -2222,7 +2323,7 @@
 
   <div class="assortment-grid">
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/konfety.jpg" alt="Конфеты ручной работы" loading="lazy" decoding="async" style="object-position: center 55%;">
+      <picture><source srcset="./photos-optimized/assortment/konfety.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/konfety.jpg" alt="Конфеты ручной работы" loading="lazy" decoding="async" style="object-position: center 55%;"></picture>
       <div class="assortment-card-body">
         <h3 class="assortment-title">Конфеты ручной работы</h3>
         <ul class="assortment-items">
@@ -2235,7 +2336,7 @@
     </div>
 
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/tsukaty.jpg" alt="Цукаты в шоколаде" loading="lazy" decoding="async" style="object-position: center 55%;">
+      <picture><source srcset="./photos-optimized/assortment/tsukaty.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/tsukaty.jpg" alt="Цукаты в шоколаде" loading="lazy" decoding="async" style="object-position: center 55%;"></picture>
       <div class="assortment-card-body">
         <h3 class="assortment-title">Цукаты в шоколаде</h3>
         <ul class="assortment-items">
@@ -2248,7 +2349,7 @@
     </div>
 
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/bez-sahara.jpg" alt="Цукаты без сахара" loading="lazy" decoding="async" style="object-position: center 55%;">
+      <picture><source srcset="./photos-optimized/assortment/bez-sahara.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/bez-sahara.jpg" alt="Цукаты без сахара" loading="lazy" decoding="async" style="object-position: center 55%;"></picture>
       <div class="assortment-card-body">
         <h3 class="assortment-title">Цукаты без сахара</h3>
         <ul class="assortment-items">
@@ -2260,7 +2361,7 @@
     </div>
 
     <div class="assortment-card reveal">
-      <img class="assortment-card-img" src="./photos/assortment/marmelad.jpg" alt="Цитрусовый мармелад в белом шоколаде" loading="lazy" decoding="async" style="object-position: center 60%;">
+      <picture><source srcset="./photos-optimized/assortment/marmelad.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/marmelad.jpg" alt="Цитрусовый мармелад в белом шоколаде" loading="lazy" decoding="async" style="object-position: center 60%;"></picture>
       <div class="assortment-card-body">
         <h3 class="assortment-title">Цитрусовый мармелад в белом шоколаде</h3>
         <ul class="assortment-items">
@@ -2341,7 +2442,10 @@
 <!-- ── СЕКЦИЯ 6: ВАЛЕРИЯ ── -->
 <section class="founder-section" id="founder" style="padding:0;">
   <div class="founder-left">
-    <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
+    <picture>
+      <source srcset="./visual/RSI_2364.webp" type="image/webp">
+      <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
+    </picture>
   </div>
   <div class="founder-right">
     <div class="section-eyebrow reveal">Основатель бренда</div>
@@ -2447,11 +2551,11 @@
       </div>
       <label class="form-checkbox">
         <input type="checkbox" id="privacy">
-        <span>Ознакомлен(а) с <a href="./privacy.html" target="_blank">политикой конфиденциальности</a></span>
+        <span>Ознакомлен(а) с <a href="./privacy.html" target="_blank">политикой конфиденциальности</a> и условиями обработки данных</span>
       </label>
       <label class="form-checkbox">
         <input type="checkbox" id="personal-data">
-        <span>Согласен(а) на <a href="./privacy.html" target="_blank">обработку персональных данных</a></span>
+        <span>Даю <a href="./consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с 152-ФЗ</span>
       </label>
       <div class="form-buttons">
         <button class="btn-primary" onclick="submitForm('kp')">Запросить КП</button>
@@ -2492,7 +2596,8 @@
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© KUTKEVICH, 2026</span>
-    <a href="#" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Политика конфиденциальности</a>
+    <a href="./privacy.html" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Политика конфиденциальности</a>
+    <a href="./consent.html" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Согласие на обработку ПД</a>
   </div>
 </footer>
 
@@ -2627,18 +2732,22 @@ heroEls.forEach(function(item) {
   }, item.delay);
 });
 
-// Счётчик 180 дней
 // Scroll reveal + counter trigger
+var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var revealEls = document.querySelectorAll('.reveal');
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-revealEls.forEach(function(el) { observer.observe(el); });
+if (prefersReducedMotion) {
+  revealEls.forEach(function(el) { el.classList.add('visible'); });
+} else {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(function(el) { observer.observe(el); });
+}
 
 // Typewriter — цитата в секции цитрусов
 (function() {

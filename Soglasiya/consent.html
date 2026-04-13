@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Согласие на обработку персональных данных — KUTKEVICH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:     #C9A96E;
+      --gold-dim: #9e7e4e;
+      --bg:       #0f0e0c;
+      --surface:  #161410;
+      --border:   rgba(201,169,110,0.15);
+      --text:     #e8e0d4;
+      --muted:    #8a7f72;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,14,12,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .back-link {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link::before { content: '←'; }
+    .back-link:hover { color: var(--gold); }
+
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 72px 40px 96px;
+    }
+
+    .doc-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 16px;
+    }
+    .doc-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .doc-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .doc-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .intro-block strong { color: var(--gold); font-weight: 500; }
+
+    .section { margin-bottom: 48px; }
+
+    .section-num {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p { margin-bottom: 14px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    ul { list-style: none; padding: 0; margin: 0 0 14px; }
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    ul li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--gold-dim);
+    }
+
+    .highlight {
+      background: rgba(201,169,110,0.06);
+      border-left: 2px solid var(--gold);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .highlight p { margin-bottom: 6px; font-size: 15px; }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .doc-footer {
+      margin-top: 72px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .doc-footer .edition { font-size: 13px; color: var(--muted); }
+    .doc-footer .brand {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 0 20px; }
+      .page-wrap { padding: 48px 20px 72px; }
+      .intro-block { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">KUTKEVICH</span>
+  <a class="back-link" href="https://kutkevich.ru">Вернуться на сайт</a>
+</header>
+
+<main class="page-wrap">
+
+  <div class="doc-eyebrow">Юридический документ</div>
+  <h1 class="doc-title">Согласие на обработку<br>персональных данных</h1>
+  <div class="doc-subtitle">В соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных»</div>
+  <div class="doc-meta">Редакция от апреля 2026&nbsp;г. &nbsp;·&nbsp; Сайт: kutkevich.ru</div>
+
+  <div class="intro-block">
+    Настоящее согласие предоставляется
+    <strong>Индивидуальному предпринимателю Куткевич Валерии Александровне</strong>,
+    ОГРНИП: 323784700072644, ИНН: 391802747010, место осуществления деятельности: г. Санкт-Петербург
+    (далее — <strong>Оператор</strong>), контактный адрес электронной почты:
+    <a href="mailto:lera@kutkevich.ru">lera@kutkevich.ru</a>, сайт: kutkevich.ru.<br><br>
+    Я, субъект персональных данных, заполнивший форму обратной связи на сайте Оператора
+    (далее — <strong>Пользователь</strong>), <strong>свободно, своей волей и в своём интересе</strong>
+    даю согласие Оператору на обработку моих персональных данных на условиях, изложенных ниже.
+  </div>
+
+  <div class="section">
+    <div class="section-num">Раздел 1</div>
+    <h2 class="section-title">Перечень персональных данных</h2>
+    <p>Настоящим даю согласие на обработку следующих персональных данных:</p>
+    <ul>
+      <li>фамилия, имя, отчество (или имя при отсутствии отчества);</li>
+      <li>номер телефона;</li>
+      <li>адрес электронной почты (если указан при заполнении формы);</li>
+      <li>тип запрашиваемого сотрудничества (формат, выбранный в форме);</li>
+      <li>текст обращения / запроса;</li>
+      <li>cookie-файлы и связанные технические данные (IP-адрес, данные браузера, сведения об устройстве) — при использовании сервиса веб-аналитики Яндекс Метрика.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">Раздел 2</div>
+    <h2 class="section-title">Цели обработки</h2>
+    <ul>
+      <li>ответ на запрос Пользователя, поступивший через форму обратной связи;</li>
+      <li>формирование и направление коммерческого предложения;</li>
+      <li>заключение, исполнение и прекращение гражданско-правовых договоров;</li>
+      <li>анализ активности пользователей на Сайте и улучшение его работы (с помощью Яндекс Метрика).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-num">Раздел 3</div>
+    <h2 class="section-title">Действия с данными и способы обработки</h2>
+    <p>Согласие даётся на совершение следующих действий: сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (предоставление), обезличивание, блокирование, удаление, уничтожение персональных данных.</p>
+    <p>Обработка осуществляется смешанным способом — как с использованием средств автоматизации (в том числе с передачей по информационно-телекоммуникационным сетям), так и без такового.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">Раздел 4</div>
+    <h2 class="section-title">Передача персональных данных третьим лицам</h2>
+    <p>Настоящим также даю согласие на передачу cookie-файлов и связанных технических данных <strong>ООО «Яндекс»</strong> (ОГРН 1027700229193, 119021, Россия, г. Москва, ул. Льва Толстого, д. 16) в целях использования сервиса Яндекс Метрика. Указанные данные обрабатываются Яндексом в соответствии с <a href="https://yandex.ru/legal/metrica_termsofuse/" target="_blank" rel="noopener">условиями использования сервиса Яндекс Метрика</a>.</p>
+    <p>Иная передача персональных данных третьим лицам без моего согласия не осуществляется, за исключением случаев, предусмотренных действующим законодательством РФ.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">Раздел 5</div>
+    <h2 class="section-title">Срок действия согласия и хранения данных</h2>
+    <p>Настоящее согласие действует с момента его предоставления и до момента отзыва либо достижения целей обработки, но <strong>не более 3 (трёх) лет</strong> с даты предоставления.</p>
+    <p>По истечении указанного срока Оператор обязан прекратить обработку и уничтожить персональные данные, если иное не предусмотрено договором или действующим законодательством РФ.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">Раздел 6</div>
+    <h2 class="section-title">Права субъекта персональных данных</h2>
+    <p>Я уведомлён(а) о том, что вправе:</p>
+    <ul>
+      <li>получить информацию об обработке моих персональных данных;</li>
+      <li>требовать уточнения, блокирования или уничтожения данных, если они неполны, устарели, неточны или получены незаконно;</li>
+      <li>отозвать настоящее согласие в любой момент, направив письмо на <a href="mailto:lera@kutkevich.ru">lera@kutkevich.ru</a> с темой <em>«Отзыв согласия на обработку персональных данных»</em> — данные будут удалены в течение <strong>30 дней</strong>;</li>
+      <li>потребовать уточнения персональных данных — Оператор обязан ответить в течение <strong>7 рабочих дней</strong>;</li>
+      <li>после отзыва согласия Оператор вправе продолжить обработку данных при наличии иных законных оснований, предусмотренных ст. 6 Федерального закона № 152-ФЗ;</li>
+      <li>обжаловать действия или бездействие Оператора в надзорный орган или в судебном порядке.</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>Надзорный орган — Роскомнадзор</strong><br>
+      Федеральная служба по надзору в сфере связи, информационных технологий и массовых коммуникаций<br>
+      109074, Москва, Китайгородский пр., д. 7, стр. 2 &nbsp;·&nbsp;
+      <a href="https://rkn.gov.ru" target="_blank" rel="noopener">rkn.gov.ru</a></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-num">Раздел 7</div>
+    <h2 class="section-title">Подтверждение согласия</h2>
+    <p>Отмечая чекбокс «Согласен(а) на обработку персональных данных» при отправке формы на сайте, я подтверждаю, что:</p>
+    <ul>
+      <li>ознакомлен(а) с <a href="https://kutkevich.ru/privacy">Политикой конфиденциальности</a> Оператора;</li>
+      <li>предоставляю достоверные персональные данные;</li>
+      <li>даю согласие на их обработку добровольно, осознанно и в своём интересе;</li>
+      <li>понимаю, что в случае отзыва согласия Оператор вправе продолжить обработку данных при наличии иных законных оснований по ст. 6 Федерального закона № 152-ФЗ.</li>
+    </ul>
+  </div>
+
+  <footer class="doc-footer">
+    <span class="edition">Редакция от апреля 2026&nbsp;г.</span>
+    <span class="brand">KUTKEVICH</span>
+  </footer>
+
+</main>
+
+</body>
+</html>

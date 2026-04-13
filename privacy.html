@@ -1,80 +1,350 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Политика конфиденциальности — KUTKEVICH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Georgia', serif;
-      font-size: 15px;
-      line-height: 1.8;
-      color: #2a1f10;
-      background: #faf7f2;
-      padding: 60px 24px 80px;
-      max-width: 760px;
-      margin: 0 auto;
+
+    :root {
+      --gold:     #C9A96E;
+      --gold-dim: #9e7e4e;
+      --bg:       #0f0e0c;
+      --surface:  #161410;
+      --border:   rgba(201,169,110,0.15);
+      --text:     #e8e0d4;
+      --muted:    #8a7f72;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Jost', sans-serif;
     }
-    h1 { font-size: 24px; margin-bottom: 32px; font-weight: normal; letter-spacing: 0.02em; }
-    h2 { font-size: 15px; font-weight: 600; margin: 32px 0 8px; text-transform: uppercase; letter-spacing: 0.08em; }
-    p { margin-bottom: 12px; color: rgba(42,31,16,0.75); }
-    a { color: #c4a060; }
-    .back { display: inline-block; margin-bottom: 40px; font-size: 13px; color: #c4a060; text-decoration: none; letter-spacing: 0.05em; }
-    .back:hover { text-decoration: underline; }
-    .placeholder-notice {
-      background: #fff8e8;
-      border: 1px solid #e2cfaa;
-      padding: 16px 20px;
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15,14,12,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .back-link {
       font-size: 13px;
-      color: #8a6a30;
-      margin-bottom: 40px;
-      border-radius: 2px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link::before { content: '←'; }
+    .back-link:hover { color: var(--gold); }
+
+    /* ── Layout ── */
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 72px 40px 96px;
+    }
+
+    /* ── Hero ── */
+    .doc-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 16px;
+    }
+    .doc-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .doc-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 48px; }
+
+    .section-num {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p { margin-bottom: 14px; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    ul li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--gold-dim);
+    }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: rgba(201,169,110,0.06);
+      border-left: 2px solid var(--gold);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .highlight p { margin-bottom: 6px; font-size: 15px; }
+
+    /* ── Operator card ── */
+    .operator-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 32px;
+    }
+    @media (max-width: 560px) {
+      .operator-card { grid-template-columns: 1fr; }
+    }
+    .op-field label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .op-field span {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    .doc-footer {
+      margin-top: 72px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .doc-footer .edition {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .doc-footer .brand {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 0 20px; }
+      .page-wrap { padding: 48px 20px 72px; }
     }
   </style>
 </head>
 <body>
 
-  <a href="./index.html" class="back">← Вернуться на сайт</a>
+<header class="site-header">
+  <span class="logo">KUTKEVICH</span>
+  <a class="back-link" href="https://kutkevich.ru">Вернуться на сайт</a>
+</header>
 
-  <div class="placeholder-notice">
-    Документ находится в процессе подготовки. Финальная редакция будет опубликована в ближайшее время.
+<main class="page-wrap">
+
+  <div class="doc-eyebrow">Юридический документ</div>
+  <h1 class="doc-title">Политика конфиденциальности<br>и обработки персональных данных</h1>
+  <div class="doc-meta">Редакция от апреля 2026&nbsp;г. &nbsp;·&nbsp; Сайт: kutkevich.ru</div>
+
+  <!-- 1. Оператор -->
+  <div class="section">
+    <div class="section-num">Раздел 1</div>
+    <h2 class="section-title">Оператор персональных данных</h2>
+    <div class="operator-card">
+      <div class="op-field">
+        <label>Наименование</label>
+        <span>ИП Куткевич Валерия Александровна</span>
+      </div>
+      <div class="op-field">
+        <label>ОГРНИП</label>
+        <span>323784700072644</span>
+      </div>
+      <div class="op-field">
+        <label>ИНН</label>
+        <span>391802747010</span>
+      </div>
+      <div class="op-field">
+        <label>Место деятельности</label>
+        <span>г. Санкт-Петербург, Россия</span>
+      </div>
+      <div class="op-field">
+        <label>Электронная почта</label>
+        <span><a href="mailto:lera@kutkevich.ru">lera@kutkevich.ru</a></span>
+      </div>
+      <div class="op-field">
+        <label>Сайт</label>
+        <span>kutkevich.ru</span>
+      </div>
+    </div>
   </div>
 
-  <h1>Политика конфиденциальности и обработки персональных данных</h1>
+  <!-- 2. Какие данные -->
+  <div class="section">
+    <div class="section-num">Раздел 2</div>
+    <h2 class="section-title">Какие данные собираются</h2>
+    <p>При заполнении формы обратной связи на Сайте Оператор получает следующие персональные данные:</p>
+    <ul>
+      <li>фамилия, имя (или имя при отсутствии отчества);</li>
+      <li>номер телефона;</li>
+      <li>адрес электронной почты (если указан);</li>
+      <li>тип запрашиваемого сотрудничества (формат, выбранный в форме);</li>
+      <li>текст обращения / запроса.</li>
+    </ul>
+    <p>При использовании сайта автоматически собираются технические данные: IP-адрес, тип браузера, сведения об устройстве и cookie-файлы — в рамках работы сервиса веб-аналитики Яндекс Метрика.</p>
+  </div>
 
-  <p>Настоящая политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей сайта kutkevich.ru (далее — «Сайт»).</p>
+  <!-- 3. Цели -->
+  <div class="section">
+    <div class="section-num">Раздел 3</div>
+    <h2 class="section-title">Цели обработки персональных данных</h2>
+    <ul>
+      <li>ответ на запрос Пользователя, поступивший через форму обратной связи;</li>
+      <li>формирование и направление коммерческого предложения;</li>
+      <li>заключение, исполнение и прекращение гражданско-правовых договоров;</li>
+      <li>анализ активности пользователей на Сайте и улучшение его работы (с помощью Яндекс Метрика).</li>
+    </ul>
+  </div>
 
-  <h2>1. Оператор персональных данных</h2>
-  <p>Индивидуальный предприниматель Куткевич Валерия, г. Санкт-Петербург.<br>
-  Контактный email: <a href="mailto:lera@kutkevich.org">lera@kutkevich.org</a></p>
+  <!-- 4. Основание -->
+  <div class="section">
+    <div class="section-num">Раздел 4</div>
+    <h2 class="section-title">Правовое основание обработки</h2>
+    <p>Обработка персональных данных осуществляется на основании согласия субъекта персональных данных (ст. 6, ч. 1, п. 1 Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных»).</p>
+    <div class="highlight">
+      <p>Проставляя отметку в чекбоксе «Согласен(а) на обработку персональных данных» при отправке формы, Пользователь выражает свободное, информированное и однозначное согласие в соответствии со ст. 9 Федерального закона № 152-ФЗ.</p>
+    </div>
+  </div>
 
-  <h2>2. Какие данные собираются</h2>
-  <p>При заполнении формы на Сайте собираются: имя, номер телефона, адрес электронной почты (если указан), текст сообщения.</p>
+  <!-- 5. Хранение и передача -->
+  <div class="section">
+    <div class="section-num">Раздел 5</div>
+    <h2 class="section-title">Хранение и передача данных</h2>
+    <p>Персональные данные хранятся на территории Российской Федерации.</p>
+    <p>Данные не передаются третьим лицам без согласия Пользователя, за исключением:</p>
+    <ul>
+      <li>случаев, прямо предусмотренных действующим законодательством РФ;</li>
+      <li>передачи cookie-файлов и технических данных <strong>ООО «Яндекс»</strong> (ОГРН 1027700229193, 119021, Москва, ул. Льва Толстого, д. 16) в целях работы сервиса Яндекс Метрика. Яндекс обрабатывает эти данные в соответствии с <a href="https://yandex.ru/legal/metrica_termsofuse/" target="_blank" rel="noopener">условиями использования Яндекс Метрики</a>.</li>
+    </ul>
+    <p>Вы можете отказаться от передачи данных в Яндекс Метрику, воспользовавшись <a href="https://yandex.ru/support/metrika/general/opt-out.html" target="_blank" rel="noopener">блокировщиком Яндекс Метрики</a> или соответствующими настройками браузера. Это может повлиять на работу некоторых функций сайта.</p>
+  </div>
 
-  <h2>3. Цели обработки персональных данных</h2>
-  <p>Персональные данные обрабатываются исключительно для связи с пользователем в целях ответа на его запрос, а также для формирования и направления коммерческого предложения.</p>
+  <!-- 6. Срок хранения -->
+  <div class="section">
+    <div class="section-num">Раздел 6</div>
+    <h2 class="section-title">Срок хранения</h2>
+    <p>Персональные данные хранятся в течение срока, необходимого для достижения целей обработки, но <strong>не более 3 (трёх) лет</strong> с момента получения согласия, если иное не предусмотрено договором или действующим законодательством РФ.</p>
+    <p>По достижении целей обработки или истечении срока хранения персональные данные уничтожаются без возможности восстановления.</p>
+  </div>
 
-  <h2>4. Основание для обработки</h2>
-  <p>Обработка персональных данных осуществляется на основании согласия субъекта персональных данных (ст. 6, ч. 1, п. 1 Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных»).</p>
+  <!-- 7. Права -->
+  <div class="section">
+    <div class="section-num">Раздел 7</div>
+    <h2 class="section-title">Права субъекта персональных данных</h2>
+    <p>В соответствии с Федеральным законом № 152-ФЗ Пользователь вправе:</p>
+    <ul>
+      <li>получить информацию об обработке своих персональных данных;</li>
+      <li>потребовать уточнения, блокирования или уничтожения данных, если они неполны, устарели, неточны или получены незаконно;</li>
+      <li>отозвать согласие на обработку персональных данных в любой момент, направив письмо на <a href="mailto:lera@kutkevich.ru">lera@kutkevich.ru</a> с темой <em>«Отзыв согласия на обработку персональных данных»</em>. После отзыва данные будут удалены в течение <strong>30 дней</strong>;</li>
+      <li>потребовать уточнения персональных данных — Оператор обязан ответить в течение <strong>7 рабочих дней</strong>;</li>
+      <li>обжаловать действия или бездействие Оператора в уполномоченный орган по защите прав субъектов персональных данных.</li>
+    </ul>
+    <div class="highlight">
+      <p><strong>Надзорный орган — Роскомнадзор</strong><br>
+      Федеральная служба по надзору в сфере связи, информационных технологий и массовых коммуникаций<br>
+      109074, Москва, Китайгородский пр., д. 7, стр. 2<br>
+      <a href="https://rkn.gov.ru" target="_blank" rel="noopener">rkn.gov.ru</a></p>
+    </div>
+  </div>
 
-  <h2>5. Хранение и передача данных</h2>
-  <p>Персональные данные хранятся на территории Российской Федерации. Данные не передаются третьим лицам без согласия пользователя, за исключением случаев, предусмотренных законодательством РФ.</p>
+  <!-- 8. Cookies -->
+  <div class="section">
+    <div class="section-num">Раздел 8</div>
+    <h2 class="section-title">Cookies и веб-аналитика</h2>
+    <p>Сайт использует cookie-файлы для работы сервиса веб-аналитики <strong>Яндекс Метрика</strong>. Cookie — небольшие текстовые файлы, размещаемые на устройстве Пользователя. Собранные с их помощью данные (включая IP-адрес и сведения о браузере) передаются Яндексу и хранятся на серверах Яндекса в России и ЕС.</p>
+    <p>Используя Сайт, Пользователь соглашается на обработку cookie-данных сервисом Яндекс Метрика. Для отказа воспользуйтесь <a href="https://yandex.ru/support/metrika/general/opt-out.html" target="_blank" rel="noopener">блокировщиком Яндекс Метрики</a> или настройками браузера.</p>
+  </div>
 
-  <h2>6. Срок хранения</h2>
-  <p>Персональные данные хранятся в течение срока, необходимого для достижения целей обработки, но не более 3 лет с момента получения согласия.</p>
+  <!-- 9. Изменения -->
+  <div class="section">
+    <div class="section-num">Раздел 9</div>
+    <h2 class="section-title">Изменения политики</h2>
+    <p>Оператор оставляет за собой право вносить изменения в настоящую Политику. Актуальная версия всегда доступна на странице <a href="https://kutkevich.ru/privacy">kutkevich.ru/privacy</a>. Продолжение использования Сайта после внесения изменений означает принятие новой редакции Политики.</p>
+  </div>
 
-  <h2>7. Права субъекта персональных данных</h2>
-  <p>Пользователь вправе в любой момент отозвать своё согласие, направив запрос на email: <a href="mailto:lera@kutkevich.org">lera@kutkevich.org</a>. После отзыва согласия данные будут удалены в течение 30 дней.</p>
+  <footer class="doc-footer">
+    <span class="edition">Редакция от апреля 2026&nbsp;г.</span>
+    <span class="brand">KUTKEVICH</span>
+  </footer>
 
-  <h2>8. Cookies</h2>
-  <p>Сайт использует технологию cookies для аналитики. Продолжая использование сайта, пользователь соглашается с использованием cookies. Cookies не содержат персональных данных.</p>
-
-  <h2>9. Изменения политики</h2>
-  <p>Оператор оставляет за собой право вносить изменения в настоящую Политику. Актуальная версия всегда доступна на данной странице.</p>
-
-  <p style="margin-top:40px; font-size:13px; color:rgba(42,31,16,0.4);">Редакция от апреля 2026 г.</p>
+</main>
 
 </body>
 </html>
