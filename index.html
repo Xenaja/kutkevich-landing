@@ -1676,6 +1676,31 @@
     left: 0;
     color: rgba(201,153,58,0.5);
   }
+  .case-quote {
+    margin-top: 4px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(201,153,58,0.18);
+    position: relative;
+    padding-left: 20px;
+  }
+  .case-quote::before {
+    content: '\201C';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--gold);
+    font-style: italic;
+  }
+  .case-quote p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.60);
+  }
   .cases-footer {
     padding-top: 40px;
     display: flex;
@@ -2251,6 +2276,9 @@
           <li>Доставка в другой город в условиях жаркого лета</li>
           <li>Продукт доехал в идеальном виде</li>
         </ul>
+        <div class="case-quote">
+          <p>Ем ваши конфеты — они конечно потрясающие! Спасибо за чёткую оперативную работу, упаковано всё идеально.</p>
+        </div>
       </div>
     </div>
 
@@ -2268,6 +2296,9 @@
           <li>Три дня от заявки до отправки в другой город</li>
           <li>Всё в срок</li>
         </ul>
+        <div class="case-quote">
+          <p>Всем очень понравились шоколадки — оформление и вкус. Доноры были довольны. Большое спасибо за такую красоту.</p>
+        </div>
       </div>
     </div>
 
@@ -2284,6 +2315,9 @@
           <li>Упаковка в фирменные коробки под ключ</li>
           <li>Переданы заказчику готовыми к вручению</li>
         </ul>
+        <div class="case-quote">
+          <p>Шоколад очень вкусный, руководство оценило — и цукаты, и конфетки. Думаю, наши клиенты и партнёры тоже довольны. Спасибо!</p>
+        </div>
       </div>
     </div>
 
