@@ -1716,11 +1716,11 @@
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 280px);
     gap: 6px;
   }
   .gallery-item {
     overflow: hidden;
+    aspect-ratio: 1;
   }
   .gallery-item img {
     width: 100%;
@@ -1736,11 +1736,11 @@
   }
   @media (max-width: 1024px) {
     .gallery-section { padding: 72px 40px; }
-    .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 240px); }
+    .gallery-grid { grid-template-columns: repeat(4, 1fr); }
   }
   @media (max-width: 640px) {
     .gallery-section { padding: 56px 20px; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(5, 180px); gap: 4px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
   }
 
   /* ── SKIP-LINK ── */
@@ -1987,8 +1987,8 @@
         <text x="29" y="9" font-size="7" fill="#C8A96E" opacity="0.7" font-family="sans-serif">°</text>
       </svg>
       <div class="hero-strip-body">
-        <div class="hero-strip-title">Легкие условия хранения</div>
-        <div class="hero-strip-text">Хранение от 60 дней при t 14–21°C, вдали от прямых солнечных лучей.</div>
+        <div class="hero-strip-title">Легкие условия хранения и перевозки</div>
+        <div class="hero-strip-text">Технология позволяет хранить продукцию от 60 дней при t 14–21°C, избегая попадания прямых солнечных лучей.</div>
       </div>
     </div>
 
@@ -2001,7 +2001,7 @@
       </svg>
       <div class="hero-strip-body">
         <div class="hero-strip-title">Любой объем заказа</div>
-        <div class="hero-strip-text">От 1 единицы из наличия до крупных партий на заказ.</div>
+        <div class="hero-strip-text">Предложим варианты от 1 единицы продукции из наличия до крупных партий на заказ.</div>
       </div>
     </div>
 
@@ -2055,16 +2055,16 @@
   <div class="section-eyebrow reveal">Галерея</div>
   <h2 class="display section-title reveal">Вкус и эстетика<br><em style="font-style:normal;color:var(--gold)">в деталях</em></h2>
   <div class="gallery-grid">
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC01914.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC01914.jpg" alt="Цукаты в шоколаде KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC01752.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC01752.jpg" alt="Цукаты в стакане KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2858-2.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2858-2.jpg" alt="Мармелад и чай KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2416.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2416.jpg" alt="Авторские конфеты в кафе KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_7344.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_7344.jpg" alt="Конфеты ручной работы KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/RSI_0209.webp" type="image/webp"><img src="./photos-optimized/gallery/RSI_0209.jpg" alt="Подарочная коробка KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2803-2.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2803-2.jpg" alt="Цитрусовые цукаты KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC04349.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC04349.jpg" alt="Производство KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/IMG_2321-3.webp" type="image/webp"><img src="./photos-optimized/gallery/IMG_2321-3.jpg" alt="Мармелад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/DSC_2662.webp" type="image/webp"><img src="./photos-optimized/gallery/DSC_2662.jpg" alt="Авторский шоколад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-01.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-01.jpg" alt="Цукаты в шоколаде KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-02.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-02.jpg" alt="Авторские конфеты KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-03.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-03.jpg" alt="Шоколад ручной работы KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-04.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-04.jpg" alt="Подарочная коробка KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-05.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-05.jpg" alt="Конфеты ручной работы KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-06.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-06.jpg" alt="Мармелад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-07.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-07.jpg" alt="Цитрусовые цукаты KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-08.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-08.jpg" alt="Цукаты в стакане KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-09.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-09.jpg" alt="Авторский шоколад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-10.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-10.jpg" alt="Производство KUTKEVICH" loading="lazy" decoding="async"></picture></div>
   </div>
 </section>
 
@@ -2448,8 +2448,8 @@
 <section class="founder-section" id="founder" style="padding:0;">
   <div class="founder-left">
     <picture>
-      <source srcset="./visual/RSI_2364.webp" type="image/webp">
-      <img src="./visual/RSI_2364.jpg" alt="Валерия Куткевич" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:20% 0%;display:block;">
+      <source srcset="./visual/founder-1371.webp" type="image/webp">
+      <img src="./visual/founder-1371.jpg" alt="Валерия Куткевич" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
     </picture>
   </div>
   <div class="founder-right">
