@@ -853,6 +853,57 @@
     letter-spacing: 0.06em;
     margin-top: 10px;
   }
+  .assortment-also {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 56px;
+    margin-bottom: 32px;
+  }
+  .assortment-also::before,
+  .assortment-also::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,153,58,0.25);
+  }
+  .assortment-also-label {
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    color: var(--brown);
+    white-space: nowrap;
+    font-family: var(--serif);
+  }
+  .assortment-mini-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .assortment-card--mini {
+    flex: 0 0 calc(25% - 6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px;
+    background: var(--cream-dark);
+    border: 1px solid rgba(201,153,58,0.18);
+    transition: border-color 0.3s;
+  }
+  .assortment-card--mini:hover { border-color: rgba(201,153,58,0.35); }
+  .assortment-card--mini .assortment-card-body {
+    width: 100%;
+    padding: 0 24px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px;
+  }
+  .assortment-card--mini .assortment-title {
+    font-size: 15px;
+    margin: 0;
+  }
 
   /* ── СЕКЦИЯ 5: ПОЧЕМУ МЫ ── */
   .why-section { background: var(--cream-dark); }
@@ -1354,6 +1405,7 @@
     .seg-card-title { font-size: 20px; }
     .retail-grid { grid-template-columns: 1fr; }
     .assortment-grid { grid-template-columns: 1fr 1fr; }
+    .assortment-card--mini { flex: 0 0 calc(50% - 4px); }
     .why-grid { grid-template-columns: 1fr 1fr; }
     .founder-section { grid-template-columns: 1fr; }
     .founder-left { min-height: 420px; }
@@ -1385,6 +1437,7 @@
     .hero-buttons { flex-direction: column; gap: 10px; margin-top: auto; padding-top: 28px; }
     .btn-primary, .btn-secondary { text-align: center; width: 100%; min-height: 52px; display: flex; align-items: center; justify-content: center; }
     .assortment-grid, .why-grid { grid-template-columns: 1fr; }
+    .assortment-card--mini { flex: 0 0 100%; }
     .citrus-footer { flex-direction: column; }
     .delivery-section { padding: 40px 20px; }
     .delivery-inner { padding: 32px 20px; }
@@ -2126,20 +2179,20 @@
         </svg>
       </div>
       <div class="seg-card-tag">Отели и резиденции</div>
-      <h3 class="seg-card-title">Деталь, которую гость запомнит</h3>
+      <h3 class="seg-card-title">Конфеты как ощущение исключительности</h3>
       <div class="seg-card-divider"></div>
       <ul class="seg-card-preview">
-        <li>Комплимент в номер или к ужину</li>
+        <li>Эксклюзивный подарок гостю, отражающий стиль именно вашего отеля</li>
         <li>Брендирование под стиль отеля</li>
       </ul>
       <div class="seg-card-body">
         <div class="seg-card-body-inner">
-          <p class="seg-card-text">Небольшая коробочка — деталь, которая отделяет хороший отель от незабываемого. Стоимость комплимента легко включается в стоимость гостеприимства.</p>
+          <p class="seg-card-text">Индивидуальный дизайн, уникальные вкусы, возможность брендирования сделают его ярким акцентом и рекламным элементом. Небольшая коробочка конфет — деталь, которая отделяет хороший отель от незабываемого.</p>
           <ul class="seg-card-list">
-            <li>Конфеты ручной работы в брендированных коробках</li>
-            <li>Горячее тиснение: золото, шампань, платина — под вашу концепцию</li>
-            <li>Индивидуальный дизайн под интерьер и фирменный стиль</li>
-            <li>Цукаты и мармелад как комплимент к чаю и кофе</li>
+            <li>Усиление премиального статуса отеля</li>
+            <li>Создание незабываемого впечатления у гостей</li>
+            <li>Дополнительная реклама через эмоции клиентов</li>
+            <li>Стоимость комплимента легко включается в стоимость вашего гостеприимства</li>
           </ul>
           <a href="#contact" class="btn-primary">Шоколадные конфеты</a>
         </div>
@@ -2160,20 +2213,21 @@
         </svg>
       </div>
       <div class="seg-card-tag">Кофейни</div>
-      <h3 class="seg-card-title">Превратите каждую чашку в историю</h3>
+      <h3 class="seg-card-title">Конфеты как способ увеличения среднего чека</h3>
       <div class="seg-card-divider"></div>
       <ul class="seg-card-preview">
-        <li>«Ответ от Вселенной» — виральный формат</li>
+        <li>Задай вопрос и получи «ответ от Вселенной» — виральный формат. Классика вкуса: кофе и шоколад. Вау-эффект неожиданности.</li>
         <li>Цукаты и мармелад к кофе</li>
       </ul>
       <div class="seg-card-body">
         <div class="seg-card-body-inner">
-          <p class="seg-card-text">Гость тянет конфету из вазочки, под наклейкой — персональное послание. Делает фото. Отмечает вашу кофейню. Виральная механика без бюджета на рекламу.</p>
+          <p class="seg-card-text">Гость тянет конфету из вазы, под наклейкой — персональное послание. Делает фото. Отмечает вашу кофейню. Виральная механика без бюджета на рекламу.</p>
           <ul class="seg-card-list">
             <li>Конфеты «Ответ от Вселенной» — готовый интерактивный формат для соцсетей</li>
             <li>Цукаты в шоколаде — к кофе и как самостоятельная позиция в меню</li>
-            <li>Мармелад в белом шоколаде — три вкуса</li>
+            <li>Мармелад — любителям сладостей с пониженными КБЖУ</li>
             <li>Линейка без сахара — для гостей с особыми предпочтениями</li>
+            <li>В разработке: концентрат для лимонада и чая</li>
           </ul>
           <a href="#contact" class="btn-primary">Добавить в меню</a>
         </div>
@@ -2199,22 +2253,26 @@
         </svg>
       </div>
       <div class="seg-card-tag">Магазины и ритейл</div>
-      <h3 class="seg-card-title">Готовое решение для полки ЗОЖ</h3>
+      <h3 class="seg-card-title">100% чистый состав</h3>
       <div class="seg-card-divider"></div>
       <ul class="seg-card-preview">
-        <li>Натуральный состав, без консервантов</li>
-        <li>6 месяцев хранения без холодильника</li>
+        <li>Срок хранения 180 дней при 14–21°С, без прямых солнечных лучей</li>
+        <li>Работа под СТМ, стабильные поставки</li>
       </ul>
       <div class="seg-card-body">
         <div class="seg-card-body-inner">
-          <p class="seg-card-text">Авторские цукаты, мармелад, линейка без сахара — всё с натуральным составом. Красивая упаковка, стабильные поставки, закрывающие документы.</p>
+          <p class="seg-card-text">Авторские цукаты, мармелад, линейка без сахара. Работа под СТМ, стабильные поставки, закрывающие документы.</p>
           <ul class="seg-card-list">
-            <li>Цукаты в шоколаде — три вида цитрусов, хранение 6 месяцев при 18–21°С</li>
+            <li>Полный цикл производства — от закупки фруктов до готовой продукции</li>
             <li>Линейка без сахара — на сиропе топинамбура</li>
-            <li>Цитрусовый мармелад в белом шоколаде — три вкуса</li>
-            <li>Сертификат соответствия, закрывающие документы, EDO</li>
+            <li>Свежевыжатый сок, сахар и пектин — основа цитрусового мармелада</li>
+            <li>Хранение 6 месяцев только за счёт технологии, без особых условий</li>
+            <li>Сертификат соответствия, закрывающие документы, ЭДО</li>
           </ul>
-          <a href="#contact" class="btn-primary">Забрать на полку</a>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="#contact" class="btn-primary">Забрать на полку</a>
+            <a href="#contact" class="btn-secondary">Получить дегустационный набор</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2232,22 +2290,22 @@
         </svg>
       </div>
       <div class="seg-card-tag">Корпоративным клиентам</div>
-      <h3 class="seg-card-title">Подарок, который говорит о вас</h3>
+      <h3 class="seg-card-title">Подарок, который говорит за вас</h3>
       <div class="seg-card-divider"></div>
       <ul class="seg-card-preview">
-        <li>Подарки под ключ — от концепции до доставки</li>
-        <li>Брендирование и эксклюзивные вкусы</li>
+        <li>От идеи до реализации — каждый этап возьмём на себя</li>
+        <li>Брендирование, ручная работа, эксклюзивные вкусы, премиальные ингредиенты</li>
       </ul>
       <div class="seg-card-body">
         <div class="seg-card-body-inner">
-          <p class="seg-card-text">Новогодние наборы, комплименты партнёрам, угощения к конференциям. Индивидуальная разработка: концепция, вкусы, упаковка. Официальный договор, точные сроки.</p>
+          <p class="seg-card-text">Новогодние наборы, комплименты партнёрам, подарки для сотрудников, профессиональные праздники, организация кофе-брейков, сопровождение мероприятий. Индивидуальная разработка: концепция, вкусы, упаковка.</p>
           <ul class="seg-card-list">
-            <li>Конфеты ручной работы — подарок, который запоминают</li>
-            <li>Эксклюзивные вкусы и состав под ваш запрос</li>
-            <li>Брендирование: горячее тиснение золото / шампань / платина</li>
-            <li>Официальный договор, точные сроки, EDO</li>
+            <li>Конфеты ручной работы — ваша статусность в деталях</li>
+            <li>Брендирование: горячее тиснение, лак, дизайнерский картон, премиальные ленты. Возможно нанесение логотипа прямо на конфеты.</li>
+            <li>Официальный договор, точные сроки, ЭДО</li>
+            <li>Больше 4 лет на рынке</li>
           </ul>
-          <a href="#contact" class="btn-primary">Заказать партию</a>
+          <a href="#contact" class="btn-primary">Запросить условия</a>
         </div>
       </div>
     </div>
@@ -2359,7 +2417,7 @@
 <section class="assortment-section" id="assortment">
   <div class="section-eyebrow reveal">Ассортимент</div>
   <h2 class="display section-title reveal">Каждая позиция —<br><em style="font-style:normal;color:var(--gold)">с характером</em></h2>
-  <p class="section-lead reveal">Ручная работа. Натуральный состав. Производство полного цикла в Санкт-Петербурге.</p>
+  <p class="section-lead reveal">Ручная работа. Чистый состав. Производство полного цикла в Санкт-Петербурге.</p>
 
   <div class="assortment-grid">
     <div class="assortment-card reveal">
@@ -2367,11 +2425,10 @@
       <div class="assortment-card-body">
         <h3 class="assortment-title">Конфеты ручной работы</h3>
         <ul class="assortment-items">
-          <li>Миндальный трюфель</li>
-          <li>Сливочная карамель</li>
-          <li>Ассорти в подарочной коробке</li>
+          <li>6 вкусовых линеек: классическая, 50 оттенков кофе, волшебные истории нового года, ореховая коллекция, алкогольная, лёгкие ягодные начинки</li>
+          <li>Авторская коллекция — Весенние этюды Петербурга</li>
         </ul>
-        <div class="assortment-meta">Дополнительные вкусы по запросу · Подарок под ключ</div>
+        <div class="assortment-meta">Лучший подарок под ключ</div>
       </div>
     </div>
 
@@ -2383,6 +2440,7 @@
           <li>Апельсин в тёмном шоколаде</li>
           <li>Лимон в тёмном шоколаде</li>
           <li>Грейпфрут в молочном шоколаде</li>
+          <li>Необычный формат для подарка</li>
         </ul>
         <div class="assortment-meta">Хранение 6 месяцев при 18–21°С · Единственный набор такого рода в РФ</div>
       </div>
@@ -2391,10 +2449,10 @@
     <div class="assortment-card reveal">
       <picture><source srcset="./photos-optimized/assortment/bez-sahara.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/bez-sahara.jpg" alt="Цукаты без сахара" loading="lazy" decoding="async" style="object-position: center 55%;"></picture>
       <div class="assortment-card-body">
-        <h3 class="assortment-title">Цукаты без сахара</h3>
+        <h3 class="assortment-title">Линейка без сахара</h3>
         <ul class="assortment-items">
-          <li>Апельсин в шоколаде</li>
-          <li>Лимон в шоколаде</li>
+          <li>Цукаты в шоколаде</li>
+          <li>Миндальный трюфель</li>
         </ul>
         <div class="assortment-meta">На сиропе топинамбура · Для ЗОЖ-аудитории</div>
       </div>
@@ -2403,17 +2461,61 @@
     <div class="assortment-card reveal">
       <picture><source srcset="./photos-optimized/assortment/marmelad.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/marmelad.jpg" alt="Цитрусовый мармелад в белом шоколаде" loading="lazy" decoding="async" style="object-position: center 60%;"></picture>
       <div class="assortment-card-body">
-        <h3 class="assortment-title">Цитрусовый мармелад в белом шоколаде</h3>
+        <h3 class="assortment-title">Цитрусовый мармелад</h3>
         <ul class="assortment-items">
           <li>Лимон – базилик</li>
           <li>Апельсин – ваниль</li>
-          <li>Грейпфрут – малина</li>
+          <li>Грейпфрут</li>
         </ul>
-        <div class="assortment-meta">Свежевыжатый сок, пектин · Идеально к кофе и в подарочный набор</div>
+        <div class="assortment-meta">Свежевыжатый сок, сахар и пектин — основа натуральной полезной сладости</div>
       </div>
     </div>
 
+
   </div>
+
+  <div class="assortment-also reveal">
+    <span class="assortment-also-label">А также</span>
+  </div>
+
+  <div class="assortment-mini-grid">
+    <div class="assortment-card assortment-card--mini reveal">
+      <div class="assortment-card-body">
+        <h3 class="assortment-title">Колотый шоколад</h3>
+      </div>
+    </div>
+    <div class="assortment-card assortment-card--mini reveal">
+      <div class="assortment-card-body">
+        <h3 class="assortment-title">Солёная карамель</h3>
+      </div>
+    </div>
+    <div class="assortment-card assortment-card--mini reveal">
+      <div class="assortment-card-body">
+        <h3 class="assortment-title">Шоколадная плитка</h3>
+      </div>
+    </div>
+    <div class="assortment-card assortment-card--mini reveal">
+      <div class="assortment-card-body">
+        <h3 class="assortment-title">Подарочные наборы</h3>
+      </div>
+    </div>
+    <div class="assortment-card assortment-card--mini reveal">
+      <div class="assortment-card-body">
+        <h3 class="assortment-title">Детям</h3>
+      </div>
+    </div>
+    <div class="assortment-card assortment-card--mini reveal">
+      <div class="assortment-card-body">
+        <h3 class="assortment-title">Зефир в шоколаде</h3>
+      </div>
+    </div>
+    <div class="assortment-card assortment-card--mini reveal">
+      <div class="assortment-card-body">
+        <h3 class="assortment-title">Замороженный чай, основа для лимонада</h3>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ── CTA: ЗАПРОСИТЬ КП ── -->
