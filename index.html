@@ -883,26 +883,33 @@
   .assortment-card--mini {
     flex: 0 0 calc(25% - 6px);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 90px;
+    align-items: stretch;
     background: var(--cream-dark);
     border: 1px solid rgba(201,153,58,0.18);
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background 0.3s;
   }
-  .assortment-card--mini:hover { border-color: rgba(201,153,58,0.35); }
+  .assortment-card--mini:hover { border-color: rgba(201,153,58,0.35); background: rgba(201,153,58,0.04); }
   .assortment-card--mini .assortment-card-body {
     width: 100%;
-    padding: 0 24px;
-    text-align: center;
+    padding: 24px 24px 22px;
+    text-align: left;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 90px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .assortment-mini-icon {
+    display: block;
+    margin-bottom: 2px;
+    opacity: 0.9;
   }
   .assortment-card--mini .assortment-title {
     font-size: 15px;
     margin: 0;
+  }
+  .assortment-mini-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
   }
 
   /* ── СЕКЦИЯ 5: ПОЧЕМУ МЫ ── */
@@ -1022,6 +1029,13 @@
     margin: 28px 0 36px;
   }
   .founder-quote p + p { margin-top: 20px; }
+  .founder-note {
+    font-size: 0.88em;
+    color: rgba(245,240,232,0.52) !important;
+    margin-top: 28px !important;
+    padding-top: 20px;
+    border-top: 1px solid rgba(196,160,96,0.18);
+  }
   .founder-name {
     font-family: 'Poiret One', sans-serif;
     font-size: 20px;
@@ -1708,6 +1722,13 @@
     text-transform: uppercase;
     color: var(--gold);
   }
+  .case-context {
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(245,240,232,0.45);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
   .case-divider {
     width: 24px;
     height: 1px;
@@ -2326,7 +2347,7 @@
           <li>6 вкусовых линеек: классическая, 50 оттенков кофе, волшебные истории нового года, ореховая коллекция, алкогольная, лёгкие ягодные начинки</li>
           <li>Авторская коллекция — Весенние этюды Петербурга</li>
         </ul>
-        <div class="assortment-meta">Лучший подарок под ключ</div>
+        <div class="assortment-meta">Лучший подарок под ключ · Срок годности — от 60 дней</div>
       </div>
     </div>
 
@@ -2352,12 +2373,12 @@
           <li>Цукаты в шоколаде</li>
           <li>Миндальный трюфель</li>
         </ul>
-        <div class="assortment-meta">На сиропе топинамбура<br>Для ЗОЖ-аудитории</div>
+        <div class="assortment-meta">На сиропе топинамбура · Для ЗОЖ-аудитории · Срок годности — 90–180 дней</div>
       </div>
     </div>
 
     <div class="assortment-card reveal">
-      <picture><source srcset="./photos-optimized/assortment/marmelad.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/marmelad.jpg" alt="Цитрусовый мармелад в белом шоколаде" loading="lazy" decoding="async" style="object-position: center 60%;"></picture>
+      <picture><source srcset="./photos-optimized/assortment/marmelad.webp" type="image/webp"><img class="assortment-card-img" src="./photos-optimized/assortment/marmelad.jpg" alt="Цитрусовый мармелад" loading="lazy" decoding="async" style="object-position: center 60%;"></picture>
       <div class="assortment-card-body">
         <h3 class="assortment-title">Цитрусовый мармелад</h3>
         <ul class="assortment-items">
@@ -2379,37 +2400,95 @@
   <div class="assortment-mini-grid">
     <div class="assortment-card assortment-card--mini reveal">
       <div class="assortment-card-body">
+        <svg class="assortment-mini-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="6" y="10" width="28" height="20" rx="2" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <line x1="6" y1="17" x2="34" y2="17" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+          <line x1="18" y1="10" x2="18" y2="30" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+          <path d="M22 14 L34 22 L28 30 L6 22 Z" stroke="#C8A96E" stroke-width="1" stroke-linejoin="round" fill="rgba(200,169,110,0.12)" opacity="0.7"/>
+          <circle cx="10" cy="23" r="1.5" fill="#C8A96E" opacity="0.5"/>
+          <circle cx="14" cy="26" r="1" fill="#C8A96E" opacity="0.4"/>
+        </svg>
         <h3 class="assortment-title">Колотый шоколад</h3>
+        <p class="assortment-mini-desc">Тёмный с фундуком · Карамелизированный миндаль в молочном шоколаде · Срок годности — 9 мес.</p>
       </div>
     </div>
     <div class="assortment-card assortment-card--mini reveal">
       <div class="assortment-card-body">
+        <svg class="assortment-mini-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <path d="M13 14 Q13 9 20 9 Q27 9 27 14 L27 26 Q27 32 20 32 Q13 32 13 26 Z" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M20 9 Q22 6 25 7 Q24 10 20 9Z" stroke="#C8A96E" stroke-width="0.8" fill="rgba(200,169,110,0.15)"/>
+          <path d="M16 18 Q20 22 24 18" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.6"/>
+          <line x1="20" y1="32" x2="20" y2="37" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="16" y1="35" x2="24" y2="35" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
         <h3 class="assortment-title">Солёная карамель</h3>
+        <p class="assortment-mini-desc">Тягучая сладость на натуральных сливках · 100 г · Крафтовая упаковка · Срок годности — 6 мес.</p>
       </div>
     </div>
     <div class="assortment-card assortment-card--mini reveal">
       <div class="assortment-card-body">
+        <svg class="assortment-mini-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="5" y="12" width="30" height="18" rx="2" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <line x1="5" y1="19" x2="35" y2="19" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+          <line x1="18" y1="12" x2="18" y2="30" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+          <line x1="27" y1="12" x2="27" y2="30" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+          <rect x="9" y="22" width="5" height="4" rx="0.5" fill="rgba(200,169,110,0.2)" stroke="#C8A96E" stroke-width="0.6"/>
+          <rect x="21" y="15" width="4" height="3" rx="0.5" fill="rgba(200,169,110,0.2)" stroke="#C8A96E" stroke-width="0.6"/>
+        </svg>
         <h3 class="assortment-title">Шоколадная плитка</h3>
+        <p class="assortment-mini-desc">Тёмный и белый шоколад в одной плитке · Печать пищевыми красителями · Возможность брендирования · Срок — 9 мес.</p>
       </div>
     </div>
     <div class="assortment-card assortment-card--mini reveal">
       <div class="assortment-card-body">
+        <svg class="assortment-mini-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="8" y="17" width="24" height="16" rx="1.5" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M12 17 L12 14 Q12 10 20 10 Q28 10 28 14 L28 17" stroke="#C8A96E" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+          <line x1="20" y1="10" x2="20" y2="17" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <path d="M20 7 Q21 5 23 6" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.6"/>
+          <rect x="16" y="22" width="8" height="7" rx="1" stroke="#C8A96E" stroke-width="0.9" fill="rgba(200,169,110,0.15)"/>
+          <line x1="20" y1="22" x2="20" y2="29" stroke="#C8A96E" stroke-width="0.7" opacity="0.4"/>
+        </svg>
         <h3 class="assortment-title">Подарочные наборы</h3>
+        <p class="assortment-mini-desc">Коллаборация с OASIS · Подбор и брендирование под ваш запрос</p>
       </div>
     </div>
     <div class="assortment-card assortment-card--mini reveal">
       <div class="assortment-card-body">
+        <svg class="assortment-mini-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <path d="M20 6 L22.5 13 L30 13 L24 17.5 L26.5 25 L20 20.5 L13.5 25 L16 17.5 L10 13 L17.5 13 Z" stroke="#C8A96E" stroke-width="1.1" stroke-linejoin="round" fill="rgba(200,169,110,0.1)"/>
+          <circle cx="20" cy="32" r="3" stroke="#C8A96E" stroke-width="1" fill="rgba(200,169,110,0.12)"/>
+          <line x1="20" y1="25" x2="20" y2="29" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        </svg>
         <h3 class="assortment-title">Детям</h3>
+        <p class="assortment-mini-desc">Набор для приготовления шоколада своими руками · Какаобомбочки · Шоколад на палочке</p>
       </div>
     </div>
     <div class="assortment-card assortment-card--mini reveal">
       <div class="assortment-card-body">
+        <svg class="assortment-mini-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <path d="M9 22 Q9 14 20 14 Q31 14 31 22 Q31 28 26 29 L26 34 L14 34 L14 29 Q9 28 9 22Z" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.08)"/>
+          <line x1="14" y1="29" x2="26" y2="29" stroke="#C8A96E" stroke-width="0.8" opacity="0.5"/>
+          <path d="M15 22 Q17 19 20 20 Q23 19 25 22" stroke="#C8A96E" stroke-width="0.9" stroke-linecap="round" fill="none" opacity="0.6"/>
+          <path d="M17 10 Q18 7 20 8" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <path d="M23 11 Q25 8 26 10" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/>
+        </svg>
         <h3 class="assortment-title">Зефир в шоколаде</h3>
+        <p class="assortment-mini-desc">Ванильный · Апельсиновый · Шоколадный · Необычный формат привычного продукта · Срок годности — 30 дней</p>
       </div>
     </div>
     <div class="assortment-card assortment-card--mini reveal">
       <div class="assortment-card-body">
+        <svg class="assortment-mini-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+          <rect x="12" y="10" width="16" height="24" rx="2" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <line x1="12" y1="17" x2="28" y2="17" stroke="#C8A96E" stroke-width="0.8" opacity="0.45"/>
+          <path d="M17 7 L17 10 M23 7 L23 10" stroke="#C8A96E" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <path d="M16 21 Q20 25 24 21" stroke="#C8A96E" stroke-width="0.9" stroke-linecap="round" fill="none" opacity="0.6"/>
+          <circle cx="20" cy="28" r="1.5" fill="rgba(200,169,110,0.3)" stroke="#C8A96E" stroke-width="0.7"/>
+          <path d="M10 13 Q8 15 9 17" stroke="#C8A96E" stroke-width="0.9" stroke-linecap="round" fill="none" opacity="0.4"/>
+        </svg>
         <h3 class="assortment-title">Замороженный чай, основа для лимонада</h3>
+        <p class="assortment-mini-desc">Основа — свежевыжатый сок и мякоть фруктов · Удобный формат · В разработке</p>
       </div>
     </div>
   </div>
@@ -2451,11 +2530,11 @@
       <div class="case-content">
         <div class="case-headline">5 500 конфет за 2 недели</div>
         <div class="case-client">Setl Group · День строителя</div>
+        <div class="case-context">Подарочные наборы к профессиональному празднику: 4 вида коробок, 6 вкусов</div>
 
         <ul class="case-body">
-          <li>Брендированные коробки с конфетами ручной работы</li>
           <li>Упаковка в корпоративных цветах с горячим тиснением</li>
-          <li>Доставка в другой город в условиях жаркого лета</li>
+          <li>Доставка между городами в условиях жаркого лета</li>
           <li>Продукт доехал в идеальном виде</li>
         </ul>
         <div class="case-quote">
@@ -2471,12 +2550,12 @@
       <div class="case-content">
         <div class="case-headline">400 сердец за 3 дня</div>
         <div class="case-client">Фонд Максима Шубарева · День донора</div>
+        <div class="case-context">Фирменный шоколадный комплимент под событие — для участников акции Дня донора</div>
 
         <ul class="case-body">
-          <li>Шоколадные сердца из трёх видов шоколада</li>
-          <li>Брендированные открытки с наклейками</li>
+          <li>3 вида сердец, брендированная открытка и наклейка</li>
           <li>Три дня от заявки до отправки в другой город</li>
-          <li>Всё в срок</li>
+          <li>Исполнено раньше заявленного срока</li>
         </ul>
         <div class="case-quote">
           <p>Всем очень понравились шоколадки — оформление и вкус. Доноры были довольны. Большое спасибо за такую красоту.</p>
@@ -2491,11 +2570,12 @@
       <div class="case-content">
         <div class="case-headline">190 коробок за 5 дней</div>
         <div class="case-client">НьюКомп · Новогодние подарки партнёрам</div>
+        <div class="case-context">Нестандартный шоколадный акцент к корпоративному подарку</div>
 
         <ul class="case-body">
-          <li>Колотый тёмный шоколад с цельным фундуком</li>
-          <li>Упаковка в фирменные коробки под ключ</li>
-          <li>Переданы заказчику готовыми к вручению</li>
+          <li>Колотый тёмный шоколад с фундуком в фирменных коробках</li>
+          <li>В разгар новогоднего сезона — параллельно с другим корпоративным заказом</li>
+          <li>Уложились в очень сжатые сроки, сдали готовыми к вручению</li>
         </ul>
         <div class="case-quote">
           <p>Шоколад очень вкусный, руководство оценило — и цукаты, и конфетки. Думаю, наши клиенты и партнёры тоже довольны. Спасибо!</p>
@@ -2592,9 +2672,11 @@
     <h2 class="display section-title reveal" style="color:var(--cream);margin-top:16px;">Валерия Куткевич</h2>
     <blockquote class="founder-epigraph reveal">«Я создаю не просто конфеты — я создаю ощущение исключительности»</blockquote>
     <div class="founder-quote reveal">
-      <p>В 2022 году я попробовала итальянские цукаты и заглазировала их в шоколад. Это был настоящий взрыв вкуса. С того момента я знала: хочу создавать такой продукт сама.</p>
-      <p>Я выверяла технологию месяцами — особенно с лимоном: корки нужно обработать так, чтобы получились мягкими и сочными, не горькими. Нашла свой рецепт. Запустила производство. И только потом, изучив рынок, обнаружила: я — единственный производитель в России, кто делает три вида цитрусовых цукатов в одном наборе.</p>
+      <p>Мой шоколадный путь начался в 2022 году с конфет ручной работы. Я всегда мечтала делать монопродукт — но чтобы к нему прийти, надо пройти весь путь проб и ошибок.</p>
+      <p>В 2023 году я попробовала итальянские цукаты и заглазировала их в шоколад. Это был настоящий взрыв вкуса. С того момента я знала: хочу создавать такой продукт.</p>
+      <p>Продукт оказался особенный и капризный — я долго выверяла технологии. Например, корки лимона нужно обработать так, чтобы они получались мягкими и сочными, не горькими. Нашла свои рецепты. Запустила производство. И только потом, изучив рынок, обнаружила: я — единственный производитель в России, кто делает три вида цитрусовых цукатов в одном наборе.</p>
       <p>Это не было целью. Это стало результатом — когда делаешь продукт с характером, он сам приобретает уникальность.</p>
+      <p class="founder-note">Сегодня я веду два проекта: конфеты ручной работы и цукаты. Запустила линейку без сахара. Моя цель — дать людям возможность стать чуть более счастливыми. Мы вечно бежим в потоке — и когда останавливаемся в моменте, ощущаем вкус жизни.</p>
     </div>
     <div class="reveal">
       <div class="founder-name">— Валерия Куткевич</div>
