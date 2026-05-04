@@ -1029,10 +1029,33 @@
   .founder-note {
     font-size: 0.88em;
     color: rgba(245,240,232,0.52) !important;
-    margin-top: 28px !important;
-    padding-top: 20px;
-    border-top: 1px solid rgba(196,160,96,0.18);
+    margin-top: 20px !important;
   }
+  .founder-more {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.55s ease;
+  }
+  .founder-more.open { max-height: 800px; }
+  .founder-read-more {
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 0;
+    transition: color 0.2s;
+    font-family: 'Geologica', sans-serif;
+  }
+  .founder-read-more:hover { color: rgba(201,153,58,0.9); }
+  .founder-read-more svg { transition: transform 0.35s ease; flex-shrink: 0; }
+  .founder-read-more.open svg { transform: rotate(180deg); }
   .founder-name {
     font-family: 'Poiret One', sans-serif;
     font-size: 20px;
@@ -1778,22 +1801,29 @@
     padding-left: 20px;
   }
   .case-quote::before {
-    content: '\201C';
+    content: '«';
     position: absolute;
     left: 0;
-    top: 14px;
+    top: 12px;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 28px;
+    font-size: 36px;
     line-height: 1;
     color: var(--gold);
-    font-style: italic;
+    font-style: normal;
   }
   .case-quote p {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 14px;
+    font-size: 15px;
     font-style: italic;
     line-height: 1.7;
-    color: rgba(245,240,232,0.60);
+    color: rgba(245,240,232,0.72);
+  }
+  .case-quote-attr {
+    margin-top: 10px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(201,153,58,0.55);
   }
   .cases-footer {
     padding-top: 40px;
@@ -2601,6 +2631,7 @@
         </ul>
         <div class="case-quote">
           <p>Ем ваши конфеты — они конечно потрясающие! Спасибо за чёткую оперативную работу, упаковано всё идеально.</p>
+          <div class="case-quote-attr">отзыв заказчика · Setl Group</div>
         </div>
       </div>
     </div>
@@ -2621,6 +2652,7 @@
         </ul>
         <div class="case-quote">
           <p>Всем очень понравились шоколадки — оформление и вкус. Доноры были довольны. Большое спасибо за такую красоту.</p>
+          <div class="case-quote-attr">отзыв заказчика · Фонд Максима Шубарева</div>
         </div>
       </div>
     </div>
@@ -2641,6 +2673,7 @@
         </ul>
         <div class="case-quote">
           <p>Шоколад очень вкусный, руководство оценило — и цукаты, и конфетки. Думаю, наши клиенты и партнёры тоже довольны. Спасибо!</p>
+          <div class="case-quote-attr">отзыв заказчика · НьюКомп</div>
         </div>
       </div>
     </div>
@@ -2742,9 +2775,15 @@
     <div class="founder-quote reveal">
       <p>Мой шоколадный путь начался в 2022 году с конфет ручной работы. Я всегда мечтала делать монопродукт — но чтобы к нему прийти, надо пройти весь путь проб и ошибок.</p>
       <p>В 2023 году я попробовала итальянские цукаты и заглазировала их в шоколад. Это был настоящий взрыв вкуса. С того момента я знала: хочу создавать такой продукт.</p>
-      <p>Продукт оказался особенный и капризный — я долго выверяла технологии. Например, корки лимона нужно обработать так, чтобы они получались мягкими и сочными, не горькими. Нашла свои рецепты. Запустила производство. И только потом, изучив рынок, обнаружила: я — единственный производитель в России, кто делает три вида цитрусовых цукатов в одном наборе.</p>
-      <p>Это не было целью. Это стало результатом — когда делаешь продукт с характером, он сам приобретает уникальность.</p>
-      <p class="founder-note">Сегодня я веду два проекта: конфеты ручной работы и цукаты. Запустила линейку без сахара. Моя цель — дать людям возможность стать чуть более счастливыми. Мы вечно бежим в потоке — и когда останавливаемся в моменте, ощущаем вкус жизни.</p>
+      <div class="founder-more" id="founderMore">
+        <p>Продукт оказался особенный и капризный — я долго выверяла технологии. Например, корки лимона нужно обработать так, чтобы они получались мягкими и сочными, не горькими. Нашла свои рецепты. Запустила производство. И только потом, изучив рынок, обнаружила: я — единственный производитель в России, кто делает три вида цитрусовых цукатов в одном наборе.</p>
+        <p>Это не было целью. Это стало результатом — когда делаешь продукт с характером, он сам приобретает уникальность.</p>
+        <p class="founder-note">Сегодня я веду два проекта: конфеты ручной работы и цукаты. Запустила линейку без сахара. Моя цель — дать людям возможность стать чуть более счастливыми. Мы вечно бежим в потоке — и когда останавливаемся в моменте, ощущаем вкус жизни.</p>
+      </div>
+      <button class="founder-read-more" id="founderReadMoreBtn" onclick="toggleFounderMore()">
+        <span>Читать дальше</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5L7 10L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
     <div class="reveal">
       <div class="founder-name">— Валерия Куткевич</div>
@@ -3128,6 +3167,15 @@ navBurger.addEventListener('click', function() {
   navMobile.setAttribute('aria-hidden', !open);
   document.body.style.overflow = open ? 'hidden' : '';
 });
+function toggleFounderMore() {
+  var more = document.getElementById('founderMore');
+  var btn = document.getElementById('founderReadMoreBtn');
+  var span = btn.querySelector('span');
+  var isOpen = more.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  span.textContent = isOpen ? 'Свернуть' : 'Читать дальше';
+}
+
 function closeMobileNav() {
   navBurger.classList.remove('open');
   navMobile.classList.remove('open');
