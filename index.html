@@ -140,8 +140,10 @@
     transition: color 0.3s;
   }
   .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
   nav.scrolled .nav-links a { color: var(--text-muted); }
   nav.scrolled .nav-links a:hover { color: var(--gold); }
+  nav.scrolled .nav-links a.active { color: var(--brown); }
   .nav-cta {
     background: transparent;
     color: rgba(245,240,232,0.8) !important;
@@ -152,8 +154,8 @@
     transition: background 0.25s, color 0.25s, border-color 0.25s !important;
   }
   .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; border-color: var(--gold) !important; }
-  nav.scrolled .nav-cta { color: var(--brown) !important; border-color: var(--brown) !important; }
-  nav.scrolled .nav-cta:hover { background: var(--brown) !important; color: var(--gold) !important; }
+  nav.scrolled .nav-cta { color: var(--brown) !important; border-color: var(--gold) !important; }
+  nav.scrolled .nav-cta:hover { background: var(--brown) !important; color: var(--gold) !important; border-color: var(--brown) !important; }
 
   /* ── HERO ── */
   .hero {
@@ -382,15 +384,30 @@
     z-index: 3;
   }
   .hero-dot {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    flex-shrink: 0;
+  }
+  .hero-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     width: 6px; height: 6px;
     border-radius: 50%;
     background: rgba(201,153,58,0.35);
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+    transition: background 0.3s, width 0.3s, height 0.3s;
   }
-  .hero-dot.active {
+  .hero-dot.active::after {
     background: var(--gold);
-    transform: scale(1.3);
+    width: 8px; height: 8px;
   }
 
   /* ── СЕКЦИИ ── */
@@ -1386,6 +1403,14 @@
   }
 
   /* ── АДАПТИВ ── */
+  @media (max-width: 1280px) {
+    .nav-links { gap: 20px; }
+    .nav-cta { padding: 10px 16px; }
+    .hero-eyebrow { white-space: normal; flex-wrap: wrap; }
+  }
+  @media (max-width: 1200px) {
+    .nav-links .nav-secondary { display: none; }
+  }
   @media (max-width: 1024px) {
     nav { padding: 16px 32px; background: rgba(26,15,8,0.97); backdrop-filter: blur(8px); }
     nav.scrolled { background: rgba(250,248,244,0.97); }
@@ -1488,7 +1513,7 @@
     padding: 28px 40px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     gap: 32px;
     transition: background 0.3s, border-color 0.3s;
   }
@@ -1499,11 +1524,21 @@
   .hero-strip-icon {
     color: var(--gold);
     flex-shrink: 0;
+    align-self: flex-start;
+    width: 32px;
+    height: 32px;
+    padding: 10px;
+    border: 1px solid rgba(201,153,58,0.25);
+    border-radius: 50%;
+    background: rgba(201,153,58,0.06);
+    box-sizing: content-box;
   }
   .hero-strip-body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1;
+    justify-content: space-between;
   }
   .hero-strip-title {
     font-family: 'Poiret One', sans-serif;
@@ -1873,6 +1908,21 @@
     .assortment-card,
     .why-card,
     .seg-card { transition: none !important; }
+    /* Hero: отключаем foil-shimmer и fadeUp */
+    .hero-title-big {
+      animation: none !important;
+      -webkit-text-fill-color: #c4aa82;
+    }
+    .citrus-section .section-title,
+    .founder-section .section-title {
+      animation: none !important;
+      -webkit-text-fill-color: #c4aa82;
+    }
+    .hero-eyebrow, .hero-title, .hero-sub, .hero-stat {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+    .hero-slide { transition: none !important; }
   }
 </style>
 </head>
@@ -1889,7 +1939,7 @@
   <ul class="nav-links">
     <li><a href="#assortment">Ассортимент</a></li>
     <li><a href="#segments">Для бизнеса</a></li>
-    <li><a href="#retail">Частным клиентам</a></li>
+    <li class="nav-secondary"><a href="#retail">Частным клиентам</a></li>
     <li><a href="#founder">О нас</a></li>
     <li><a href="#contact" class="nav-cta">Запросить КП</a></li>
   </ul>
@@ -1947,26 +1997,26 @@
     <div class="hero-slide">
       <picture>
         <source srcset="./photos-optimized/hero/RSI_0249.webp" type="image/webp">
-        <img src="./photos-optimized/hero/RSI_0249.jpg" alt="Шоколадные изделия ручной работы KUTKEVICH" loading="lazy" decoding="async">
+        <img src="./photos-optimized/hero/RSI_0249.jpg" alt="Шоколадные изделия ручной работы KUTKEVICH" loading="eager" decoding="async" fetchpriority="low">
       </picture>
     </div>
     <div class="hero-slide">
       <picture>
         <source srcset="./photos-optimized/hero/IMG_2350-2.webp" type="image/webp">
-        <img src="./photos-optimized/hero/IMG_2350-2.jpg" alt="Авторские конфеты и цукаты KUTKEVICH" loading="lazy" decoding="async">
+        <img src="./photos-optimized/hero/IMG_2350-2.jpg" alt="Авторские конфеты и цукаты KUTKEVICH" loading="eager" decoding="async" fetchpriority="low">
       </picture>
     </div>
     <div class="hero-slide">
       <picture>
         <source srcset="./photos-optimized/hero/25-konfet.webp" type="image/webp">
-        <img src="./photos-optimized/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="lazy" decoding="async">
+        <img src="./photos-optimized/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="eager" decoding="async" fetchpriority="low">
       </picture>
     </div>
     <div class="hero-dots">
-      <div class="hero-dot active" onclick="goSlide(0)"></div>
-      <div class="hero-dot" onclick="goSlide(1)"></div>
-      <div class="hero-dot" onclick="goSlide(2)"></div>
-      <div class="hero-dot" onclick="goSlide(3)"></div>
+      <button class="hero-dot active" onclick="goSlide(0)" aria-label="Слайд 1"></button>
+      <button class="hero-dot" onclick="goSlide(1)" aria-label="Слайд 2"></button>
+      <button class="hero-dot" onclick="goSlide(2)" aria-label="Слайд 3"></button>
+      <button class="hero-dot" onclick="goSlide(3)" aria-label="Слайд 4"></button>
     </div>
   </div>
 </section>
@@ -3084,6 +3134,27 @@ function closeMobileNav() {
   navMobile.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
+
+// Nav: подсветка активного раздела при скролле
+(function() {
+  var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  var pairs = [];
+  navLinks.forEach(function(link) {
+    var id = link.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) pairs.push({ el: el, link: link });
+  });
+  if (!pairs.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(function(l) { l.classList.remove('active'); });
+      var match = pairs.find(function(p) { return p.el === entry.target; });
+      if (match) match.link.classList.add('active');
+    });
+  }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+  pairs.forEach(function(p) { obs.observe(p.el); });
+})();
 
 // Nav scroll — переключение фона и логотипа
 var heroHeight = document.querySelector('.hero') ? document.querySelector('.hero').offsetHeight : 600;
