@@ -84,7 +84,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
   a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 
   body {
@@ -247,14 +246,6 @@
     letter-spacing: 0.08em;
     opacity: 0;
   }
-  .hero-sub {
-    font-size: 15px;
-    line-height: 1.75;
-    color: var(--text-muted);
-    max-width: 520px;
-    margin-bottom: 18px;
-    opacity: 0;
-  }
   .hero-stat {
     font-size: 13px;
     letter-spacing: 0.06em;
@@ -275,7 +266,7 @@
   .hero-sub {
     font-size: 15px;
     line-height: 1.75;
-    color: rgba(245,240,232,0.70);
+    color: rgba(245,240,232,0.78);
     max-width: 440px;
     margin-bottom: 10px;
     opacity: 0;
@@ -1205,7 +1196,11 @@
     margin: 0 auto 36px;
   }
   .cta-mid-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .cta-mid-btns .btn-primary { min-width: 320px; text-align: center; box-sizing: border-box; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; }
+  .cta-mid-btns .btn-primary { min-width: 280px; text-align: left; box-sizing: border-box; white-space: normal; display: inline-flex; align-items: center; justify-content: flex-start; gap: 12px; padding: 16px 24px; }
+  .btn-cta-text { display: flex; flex-direction: column; gap: 3px; }
+  .btn-cta-label { font-size: 14px; letter-spacing: 0.08em; }
+  .btn-cta-sub { font-size: 11px; letter-spacing: 0.04em; opacity: 0.68; font-weight: 400; text-transform: lowercase; }
+  .btn-cta-icon { flex-shrink: 0; width: 20px; height: 20px; opacity: 0.9; }
   @media (max-width: 640px) {
     .cta-mid { padding: 56px 24px; }
     .cta-mid-btns { flex-direction: column; align-items: stretch; }
@@ -1290,7 +1285,7 @@
 
   /* ── LIQUID CURSOR (desktop only) ── */
   @media (hover: hover) and (pointer: fine) {
-    * { cursor: none !important; }
+    .has-custom-cursor * { cursor: none !important; }
     #cursor-ring {
       position: fixed;
       top: 0; left: 0;
@@ -2618,8 +2613,14 @@
   <h2 class="cta-mid-title reveal">Хотите узнать, что мы можем предложить именно вам?</h2>
   <p class="cta-mid-sub reveal">Пришлём предложение под ваш формат — с ассортиментом,<br>вариантами упаковки и условиями сотрудничества.</p>
   <div class="cta-mid-btns reveal">
-    <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Корпоративный заказ'){s.selectedIndex=i;break;}}}">Шоколадные конфеты</a>
-    <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Магазин / ритейл'){s.selectedIndex=i;break;}}}">Цукаты и мармелад</a>
+    <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Корпоративный заказ'){s.selectedIndex=i;break;}}}">
+      <svg class="btn-cta-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.2" fill="rgba(255,255,255,0.08)"/><path d="M10 4 Q12.5 7 10 10 Q7.5 13 10 16" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.75"/><path d="M4 10 Q7 7.5 10 10 Q13 12.5 16 10" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.75"/></svg>
+      <span class="btn-cta-text"><span class="btn-cta-label">Шоколадные конфеты</span><span class="btn-cta-sub">корпоративный заказ</span></span>
+    </a>
+    <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Магазин / ритейл'){s.selectedIndex=i;break;}}}">
+      <svg class="btn-cta-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.2" fill="rgba(255,255,255,0.08)"/><line x1="10" y1="3.5" x2="10" y2="16.5" stroke="currentColor" stroke-width="0.9" opacity="0.6"/><line x1="3.5" y1="10" x2="16.5" y2="10" stroke="currentColor" stroke-width="0.9" opacity="0.6"/><path d="M5 6 Q10 7.5 15 6" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.55"/><path d="M5 14 Q10 12.5 15 14" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.55"/></svg>
+      <span class="btn-cta-text"><span class="btn-cta-label">Цукаты и мармелад</span><span class="btn-cta-sub">для магазинов и ритейла</span></span>
+    </a>
   </div>
 </section>
 
@@ -2849,6 +2850,7 @@
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   var ring = document.getElementById('cursor-ring');
   var dot  = document.getElementById('cursor-dot');
+  document.documentElement.classList.add('has-custom-cursor');
   var rx = 0, ry = 0, mx = 0, my = 0;
 
   document.addEventListener('mousemove', function(e) {
@@ -2878,6 +2880,18 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     ring.classList.remove('is-click');
   });
 }
+
+// Плавный скролл по якорям с поддержкой prefers-reduced-motion
+document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var id = this.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    var behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    target.scrollIntoView({ behavior: behavior, block: 'start' });
+  });
+});
 
 // Hero слайдер
 var slides = document.querySelectorAll('.hero-slide');
