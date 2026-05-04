@@ -797,17 +797,20 @@
   }
   .assortment-slider {
     display: flex;
-    gap: 2px;
+    gap: 16px;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    align-items: stretch;
   }
   .assortment-slider::-webkit-scrollbar { display: none; }
   .aslide {
     scroll-snap-align: start;
-    flex: 0 0 calc(33.333% - 2px);
+    flex: 0 0 calc(33.333% - 11px);
     min-width: 0;
     border: 1px solid rgba(201,153,58,0.12);
     overflow: hidden;
@@ -904,11 +907,12 @@
   .slider-dot.active { background: var(--gold); transform: scale(1.35); }
   /* Responsive */
   @media (max-width: 900px) {
-    .aslide { flex: 0 0 calc(50% - 1px); }
+    .aslide { flex: 0 0 calc(50% - 8px); }
     .slider-btn { display: none; }
   }
   @media (max-width: 560px) {
-    .aslide { flex: 0 0 85%; }
+    .assortment-slider { gap: 0; }
+    .aslide { flex: 0 0 100%; scroll-snap-align: center; }
   }
 
   /* ── СЕКЦИЯ 5: ПОЧЕМУ МЫ ── */
@@ -2591,6 +2595,7 @@
     const total = slider.querySelectorAll('.aslide').length;
     let dotsCount = 0;
     function getVisible(){ return window.innerWidth>900?3:window.innerWidth>560?2:1; }
+    function getSlides(){ return Array.from(slider.querySelectorAll('.aslide')); }
     function buildDots(){
       dotsWrap.innerHTML='';
       dotsCount = Math.ceil(total/getVisible());
@@ -2603,19 +2608,27 @@
     }
     function updateDots(){
       const v=getVisible();
-      const w=slider.scrollWidth/total;
-      const idx=Math.round(slider.scrollLeft/(w*v));
+      const slides=getSlides();
+      if(!slides.length) return;
+      const slideW=slides[0].offsetWidth;
+      const gap=slides.length>1?slides[1].offsetLeft-slides[0].offsetLeft-slideW:slideW;
+      const step=slideW+gap;
+      const idx=Math.round(slider.scrollLeft/(step*v));
       dotsWrap.querySelectorAll('.slider-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
     }
     function goTo(i){
       const v=getVisible();
-      const w=slider.scrollWidth/total;
-      slider.scrollTo({left:i*w*v,behavior:'smooth'});
+      const slides=getSlides();
+      const targetIdx=Math.min(i*v, slides.length-1);
+      slider.scrollTo({left:slides[targetIdx].offsetLeft,behavior:'smooth'});
     }
     window.slideAssortment=function(dir){
       const v=getVisible();
-      const w=slider.scrollWidth/total;
-      slider.scrollBy({left:dir*w*v,behavior:'smooth'});
+      const slides=getSlides();
+      if(!slides.length) return;
+      const slideW=slides[0].offsetWidth;
+      const gap=slides.length>1?slides[1].offsetLeft-slides[0].offsetLeft-slideW:0;
+      slider.scrollBy({left:dir*(slideW+gap)*v,behavior:'smooth'});
     };
     slider.addEventListener('scroll',updateDots,{passive:true});
     window.addEventListener('resize',()=>{buildDots();updateDots();});
