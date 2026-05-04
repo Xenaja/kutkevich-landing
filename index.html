@@ -74,12 +74,14 @@
   :root {
     --dark: #1c1006;
     --brown: #2d1f0e;
-    --gold: #c4a060;
+    --gold: #c4a060;           /* основной gold: тексты, кнопки */
+    --gold-ui: #c9993a;        /* UI gold: бордеры, box-shadow, rgba(201,153,58,…) */
+    --gold-icon: #c8a96e;      /* SVG-иконки */
     --gold-light: #e2cfaa;
     --cream: #f5f0e8;
     --cream-dark: #ede5d4;
     --text: #2d1f0e;
-    --text-muted: #7a6650;
+    --text-muted: #6e5a46;     /* было #7a6650; повышен контраст до ~5.2:1 на --white */
     --white: #faf8f4;
   }
 
@@ -845,7 +847,8 @@
     flex: 1;
   }
   .aslide-title {
-    font-family: 'Poiret One', sans-serif;
+    font-family: 'Geologica', sans-serif;
+    font-weight: 400;
     font-size: 17px;
     color: var(--dark);
     margin: 0;
@@ -1019,8 +1022,9 @@
     font-style: normal;
   }
   .founder-quote {
-    font-family: 'Poiret One', sans-serif;
-    font-size: clamp(17px, 1.9vw, 23px);
+    font-family: 'Geologica', sans-serif;
+    font-weight: 300;
+    font-size: clamp(16px, 1.6vw, 20px);
     line-height: 1.7;
     color: rgba(245,240,232,0.8);
     margin: 28px 0 36px;
@@ -1169,7 +1173,7 @@
     width: 100%;
     background: var(--white);
     border: 1px solid rgba(201,153,58,0.2);
-    padding: 14px 16px;
+    padding: 18px 16px;
     font-family: 'Geologica', sans-serif;
     font-size: 16px;
     font-weight: 300;
@@ -1185,7 +1189,7 @@
   .form-select option { color: var(--text); }
   .form-textarea { resize: vertical; min-height: 100px; }
   .form-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M6 8L0 0h12z' fill='%23c9993a'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M6 8L0 0h12z' fill='%23c4a060'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
@@ -1197,8 +1201,41 @@
     gap: 12px;
     margin-bottom: 28px;
     cursor: pointer;
+    position: relative;
   }
-  .form-checkbox input { margin-top: 2px; accent-color: var(--gold); }
+  .form-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0; height: 0;
+  }
+  .check-box {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    border: 1px solid rgba(201,153,58,0.45);
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .form-checkbox input:checked + .check-box {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .form-checkbox input:checked + .check-box::after {
+    content: '';
+    display: block;
+    width: 10px; height: 5px;
+    border-left: 1.5px solid var(--dark);
+    border-bottom: 1.5px solid var(--dark);
+    transform: rotate(-45deg) translate(0.5px, -1px);
+  }
+  .form-checkbox input:focus-visible + .check-box {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
   .form-checkbox span { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
   .form-checkbox a { color: var(--gold); text-decoration: none; }
   .form-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -1251,7 +1288,7 @@
   footer { background: var(--dark); padding: 60px 80px 40px; }
   .footer-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 60px;
     margin-bottom: 48px;
   }
@@ -1288,6 +1325,7 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   .animate-in { animation: fadeUp 0.7s ease forwards; }
+  .t-accent { font-style: normal; color: var(--gold); }
 
   /* Scroll reveal */
   .reveal {
@@ -1623,7 +1661,7 @@
     border-color: rgba(201,153,58,0.3);
   }
   .strip-v1-num {
-    font-family: 'Poiret One', sans-serif;
+    font-family: 'Geologica', sans-serif;
     font-size: 13px;
     letter-spacing: 0.25em;
     color: rgba(201,153,58,0.35);
@@ -2215,7 +2253,7 @@
 <!-- ── ГАЛЕРЕЯ ── -->
 <section class="gallery-section" id="gallery">
   <div class="section-eyebrow reveal">Галерея</div>
-  <h2 class="display section-title reveal">Вкус и эстетика<br><em style="font-style:normal;color:var(--gold)">в деталях</em></h2>
+  <h2 class="display section-title reveal">Вкус и эстетика<br><em class="t-accent">в деталях</em></h2>
   <div class="gallery-grid">
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-01.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-01.jpg" alt="Цукаты в шоколаде KUTKEVICH" loading="lazy" decoding="async"></picture></div>
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-02.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-02.jpg" alt="Авторские конфеты KUTKEVICH" loading="lazy" decoding="async"></picture></div>
@@ -2242,7 +2280,7 @@
 
     <!-- Отели -->
     <div class="seg-card">
-      <button class="seg-card-toggle" onclick="segCardToggle(0)" aria-expanded="false">+</button>
+      <button class="seg-card-toggle" onclick="segCardToggle(0)" aria-expanded="false" aria-controls="seg-body-0">+</button>
       <div class="seg-card-icon">
         <svg viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="44">
           <path d="M10 13 L11 10.2 L12 13 L14.8 13 L12.6 14.8 L13.4 17.5 L11 15.8 L8.6 17.5 L9.4 14.8 L7.2 13 Z" stroke="#C8A96E" stroke-width="0.9" stroke-linejoin="round" fill="rgba(200,169,110,0.15)"/>
@@ -2268,7 +2306,7 @@
         <li>Эксклюзивный подарок гостю, отражающий стиль именно вашего отеля</li>
         <li>Брендирование под стиль отеля</li>
       </ul>
-      <div class="seg-card-body">
+      <div class="seg-card-body" id="seg-body-0">
         <div class="seg-card-body-inner">
           <p class="seg-card-text">Индивидуальный дизайн, уникальные вкусы, возможность брендирования сделают его ярким акцентом и рекламным элементом. Небольшая коробочка конфет — деталь, которая отделяет хороший отель от незабываемого.</p>
           <ul class="seg-card-list">
@@ -2284,7 +2322,7 @@
 
     <!-- Кофейни -->
     <div class="seg-card">
-      <button class="seg-card-toggle" onclick="segCardToggle(1)" aria-expanded="false">+</button>
+      <button class="seg-card-toggle" onclick="segCardToggle(1)" aria-expanded="false" aria-controls="seg-body-1">+</button>
       <div class="seg-card-icon">
         <svg viewBox="5 6 31 28" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
           <path d="M7 28 Q20 32 33 28" stroke="#C8A96E" stroke-width="1.1" stroke-linecap="round" fill="none"/>
@@ -2302,7 +2340,7 @@
         <li>Задай вопрос и получи «ответ от Вселенной» — виральный формат. Классика вкуса: кофе и шоколад. Вау-эффект неожиданности.</li>
         <li>Цукаты и мармелад к кофе</li>
       </ul>
-      <div class="seg-card-body">
+      <div class="seg-card-body" id="seg-body-1">
         <div class="seg-card-body-inner">
           <p class="seg-card-text">Гость тянет конфету из вазы, под наклейкой — персональное послание. Делает фото. Отмечает вашу кофейню. Виральная механика без бюджета на рекламу.</p>
           <ul class="seg-card-list">
@@ -2319,7 +2357,7 @@
 
     <!-- Ритейл -->
     <div class="seg-card">
-      <button class="seg-card-toggle" onclick="segCardToggle(2)" aria-expanded="false">+</button>
+      <button class="seg-card-toggle" onclick="segCardToggle(2)" aria-expanded="false" aria-controls="seg-body-2">+</button>
       <div class="seg-card-icon">
         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
           <line x1="5" y1="35" x2="35" y2="35" stroke="#C8A96E" stroke-width="1.2" stroke-linecap="round"/>
@@ -2342,7 +2380,7 @@
         <li>Срок хранения 180 дней при 14–21°С, без прямых солнечных лучей</li>
         <li>Работа под СТМ, стабильные поставки</li>
       </ul>
-      <div class="seg-card-body">
+      <div class="seg-card-body" id="seg-body-2">
         <div class="seg-card-body-inner">
           <p class="seg-card-text">Авторские цукаты, мармелад, линейка без сахара. Работа под СТМ, стабильные поставки, закрывающие документы.</p>
           <ul class="seg-card-list">
@@ -2362,7 +2400,7 @@
 
     <!-- Корпораты -->
     <div class="seg-card">
-      <button class="seg-card-toggle" onclick="segCardToggle(3)" aria-expanded="false">+</button>
+      <button class="seg-card-toggle" onclick="segCardToggle(3)" aria-expanded="false" aria-controls="seg-body-3">+</button>
       <div class="seg-card-icon">
         <svg viewBox="2 7 36 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
           <rect x="5" y="16" width="30" height="20" rx="2.5" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.08)"/>
@@ -2379,7 +2417,7 @@
         <li>От идеи до реализации — каждый этап возьмём на себя</li>
         <li>Брендирование, ручная работа, эксклюзивные вкусы, премиальные ингредиенты</li>
       </ul>
-      <div class="seg-card-body">
+      <div class="seg-card-body" id="seg-body-3">
         <div class="seg-card-body-inner">
           <p class="seg-card-text">Новогодние наборы, комплименты партнёрам, подарки для сотрудников, профессиональные праздники, организация кофе-брейков, сопровождение мероприятий. Индивидуальная разработка: концепция, вкусы, упаковка.</p>
           <ul class="seg-card-list">
@@ -2399,7 +2437,7 @@
 <!-- ── СЕКЦИЯ 4: АССОРТИМЕНТ ── -->
 <section class="assortment-section" id="assortment">
   <div class="section-eyebrow reveal">Ассортимент</div>
-  <h2 class="display section-title reveal">Каждая позиция —<br><em style="font-style:normal;color:var(--gold)">с характером</em></h2>
+  <h2 class="display section-title reveal">Каждая позиция —<br><em class="t-accent">с характером</em></h2>
   <p class="section-lead reveal">Ручная работа. Чистый состав. Производство полного цикла в Санкт-Петербурге.</p>
 
   <div class="assortment-slider-wrap">
@@ -2610,7 +2648,7 @@
 <!-- ── КЕЙСЫ ── -->
 <section class="cases-section" id="cases">
   <div class="section-eyebrow reveal">Кейсы</div>
-  <h2 class="display section-title reveal">Примеры заказов,<br><em style="font-style:normal;color:var(--gold)">которыми мы гордимся</em></h2>
+  <h2 class="display section-title reveal">Примеры заказов,<br><em class="t-accent">которыми мы гордимся</em></h2>
   <p class="section-lead reveal">Не только красиво и вкусно. Крупные партии, сжатые сроки, доставка по России — вызовы, с которыми мы справляемся.</p>
 
   <div class="cases-grid">
@@ -2711,7 +2749,7 @@
 <!-- ── СЕКЦИЯ 5: ПОЧЕМУ МЫ ── -->
 <section class="why-section">
   <div class="section-eyebrow reveal">Наши преимущества</div>
-  <h2 class="display section-title reveal">Почему нас выбирают<br><em style="font-style:normal;color:var(--gold)">бизнес<span style="display:inline-block;transform:translateY(0.12em)">-</span>партнёры</em></h2>
+  <h2 class="display section-title reveal">Почему нас выбирают<br><em class="t-accent">бизнес<span style="display:inline-block;transform:translateY(0.12em)">-</span>партнёры</em></h2>
 
   <div class="why-grid">
     <div class="why-card reveal" style="--num-delay:0s">
@@ -2852,11 +2890,11 @@
     <div id="formWrap">
       <div class="form-group">
         <label class="form-label" for="name">Имя *</label>
-        <input class="form-input" type="text" id="name" placeholder="Как вас зовут" autocomplete="name">
+        <input class="form-input" type="text" id="name" placeholder="Как вас зовут" autocomplete="name" required>
       </div>
       <div class="form-group">
         <label class="form-label" for="contact-field">Телефон *</label>
-        <input class="form-input" type="tel" id="contact-field" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+        <input class="form-input" type="tel" id="contact-field" placeholder="+7 (___) ___-__-__" autocomplete="tel" required inputmode="tel" pattern="[\+\d\s\(\)\-]{7,18}">
       </div>
       <div class="form-group">
         <label class="form-label" for="email-field">Email</label>
@@ -2879,11 +2917,13 @@
         <textarea class="form-textarea" id="message" placeholder="Объём, сроки, пожелания"></textarea>
       </div>
       <label class="form-checkbox">
-        <input type="checkbox" id="privacy">
+        <input type="checkbox" id="privacy" required>
+        <span class="check-box" aria-hidden="true"></span>
         <span>Ознакомлен(а) с <a href="./privacy.html" target="_blank">политикой конфиденциальности</a> и условиями обработки данных</span>
       </label>
       <label class="form-checkbox">
-        <input type="checkbox" id="personal-data">
+        <input type="checkbox" id="personal-data" required>
+        <span class="check-box" aria-hidden="true"></span>
         <span>Даю <a href="./consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с 152-ФЗ</span>
       </label>
       <div class="form-buttons">
@@ -2923,7 +2963,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© KUTKEVICH, 2026</span>
+    <span class="footer-copy">© KUTKEVICH, 2026 · ИП Куткевич В.А.</span>
     <a href="./privacy.html" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Политика конфиденциальности</a>
     <a href="./consent.html" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Согласие на обработку ПД</a>
   </div>
@@ -3079,6 +3119,12 @@ var revealEls = document.querySelectorAll('.reveal');
 if (prefersReducedMotion) {
   revealEls.forEach(function(el) { el.classList.add('visible'); });
 } else {
+  // Элементы выше fold уже были видны — делаем их видимыми без анимации
+  revealEls.forEach(function(el) {
+    if (el.getBoundingClientRect().bottom < window.innerHeight) {
+      el.classList.add('visible');
+    }
+  });
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -3086,8 +3132,10 @@ if (prefersReducedMotion) {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-  revealEls.forEach(function(el) { observer.observe(el); });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  revealEls.forEach(function(el) {
+    if (!el.classList.contains('visible')) observer.observe(el);
+  });
 }
 
 // Typewriter — цитата в секции цитрусов
