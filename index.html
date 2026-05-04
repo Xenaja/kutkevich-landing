@@ -911,8 +911,18 @@
     .slider-btn { display: none; }
   }
   @media (max-width: 560px) {
-    .assortment-slider { gap: 0; }
-    .aslide { flex: 0 0 100%; scroll-snap-align: center; }
+    .assortment-slider-wrap { overflow: hidden; }
+    .assortment-slider {
+      overflow: visible;
+      gap: 0;
+      scroll-snap-type: none;
+      overscroll-behavior-x: none;
+      transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+    .aslide { flex: 0 0 100%; scroll-snap-align: none; }
+    /* Убрать hover-трансформы на тач-устройствах */
+    .aslide .aslide-photo img { transition: none; }
   }
 
   /* ── СЕКЦИЯ 5: ПОЧЕМУ МЫ ── */
@@ -2593,45 +2603,93 @@
     const slider = document.getElementById('assortmentSlider');
     const dotsWrap = document.getElementById('assortmentDots');
     const total = slider.querySelectorAll('.aslide').length;
-    let dotsCount = 0;
-    function getVisible(){ return window.innerWidth>900?3:window.innerWidth>560?2:1; }
+    let mobileIdx = 0;
+
+    function isMobile(){ return window.innerWidth <= 560; }
+    function getVisible(){ return window.innerWidth > 900 ? 3 : window.innerWidth > 560 ? 2 : 1; }
     function getSlides(){ return Array.from(slider.querySelectorAll('.aslide')); }
+
+    function setDots(idx){
+      dotsWrap.querySelectorAll('.slider-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+    }
+
     function buildDots(){
-      dotsWrap.innerHTML='';
-      dotsCount = Math.ceil(total/getVisible());
-      for(let i=0;i<dotsCount;i++){
-        const d=document.createElement('button');
-        d.className='slider-dot'+(i===0?' active':'');
-        d.onclick=()=>goTo(i);
+      dotsWrap.innerHTML = '';
+      const count = isMobile() ? total : Math.ceil(total / getVisible());
+      for(let i = 0; i < count; i++){
+        const d = document.createElement('button');
+        d.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => goTo(i);
         dotsWrap.appendChild(d);
       }
     }
-    function updateDots(){
-      const v=getVisible();
-      const slides=getSlides();
+
+    // Десктоп: обновление точек по scrollLeft
+    function updateDotsDesktop(){
+      if(isMobile()) return;
+      const v = getVisible();
+      const slides = getSlides();
       if(!slides.length) return;
-      const slideW=slides[0].offsetWidth;
-      const gap=slides.length>1?slides[1].offsetLeft-slides[0].offsetLeft-slideW:slideW;
-      const step=slideW+gap;
-      const idx=Math.round(slider.scrollLeft/(step*v));
-      dotsWrap.querySelectorAll('.slider-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+      const slideW = slides[0].offsetWidth;
+      const gap = slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft - slideW : 0;
+      const step = (slideW + gap) * v;
+      const idx = Math.round(slider.scrollLeft / step);
+      setDots(idx);
     }
+
     function goTo(i){
-      const v=getVisible();
-      const slides=getSlides();
-      const targetIdx=Math.min(i*v, slides.length-1);
-      slider.scrollTo({left:slides[targetIdx].offsetLeft,behavior:'smooth'});
+      if(isMobile()){
+        mobileIdx = Math.max(0, Math.min(i, total - 1));
+        slider.style.transform = 'translateX(calc(-' + mobileIdx + ' * 100%))';
+        setDots(mobileIdx);
+      } else {
+        const slides = getSlides();
+        const v = getVisible();
+        const targetIdx = Math.min(i * v, slides.length - 1);
+        slider.scrollTo({ left: slides[targetIdx].offsetLeft, behavior: 'smooth' });
+      }
     }
-    window.slideAssortment=function(dir){
-      const v=getVisible();
-      const slides=getSlides();
-      if(!slides.length) return;
-      const slideW=slides[0].offsetWidth;
-      const gap=slides.length>1?slides[1].offsetLeft-slides[0].offsetLeft-slideW:0;
-      slider.scrollBy({left:dir*(slideW+gap)*v,behavior:'smooth'});
+
+    window.slideAssortment = function(dir){
+      if(isMobile()){
+        goTo(mobileIdx + dir);
+      } else {
+        const slides = getSlides();
+        if(!slides.length) return;
+        const slideW = slides[0].offsetWidth;
+        const gap = slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft - slideW : 0;
+        slider.scrollBy({ left: dir * (slideW + gap) * getVisible(), behavior: 'smooth' });
+      }
     };
-    slider.addEventListener('scroll',updateDots,{passive:true});
-    window.addEventListener('resize',()=>{buildDots();updateDots();});
+
+    // Touch-обработчик для мобильного (transform-слайдер)
+    // preventDefault на горизонтальный свайп блокирует жест «назад» в Telegram
+    let touchStartX = 0, touchStartY = 0, isHoriz = false;
+
+    slider.addEventListener('touchstart', function(e){
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isHoriz = false;
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', function(e){
+      if(!isMobile()) return;
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      if(dx > dy + 6){ isHoriz = true; e.preventDefault(); }
+    }, { passive: false });
+
+    slider.addEventListener('touchend', function(e){
+      if(!isMobile() || !isHoriz) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if(Math.abs(dx) > 40) goTo(mobileIdx + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+
+    slider.addEventListener('scroll', updateDotsDesktop, { passive: true });
+    window.addEventListener('resize', () => {
+      buildDots();
+      if(!isMobile()){ mobileIdx = 0; slider.style.transform = ''; }
+    });
     buildDots();
   })();
   </script>
