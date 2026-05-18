@@ -294,13 +294,17 @@
     font-family: 'Geologica', sans-serif;
     font-size: 12px;
     font-weight: 500;
+    line-height: 1;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     border: 1px solid var(--gold);
     cursor: pointer;
     transition: background 0.25s, color 0.25s, border-color 0.25s;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   .btn-primary:hover {
     background: var(--dark);
@@ -314,13 +318,17 @@
     font-family: 'Geologica', sans-serif;
     font-size: 12px;
     font-weight: 400;
+    line-height: 1;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     border: 1px solid rgba(245,240,232,0.25);
     cursor: pointer;
     transition: background 0.25s, color 0.25s, border-color 0.25s;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   .btn-secondary:hover {
     background: rgba(245,240,232,0.1);
@@ -685,6 +693,7 @@
     font-size: 11px;
     margin-top: 1px;
   }
+  .seg-card-btns { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
   .seg-card-body {
     max-height: 0;
     overflow: hidden;
@@ -909,6 +918,43 @@
   @media (max-width: 900px) {
     .aslide { flex: 0 0 calc(50% - 8px); }
     .slider-btn { display: none; }
+  }
+  /* Подсказка о прокрутке */
+  .swipe-hint {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: rgba(44,35,28,0.38);
+    font-family: 'Geologica', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    user-select: none;
+  }
+  .swipe-hint.hidden { opacity: 0; }
+  .swipe-hint-icon {
+    display: flex;
+    animation: swipeNudge 2s ease-in-out infinite;
+  }
+  @keyframes swipeNudge {
+    0%, 100% { transform: translateX(0); opacity: 0.38; }
+    50%       { transform: translateX(5px); opacity: 0.9; }
+  }
+  @media (max-width: 900px) {
+    .swipe-hint { display: flex; }
+    .assortment-slider-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 64px; height: 100%;
+      background: linear-gradient(to right, transparent, var(--white));
+      pointer-events: none;
+      z-index: 1;
+    }
   }
   @media (max-width: 560px) {
     .assortment-slider-wrap { overflow: hidden; }
@@ -2329,7 +2375,10 @@
             <li>Дополнительная реклама через эмоции клиентов</li>
             <li>Стоимость комплимента легко включается в стоимость вашего гостеприимства</li>
           </ul>
-          <a href="#contact" class="btn-primary">Шоколадные конфеты</a>
+          <div class="seg-card-btns">
+            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-secondary">Получить пробный набор</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2364,7 +2413,10 @@
             <li>Линейка без сахара — для гостей с особыми предпочтениями</li>
             <li>В разработке: концентрат для лимонада и чая</li>
           </ul>
-          <a href="#contact" class="btn-primary">Добавить в меню</a>
+          <div class="seg-card-btns">
+            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-secondary">Получить пробный набор</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2404,9 +2456,9 @@
             <li>Хранение 6 месяцев только за счёт технологии, без особых условий</li>
             <li>Сертификат соответствия, закрывающие документы, ЭДО</li>
           </ul>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="#contact" class="btn-primary">Забрать на полку</a>
-            <a href="#contact" class="btn-secondary">Получить дегустационный набор</a>
+          <div class="seg-card-btns">
+            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-secondary">Получить пробный набор</a>
           </div>
         </div>
       </div>
@@ -2440,7 +2492,10 @@
             <li>Официальный договор, точные сроки, ЭДО</li>
             <li>Больше 4 лет на рынке</li>
           </ul>
-          <a href="#contact" class="btn-primary">Запросить условия</a>
+          <div class="seg-card-btns">
+            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-secondary">Получить пробный набор</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2552,6 +2607,12 @@
       <svg viewBox="0 0 18 18" fill="none"><path d="M7 4L12 9L7 14" stroke="#3a2e26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
+  <div class="swipe-hint" id="swipeHint">
+    <span>листайте</span>
+    <span class="swipe-hint-icon">
+      <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M1 6h15M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </div>
   <div class="slider-dots" id="assortmentDots"></div>
   <script>
   (function(){
@@ -2646,6 +2707,15 @@
       if(!isMobile()){ mobileIdx = 0; slider.style.transform = ''; }
     });
     buildDots();
+
+    // Скрыть подсказку после первого взаимодействия
+    const hint = document.getElementById('swipeHint');
+    if (hint) {
+      const hideHint = () => hint.classList.add('hidden');
+      slider.addEventListener('touchstart', hideHint, { once: true, passive: true });
+      slider.addEventListener('scroll', hideHint, { once: true, passive: true });
+      setTimeout(hideHint, 4000);
+    }
   })();
   </script>
 
@@ -2907,7 +2977,7 @@
             <path d="M21 5L2 12.5l7 1M21 5l-5.5 15-6.5-8.5M21 5L9 13.5m0 0V19l3.5-3" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-        <a href="https://t.me/KUTKEVICH">Telegram-канал: @KUTKEVICH</a>
+        <a href="https://t.me/valeriia_kutkevich">Telegram-канал: @KUTKEVICH</a>
       </div>
     </div>
   </div>
@@ -2984,7 +3054,7 @@
       <ul class="footer-links">
         <li><a href="tel:+79112951937">+7 (911) 295-19-37</a></li>
         <li><a href="mailto:lera@kutkevich.org">lera@kutkevich.org</a></li>
-        <li><a href="https://t.me/KUTKEVICH">Telegram: @KUTKEVICH</a></li>
+        <li><a href="https://t.me/valeriia_kutkevich">Telegram: @KUTKEVICH</a></li>
       </ul>
     </div>
   </div>
