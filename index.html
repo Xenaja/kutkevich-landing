@@ -606,6 +606,7 @@
     background: var(--dark);
     padding: 40px 36px;
     position: relative;
+    cursor: pointer;
   }
   .seg-card.open { background: rgba(201,153,58,0.04); }
   .seg-grid .seg-card {
@@ -3272,7 +3273,7 @@ if (prefersReducedMotion) {
   segCards.forEach(function(card) { segObs.observe(card); });
 })();
 
-// Карточки «Для кого» — раскрытие по клику на +
+// Карточки «Для кого» — раскрытие по клику на + или на всю карточку
 function segCardToggle(idx) {
   var cards = document.querySelectorAll('.seg-card');
   var card = cards[idx];
@@ -3282,6 +3283,12 @@ function segCardToggle(idx) {
   var btn = card.querySelector('.seg-card-toggle');
   btn.setAttribute('aria-expanded', String(!isOpen));
 }
+document.querySelectorAll('.seg-card').forEach(function(card, idx) {
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.seg-card-toggle') || e.target.closest('.seg-card-body')) return;
+    segCardToggle(idx);
+  });
+});
 
 // Карточки — активация при скролле на тач-устройствах
 if (window.matchMedia('(hover: none)').matches) {
