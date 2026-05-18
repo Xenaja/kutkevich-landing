@@ -921,7 +921,7 @@
   }
   /* Подсказка о прокрутке */
   .swipe-hint {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -945,7 +945,6 @@
     50%       { transform: translateX(5px); opacity: 0.9; }
   }
   @media (max-width: 900px) {
-    .swipe-hint { display: flex; }
     .assortment-slider-wrap::after {
       content: '';
       position: absolute;
