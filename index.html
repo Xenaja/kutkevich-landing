@@ -730,9 +730,11 @@
     letter-spacing: -0.02em;
   }
   /* ── СЕКЦИЯ 3б: МАРКЕТПЛЕЙСЫ ── */
-  .retail-section { background: var(--dark); }
-  .retail-section .section-eyebrow { color: var(--gold-light); }
-  .retail-section .section-eyebrow::before { background: var(--gold-light); }
+  .retail-section { background: var(--white); }
+  .retail-section .section-title { color: var(--dark); }
+  .retail-section .section-lead { color: var(--text-muted); }
+  .retail-section .section-eyebrow { color: var(--gold); }
+  .retail-section .section-eyebrow::before { background: var(--gold); }
   .retail-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -740,8 +742,8 @@
     margin-top: 60px;
   }
   .retail-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,153,58,0.12);
+    background: var(--white);
+    border: 1px solid rgba(201,153,58,0.15);
     padding: 28px 36px;
     display: flex;
     flex-direction: column;
@@ -755,9 +757,9 @@
   .retail-name {
     font-family: 'Poiret One', sans-serif;
     font-size: 24px;
-    color: var(--cream);
+    color: var(--dark);
   }
-  .retail-items { font-size: 13px; color: rgba(245,240,232,0.70); line-height: 1.6; }
+  .retail-items { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
   .retail-link {
     display: inline-block;
     margin-top: 8px;
@@ -775,9 +777,9 @@
   .retail-footnote {
     margin-top: 48px;
     padding-top: 32px;
-    border-top: 1px solid rgba(201,153,58,0.12);
+    border-top: 1px solid rgba(201,153,58,0.15);
     font-size: 13px;
-    color: rgba(245,240,232,0.60);
+    color: var(--text-muted);
     line-height: 1.7;
   }
 
@@ -2710,8 +2712,8 @@
 <!-- ── СЕКЦИЯ 3б: ЧАСТНЫМ ПОКУПАТЕЛЯМ ── -->
 <section class="retail-section" id="retail">
   <div class="section-eyebrow reveal">Частным покупателям</div>
-  <h2 class="display section-title reveal" style="color:var(--cream);">Порадуйте себя.<br>Или кого-то важного.</h2>
-  <p class="section-lead reveal" style="color:rgba(245,240,232,0.55);">
+  <h2 class="display section-title reveal">Порадуйте себя.<br>Или кого-то важного.</h2>
+  <p class="section-lead reveal">
     Выбирайте там, где удобно — доставим по всей России.
   </p>
 
