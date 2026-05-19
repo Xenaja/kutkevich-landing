@@ -2691,13 +2691,16 @@
     });
     buildDots();
 
-    // Скрыть подсказку после первого взаимодействия
+    // Скрыть подсказку после взаимодействия; таймер стартует когда подсказка в экране
     const hint = document.getElementById('swipeHint');
     if (hint) {
       const hideHint = () => hint.classList.add('hidden');
       slider.addEventListener('touchstart', hideHint, { once: true, passive: true });
       slider.addEventListener('scroll', hideHint, { once: true, passive: true });
-      setTimeout(hideHint, 4000);
+      const io = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { setTimeout(hideHint, 4000); io.disconnect(); }
+      }, { threshold: 0.5 });
+      io.observe(hint);
     }
   })();
   </script>
