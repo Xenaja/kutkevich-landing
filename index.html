@@ -1323,6 +1323,9 @@
   }
   .cta-mid-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
   .cta-mid-btns .btn-primary { min-width: 220px; }
+  @media (max-width: 1024px) {
+    .cta-mid { padding: 72px 40px; }
+  }
   @media (max-width: 640px) {
     .cta-mid { padding: 56px 24px; }
     .cta-mid-btns { flex-direction: column; align-items: stretch; }
@@ -1545,6 +1548,16 @@
     .form-right { padding: 40px 40px 72px; }
     footer { padding: 60px 40px 40px; }
     .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .hero-strip-grid { grid-template-columns: 1fr; }
+    .strip-v2-grid { grid-template-columns: 1fr; }
+    .strip-v2-card { padding: 36px 24px; border-right: none; border-bottom: 1px solid rgba(201,153,58,0.13); }
+    .strip-v2-card:last-child { border-bottom: none; }
+    .why-card { padding: 28px 24px; }
+    .seg-card-btns { flex-direction: column; }
   }
   @media (max-width: 640px) {
     nav { padding: 14px 20px; }
