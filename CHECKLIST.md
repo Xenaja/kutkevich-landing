@@ -39,4 +39,4 @@
 - [x] Liquid-курсор на десктопе
 - [x] Кнопка "Наверх"
 - [x] SEO: meta description, OG, геотеги, JSON-LD
-- [x] Деплой на GitHub Pages: https://xenaja.github.io/kutkevich-landing/
+- [x] Деплой на GitHub Pages: https://kutkevich.ru/ (custom domain через файл CNAME)

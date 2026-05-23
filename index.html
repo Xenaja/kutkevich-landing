@@ -9,7 +9,7 @@
 <meta name="description" content="Авторский шоколад и цукаты ручной работы от KUTKEVICH. Единственный производитель трёх видов цитрусовых цукатов в шоколаде в России. Корпоративные подарки, b2b-наборы, доставка по всей России. Санкт-Петербург.">
 <meta name="keywords" content="авторский шоколад Санкт-Петербург, цукаты в шоколаде, корпоративные подарки шоколад, шоколад ручной работы СПб, цитрусовые цукаты, шоколад b2b, KUTKEVICH">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://xenaja.github.io/kutkevich-landing/">
+<link rel="canonical" href="https://kutkevich.ru/">
 <link rel="sitemap" type="application/xml" href="./sitemap.xml">
 
 <!-- Геотеги (Яндекс + Google) -->
@@ -20,19 +20,20 @@
 
 <!-- Open Graph (ВКонтакте, Telegram, WhatsApp) -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://xenaja.github.io/kutkevich-landing/">
+<meta property="og:url" content="https://kutkevich.ru/">
 <meta property="og:title" content="KUTKEVICH — Авторский шоколад и цукаты | Санкт-Петербург">
 <meta property="og:description" content="Единственный производитель трёх видов цитрусовых цукатов в шоколаде в России. Корпоративные наборы, брендирование, доставка по всей стране.">
-<meta property="og:image" content="https://xenaja.github.io/kutkevich-landing/visual/IMG_2803-2.jpg">
+<meta property="og:image" content="https://kutkevich.ru/visual/IMG_2803-2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="KUTKEVICH">
 
 <!-- Яндекс.Браузер таблетка -->
-<meta name="yandex-tableau-widget" content="logo=https://xenaja.github.io/kutkevich-landing/logo/SVG/logo-gold.svg, color=#1a0f08">
+<meta name="yandex-tableau-widget" content="logo=https://kutkevich.ru/logo/SVG/logo-gold.svg, color=#1a0f08">
 
 <!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png">
@@ -47,9 +48,9 @@
   "name": "KUTKEVICH",
   "alternateName": "KUTKEVICH",
   "description": "Авторский шоколад и цукаты ручной работы. Единственный производитель трёх видов цитрусовых цукатов в шоколаде в России.",
-  "url": "https://xenaja.github.io/kutkevich-landing/",
-  "logo": "https://xenaja.github.io/kutkevich-landing/logo/SVG/logo-gold.svg",
-  "image": "https://xenaja.github.io/kutkevich-landing/visual/IMG_2803-2.jpg",
+  "url": "https://kutkevich.ru/",
+  "logo": "https://kutkevich.ru/logo/SVG/logo-gold.svg",
+  "image": "https://kutkevich.ru/visual/IMG_2803-2.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Санкт-Петербург",
@@ -746,37 +747,39 @@
   }
   .retail-card {
     background: var(--white);
-    border: 1px solid rgba(201,153,58,0.35);
+    border: 1.5px solid rgba(201,153,58,0.55);
     padding: 28px 36px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     gap: 12px;
     transition: background 0.3s, border-color 0.3s;
   }
-  .retail-card:hover, .retail-card.active { background: rgba(201,153,58,0.07); border-color: rgba(201,153,58,0.3); }
+  .retail-card:hover, .retail-card.active { background: rgba(201,153,58,0.08); border-color: var(--gold-ui); }
   .retail-icon { font-size: 28px; margin-bottom: 4px; }
   .retail-name {
     font-family: 'Poiret One', sans-serif;
-    font-size: 32px;
+    font-size: 36px;
     color: var(--dark);
+    -webkit-text-stroke: 0.6px currentColor;
   }
   .retail-items { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
   .retail-link {
     display: inline-block;
     margin-top: 8px;
     font-size: 12px;
+    font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-ui);
     text-decoration: none;
-    border-bottom: 1px solid rgba(201,153,58,0.3);
-    padding-bottom: 2px;
-    transition: border-color 0.3s;
+    border-bottom: 2px solid rgba(201,153,58,0.7);
+    padding-bottom: 3px;
+    transition: border-color 0.3s, color 0.3s;
     align-self: flex-start;
   }
-  .retail-link:hover { border-color: var(--gold); }
+  .retail-link:hover { color: var(--brown); border-color: var(--gold-ui); }
   .retail-footnote {
     margin-top: 48px;
     padding-top: 32px;
@@ -912,9 +915,9 @@
   .swipe-hint {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 8px;
-    margin-top: 18px;
+    margin: 12px 0 14px;
     color: rgba(44,35,28,0.38);
     font-family: 'Geologica', sans-serif;
     font-size: 11px;
@@ -932,17 +935,6 @@
   @keyframes swipeNudge {
     0%, 100% { transform: translateX(0); opacity: 0.38; }
     50%       { transform: translateX(5px); opacity: 0.9; }
-  }
-  @media (max-width: 900px) {
-    .assortment-slider-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 64px; height: 100%;
-      background: linear-gradient(to right, transparent, var(--white));
-      pointer-events: none;
-      z-index: 1;
-    }
   }
   @media (max-width: 560px) {
     .assortment-slider-wrap { overflow: hidden; }
@@ -1415,20 +1407,20 @@
     #cursor-ring {
       position: fixed;
       top: 0; left: 0;
-      width: 36px; height: 36px;
-      border: 1.5px solid rgba(201,153,58,0.65);
+      width: 24px; height: 24px;
+      border: 1.5px solid rgba(201,153,58,0.55);
       border-radius: 50%;
       pointer-events: none;
       z-index: 99999;
       transform: translate(-50%, -50%);
-      transition: width 0.22s ease, height 0.22s ease,
-                  border-color 0.22s ease, background 0.22s ease;
+      transition: width 0.18s ease, height 0.18s ease,
+                  border-color 0.18s ease, background 0.18s ease;
       will-change: left, top;
     }
     #cursor-dot {
       position: fixed;
       top: 0; left: 0;
-      width: 5px; height: 5px;
+      width: 4px; height: 4px;
       background: var(--gold);
       border-radius: 50%;
       pointer-events: none;
@@ -1437,14 +1429,14 @@
       will-change: left, top;
     }
     #cursor-ring.is-hover {
-      width: 54px; height: 54px;
-      border-color: rgba(201,153,58,0.9);
-      background: rgba(201,153,58,0.07);
+      width: 34px; height: 34px;
+      border-color: rgba(201,153,58,0.85);
+      background: rgba(201,153,58,0.05);
     }
     #cursor-ring.is-click {
-      width: 22px; height: 22px;
+      width: 16px; height: 16px;
       border-color: var(--gold);
-      background: rgba(201,153,58,0.15);
+      background: rgba(201,153,58,0.12);
     }
   }
 
@@ -1548,6 +1540,9 @@
     .form-right { padding: 40px 40px 72px; }
     footer { padding: 60px 40px 40px; }
     .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-buttons { flex-direction: column; gap: 12px; align-items: stretch; }
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary { width: 100%; text-align: center; min-height: 52px; display: flex; align-items: center; justify-content: center; }
   }
   @media (max-width: 768px) {
     .gallery-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1557,7 +1552,11 @@
     .strip-v2-card { padding: 36px 24px; border-right: none; border-bottom: 1px solid rgba(201,153,58,0.13); }
     .strip-v2-card:last-child { border-bottom: none; }
     .why-card { padding: 28px 24px; }
-    .seg-card-btns { flex-direction: column; }
+    .seg-card-btns { flex-direction: column; align-items: stretch; }
+    .seg-card-btns .btn-primary,
+    .seg-card-btns .btn-secondary { width: 100%; text-align: center; min-height: 52px; display: flex; align-items: center; justify-content: center; }
+    .form-buttons { flex-direction: column; align-items: stretch; }
+    .form-buttons button { width: 100%; text-align: center; min-height: 52px; display: flex; align-items: center; justify-content: center; }
   }
   @media (max-width: 640px) {
     nav { padding: 14px 20px; }
@@ -1628,26 +1627,26 @@
   }
   .hero-strip-card {
     background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,153,58,0.12);
-    padding: 28px 40px;
+    border: 1px solid rgba(201,153,58,0.18);
+    padding: 32px 32px;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    gap: 32px;
+    align-items: flex-start;
+    gap: 22px;
     transition: background 0.3s, border-color 0.3s;
   }
   .hero-strip-card:hover, .hero-strip-card.active {
     background: rgba(201,153,58,0.07);
-    border-color: rgba(201,153,58,0.35);
+    border-color: rgba(201,153,58,0.4);
   }
   .hero-strip-icon {
     color: var(--gold);
     flex-shrink: 0;
     align-self: flex-start;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     padding: 10px;
-    border: 1px solid rgba(201,153,58,0.25);
+    border: 1px solid rgba(201,153,58,0.3);
     border-radius: 50%;
     background: rgba(201,153,58,0.06);
     box-sizing: content-box;
@@ -1655,20 +1654,21 @@
   .hero-strip-body {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     flex: 1;
-    justify-content: space-between;
   }
   .hero-strip-title {
     font-family: 'Poiret One', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     color: var(--cream);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
+    line-height: 1.25;
+    -webkit-text-stroke: 0.35px currentColor;
   }
   .hero-strip-text {
-    font-size: 13px;
-    color: rgba(245,240,232,0.5);
-    line-height: 1.7;
+    font-size: 13.5px;
+    color: rgba(245,240,232,0.78);
+    line-height: 1.65;
   }
   @media (max-width: 1024px) {
     .hero-strip { padding: 56px 40px; }
@@ -1950,13 +1950,11 @@
 
   /* ── ГАЛЕРЕЯ ── */
   .gallery-section {
-    background: var(--dark);
+    background: var(--white);
     padding: 100px 80px;
     scroll-margin-top: 72px;
   }
-  .gallery-section .section-eyebrow { color: var(--gold-light); }
-  .gallery-section .section-eyebrow::before { background: var(--gold-light); }
-  .gallery-section .section-title { color: var(--cream); margin-bottom: 48px; }
+  .gallery-section .section-title { margin-bottom: 48px; }
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -1971,12 +1969,10 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease, filter 0.4s ease;
-    filter: brightness(0.92);
+    transition: transform 0.5s ease;
   }
   .gallery-item:hover img {
     transform: scale(1.05);
-    filter: brightness(1);
   }
   @media (max-width: 1024px) {
     .gallery-section { padding: 72px 40px; }
@@ -2102,7 +2098,7 @@
     <span class="hero-title-italic" id="h-title2">за которыми возвращаются</span>
 
     <p class="hero-sub" id="h-sub">
-      Конфеты · Цукаты · Мармелад · Подарки
+      Конфеты · Цукаты · Линейка без сахара · Подарки
     </p>
 
 
@@ -2128,14 +2124,14 @@
     </div>
     <div class="hero-slide">
       <picture>
-        <source srcset="./photos-optimized/hero/IMG_2350-2.webp" type="image/webp">
-        <img src="./photos-optimized/hero/IMG_2350-2.jpg" alt="Авторские конфеты и цукаты KUTKEVICH" loading="eager" decoding="async" fetchpriority="low">
+        <source srcset="./photos-optimized/hero/25-konfet.webp" type="image/webp">
+        <img src="./photos-optimized/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="eager" decoding="async" fetchpriority="low">
       </picture>
     </div>
     <div class="hero-slide">
       <picture>
-        <source srcset="./photos-optimized/hero/25-konfet.webp" type="image/webp">
-        <img src="./photos-optimized/hero/25-konfet.jpg" alt="Набор конфет ручной работы KUTKEVICH" loading="eager" decoding="async" fetchpriority="low">
+        <source srcset="./photos-optimized/hero/hotel.webp" type="image/webp">
+        <img src="./photos-optimized/hero/hotel.jpg" alt="Шоколад KUTKEVICH для отелей и HoReCa" loading="eager" decoding="async" fetchpriority="low">
       </picture>
     </div>
     <div class="hero-dots">
@@ -2317,11 +2313,11 @@
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-03.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-03.jpg" alt="Шоколад ручной работы KUTKEVICH" loading="lazy" decoding="async"></picture></div>
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-04.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-04.jpg" alt="Подарочная коробка KUTKEVICH" loading="lazy" decoding="async"></picture></div>
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-05.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-05.jpg" alt="Конфеты ручной работы KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-06.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-06.jpg" alt="Мармелад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-10.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-10.jpg" alt="Производство KUTKEVICH" loading="lazy" decoding="async"></picture></div>
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-07.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-07.jpg" alt="Цитрусовые цукаты KUTKEVICH" loading="lazy" decoding="async"></picture></div>
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-08.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-08.jpg" alt="Цукаты в стакане KUTKEVICH" loading="lazy" decoding="async"></picture></div>
     <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-09.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-09.jpg" alt="Авторский шоколад KUTKEVICH" loading="lazy" decoding="async"></picture></div>
-    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/gal-10.webp" type="image/webp"><img src="./photos-optimized/gallery/gal-10.jpg" alt="Производство KUTKEVICH" loading="lazy" decoding="async"></picture></div>
+    <div class="gallery-item reveal"><picture><source srcset="./photos-optimized/gallery/cafe.webp" type="image/webp"><img src="./photos-optimized/gallery/cafe.jpg" alt="Конфеты KUTKEVICH в стеклянной банке для кафе и кофеен" loading="lazy" decoding="async"></picture></div>
   </div>
 </section>
 
@@ -2506,6 +2502,13 @@
   <h2 class="display section-title reveal">Каждая позиция —<br><em class="t-accent">с характером</em></h2>
   <p class="section-lead reveal">Ручная работа. Чистый состав. Производство полного цикла в Санкт-Петербурге.</p>
 
+  <div class="swipe-hint" id="swipeHint">
+    <span>листайте</span>
+    <span class="swipe-hint-icon">
+      <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M1 6h15M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </div>
+
   <div class="assortment-slider-wrap">
     <button class="slider-btn slider-btn--prev" aria-label="Назад" onclick="slideAssortment(-1)">
       <svg viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9L11 14" stroke="#3a2e26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2560,9 +2563,9 @@
       </div>
     </div>
     <div class="aslide reveal">
-      <div class="aslide-photo"><picture><source srcset="./photos-optimized/assortment/plitka.webp" type="image/webp"><img src="./photos-optimized/assortment/plitka.jpg" alt="Шоколадная плитка" loading="lazy" decoding="async" style="object-position:center 55%;"></picture></div>
+      <div class="aslide-photo"><picture><source srcset="./photos-optimized/assortment/plitka.webp" type="image/webp"><img src="./photos-optimized/assortment/plitka.jpg" alt="Шоколадная открытка" loading="lazy" decoding="async" style="object-position:center 55%; filter:saturate(0.55) brightness(1.02);"></picture></div>
       <div class="aslide-body">
-        <h3 class="aslide-title">Шоколадная плитка</h3>
+        <h3 class="aslide-title">Шоколадная открытка</h3>
         <p class="aslide-desc">Тёмный и белый шоколад в одной плитке. Печать пищевыми красителями, возможность брендирования.</p>
         <div class="aslide-meta">Срок — 9 мес.</div>
       </div>
@@ -2603,12 +2606,6 @@
     <button class="slider-btn slider-btn--next" aria-label="Вперёд" onclick="slideAssortment(1)">
       <svg viewBox="0 0 18 18" fill="none"><path d="M7 4L12 9L7 14" stroke="#3a2e26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-  </div>
-  <div class="swipe-hint" id="swipeHint">
-    <span>листайте</span>
-    <span class="swipe-hint-icon">
-      <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M1 6h15M13 1l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </span>
   </div>
   <div class="slider-dots" id="assortmentDots"></div>
   <script>
@@ -2652,13 +2649,15 @@
 
     function goTo(i){
       if(isMobile()){
-        mobileIdx = Math.max(0, Math.min(i, total - 1));
+        mobileIdx = ((i % total) + total) % total;
         slider.style.transform = 'translateX(calc(-' + mobileIdx + ' * 100%))';
         setDots(mobileIdx);
       } else {
         const slides = getSlides();
         const v = getVisible();
-        const targetIdx = Math.min(i * v, slides.length - 1);
+        const pages = Math.ceil(slides.length / v);
+        const pageIdx = ((i % pages) + pages) % pages;
+        const targetIdx = Math.min(pageIdx * v, slides.length - 1);
         slider.scrollTo({ left: slides[targetIdx].offsetLeft, behavior: 'smooth' });
       }
     }
@@ -2669,9 +2668,19 @@
       } else {
         const slides = getSlides();
         if(!slides.length) return;
+        const v = getVisible();
         const slideW = slides[0].offsetWidth;
         const gap = slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft - slideW : 0;
-        slider.scrollBy({ left: dir * (slideW + gap) * getVisible(), behavior: 'smooth' });
+        const step = (slideW + gap) * v;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        let nextScroll = slider.scrollLeft + dir * step;
+        // зацикливание: с последней страницы → в начало, с первой назад → в конец
+        if(dir > 0 && slider.scrollLeft >= maxScroll - 4){
+          nextScroll = 0;
+        } else if(dir < 0 && slider.scrollLeft <= 4){
+          nextScroll = maxScroll;
+        }
+        slider.scrollTo({ left: nextScroll, behavior: 'smooth' });
       }
     };
 
@@ -2724,7 +2733,7 @@
 <!-- ── СЕКЦИЯ 3б: ЧАСТНЫМ ПОКУПАТЕЛЯМ ── -->
 <section class="retail-section" id="retail">
   <div class="section-eyebrow reveal">Частным покупателям</div>
-  <h2 class="display section-title reveal">Порадуйте себя.<br>Или кого-то важного.</h2>
+  <h2 class="display section-title reveal">Порадуйте себя.<br><em class="t-accent">Или кого-то важного.</em></h2>
   <p class="section-lead reveal">
     Выбирайте там, где удобно — доставим по всей России.
   </p>
@@ -2963,7 +2972,7 @@
             <path d="M3 7l9 6 9-6" stroke="#c9993a" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </span>
-        <a href="mailto:lera@kutkevich.org">lera@kutkevich.org</a>
+        <a href="mailto:sales@kutkevich.ru">sales@kutkevich.ru</a>
       </div>
       <div class="contact-item">
         <span class="contact-icon">
@@ -3047,7 +3056,7 @@
       <div class="footer-heading">Связаться</div>
       <ul class="footer-links">
         <li><a href="tel:+79112951937">+7 (911) 295-19-37</a></li>
-        <li><a href="mailto:lera@kutkevich.org">lera@kutkevich.org</a></li>
+        <li><a href="mailto:sales@kutkevich.ru">sales@kutkevich.ru</a></li>
         <li><a href="https://t.me/valeriia_kutkevich" target="_blank" rel="noopener">Написать в Telegram</a></li>
       </ul>
     </div>
@@ -3080,8 +3089,8 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   });
 
   (function ringLoop() {
-    rx += (mx - rx) * 0.20;
-    ry += (my - ry) * 0.20;
+    rx += (mx - rx) * 0.45;
+    ry += (my - ry) * 0.45;
     ring.style.left = rx + 'px';
     ring.style.top  = ry + 'px';
     requestAnimationFrame(ringLoop);

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://xenaja.github.io/kutkevich-landing/sitemap.xml
+Sitemap: https://kutkevich.ru/sitemap.xml

@@ -7,11 +7,12 @@
 
 ## Цель лендинга
 Одно целевое действие: заявка через форму → Cloudflare Worker → Telegram-бот.
-Telegram: @KUTKEVICH | Email: lera@kutkevich.org | Телефон: +7 (911) 295-19-37
+Telegram: @KUTKEVICH | Email: sales@kutkevich.ru | Телефон: +7 (911) 295-19-37
 
 ## Домен
-Домен пока не подключён. Текущий деплой: GitHub Pages (xenaja.github.io/kutkevich-landing/).
-После смены домена обновить: canonical, og:url, og:image, Schema.org url, ссылки в privacy.html и consent.html.
+Основной: https://kutkevich.ru (apex), www.kutkevich.ru — редирект.
+Деплой: GitHub Pages (репо xenaja/kutkevich-landing, файл CNAME с kutkevich.ru).
+Все ссылки в коде, og-метатеги, Schema.org, sitemap.xml и robots.txt уже привязаны к kutkevich.ru.
 
 ## Стиль
 Ощущение: тёмный, премиальный, ручная работа
