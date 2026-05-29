@@ -483,7 +483,7 @@
     background: var(--dark);
     position: relative;
     overflow: hidden;
-    padding-top: 0;
+    padding-top: 100px;
   }
   .citrus-section::before { display: none; }
   .citrus-section .section-eyebrow { color: var(--gold-light); }
@@ -520,11 +520,22 @@
   .citrus-card:hover::after,
   .citrus-card.active::after { transform: scaleX(1); }
   .citrus-num {
-    font-family: 'Poiret One', sans-serif;
-    font-size: 64px;
-    color: rgba(200,145,58,0.10);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    margin-bottom: 20px;
     line-height: 1;
-    margin-bottom: 16px;
+  }
+  .citrus-num::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold-light);
+    flex-shrink: 0;
   }
   .citrus-name {
     font-size: 11px;
