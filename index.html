@@ -3384,16 +3384,41 @@ window.addEventListener('scroll', function() {
 });
 
 // Форма
-function submitForm(type) {
+var workerUrl = 'WORKER_URL'; // заменить после деплоя Worker на Cloudflare
+
+async function submitForm(action) {
   var name = document.getElementById('name').value.trim();
   var contact = document.getElementById('contact-field').value.trim();
+  var email = document.getElementById('email-field').value.trim();
+  var format = document.getElementById('type').value;
+  var message = document.getElementById('message').value.trim();
   var privacy = document.getElementById('privacy').checked;
   var personalData = document.getElementById('personal-data').checked;
+
   if (!name || !contact) { alert('Пожалуйста, заполните имя и телефон'); return; }
   if (!privacy) { alert('Пожалуйста, ознакомьтесь с политикой конфиденциальности'); return; }
   if (!personalData) { alert('Пожалуйста, дайте согласие на обработку персональных данных'); return; }
-  document.getElementById('formWrap').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+
+  var btns = document.querySelectorAll('.form-buttons .btn-primary');
+  btns.forEach(function(b) { b.disabled = true; b.style.opacity = '0.6'; });
+
+  try {
+    var resp = await fetch(workerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, phone: contact, email: email, format: format, message: message, action: action })
+    });
+    if (resp.ok) {
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
+      btns.forEach(function(b) { b.disabled = false; b.style.opacity = ''; });
+    }
+  } catch (e) {
+    alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
+    btns.forEach(function(b) { b.disabled = false; b.style.opacity = ''; });
+  }
 }
 
 // Select placeholder colour
