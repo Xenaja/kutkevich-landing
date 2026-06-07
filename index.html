@@ -53,7 +53,9 @@
   "image": "https://kutkevich.ru/visual/og-image.jpg",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Кондратьевский пр-т, 72А",
     "addressLocality": "Санкт-Петербург",
+    "postalCode": "195197",
     "addressCountry": "RU"
   },
   "areaServed": {
@@ -520,22 +522,11 @@
   .citrus-card:hover::after,
   .citrus-card.active::after { transform: scaleX(1); }
   .citrus-num {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--gold-light);
-    margin-bottom: 20px;
+    font-family: 'Poiret One', sans-serif;
+    font-size: 64px;
+    color: rgba(200,145,58,0.32);
     line-height: 1;
-  }
-  .citrus-num::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--gold-light);
-    flex-shrink: 0;
+    margin-bottom: 16px;
   }
   .citrus-name {
     font-size: 11px;
@@ -547,7 +538,7 @@
   .citrus-chocolate {
     font-size: 11px;
     letter-spacing: 0.1em;
-    color: rgba(245,240,232,0.60);
+    color: rgba(245,240,232,0.78);
     margin-bottom: 20px;
   }
   .citrus-desc {
@@ -559,7 +550,7 @@
   .citrus-context {
     margin-top: 16px;
     font-size: 12px;
-    color: rgba(245,237,224,0.55);
+    color: rgba(245,237,224,0.75);
     letter-spacing: 0.05em;
     line-height: 1.5;
   }
@@ -1336,8 +1327,8 @@
   footer { background: var(--dark); padding: 60px 80px 40px; }
   .footer-inner {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 48px;
     margin-bottom: 48px;
   }
   .footer-brand-name {
@@ -2057,6 +2048,100 @@
     }
     .hero-slide { transition: none !important; }
   }
+
+  /* ── ПОПАП: ПРОБНЫЙ НАБОР ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 12, 6, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 40px 16px;
+  }
+  .modal-overlay.is-open { display: flex; }
+  .modal-card {
+    background: var(--white);
+    color: var(--text);
+    width: 100%;
+    max-width: 620px;
+    border-radius: 4px;
+    padding: 48px 48px 40px;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    animation: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 24px;
+    line-height: 1;
+    transition: color 0.2s;
+    padding: 0;
+  }
+  .modal-close:hover { color: var(--gold); }
+  .modal-title {
+    font-family: 'Poiret One', sans-serif;
+    font-size: clamp(22px, 2.4vw, 30px);
+    color: var(--dark);
+    margin-bottom: 16px;
+    line-height: 1.25;
+    padding-right: 36px;
+  }
+  .modal-lead {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .modal-disclaimer {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    background: rgba(201, 153, 58, 0.07);
+    border-left: 2px solid var(--gold);
+    padding: 12px 16px;
+    margin-bottom: 28px;
+    border-radius: 2px;
+  }
+  .modal-disclaimer a { color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .modal-form .form-group { margin-bottom: 16px; }
+  .modal-form .form-label { font-size: 11px; }
+  .modal-form .form-input,
+  .modal-form .form-select,
+  .modal-form .form-textarea { padding: 12px 14px; font-size: 14px; }
+  .modal-form .form-textarea { min-height: 80px; }
+  .modal-form .form-checkbox { margin-top: 16px; }
+  .modal-success {
+    text-align: center;
+    padding: 40px 0 8px;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    display: none;
+  }
+  .modal-success.is-visible { display: block; }
+  .modal-success strong { color: var(--gold); display: block; font-size: 18px; margin-bottom: 10px; font-family: 'Poiret One', sans-serif; letter-spacing: 0.05em; }
+  @media (max-width: 640px) {
+    .modal-overlay { padding: 16px; align-items: stretch; }
+    .modal-card { padding: 36px 24px 28px; max-width: 100%; }
+    .modal-title { font-size: 22px; }
+  }
 </style>
 </head>
 <body>
@@ -2236,7 +2321,7 @@
       </svg>
       <div class="hero-strip-body">
         <div class="hero-strip-title">Стабильное качество</div>
-        <div class="hero-strip-text">Строгий контроль продукции и соблюдения норм на производстве.</div>
+        <div class="hero-strip-text">Строгий контроль продукции и соблюдения норм на производстве. Декларация о соответствии ЕАС.</div>
       </div>
     </div>
 
@@ -2380,7 +2465,7 @@
             <li>Стоимость комплимента легко включается в стоимость вашего гостеприимства</li>
           </ul>
           <div class="seg-card-btns">
-            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-primary">Обсудить запрос</a>
             <a href="#contact" class="btn-secondary">Получить пробный набор</a>
           </div>
         </div>
@@ -2418,7 +2503,7 @@
             <li>В разработке: концентрат для лимонада и чая</li>
           </ul>
           <div class="seg-card-btns">
-            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-primary">Обсудить запрос</a>
             <a href="#contact" class="btn-secondary">Получить пробный набор</a>
           </div>
         </div>
@@ -2461,7 +2546,7 @@
             <li>Сертификат соответствия, закрывающие документы, ЭДО</li>
           </ul>
           <div class="seg-card-btns">
-            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-primary">Обсудить запрос</a>
             <a href="#contact" class="btn-secondary">Получить пробный набор</a>
           </div>
         </div>
@@ -2497,7 +2582,7 @@
             <li>Больше 4 лет на рынке</li>
           </ul>
           <div class="seg-card-btns">
-            <a href="#contact" class="btn-primary">Запросить условия</a>
+            <a href="#contact" class="btn-primary">Обсудить запрос</a>
             <a href="#contact" class="btn-secondary">Получить пробный набор</a>
           </div>
         </div>
@@ -2864,46 +2949,63 @@
   <div class="why-grid">
     <div class="why-card reveal" style="--num-delay:0s">
       <div class="why-icon">
-        <!-- Иконка: точность / колба -->
         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-          <path d="M16 7 L16 20 L9 32 Q8 34.5 10.5 35 L29.5 35 Q32 34.5 31 32 L24 20 L24 7" stroke="#C8A96E" stroke-width="1.1" stroke-linejoin="round" fill="rgba(200,169,110,0.07)"/>
-          <line x1="14" y1="7" x2="26" y2="7" stroke="#C8A96E" stroke-width="1.1" stroke-linecap="round"/>
-          <line x1="14" y1="21" x2="26" y2="21" stroke="#C8A96E" stroke-width="0.7" stroke-linecap="round" opacity="0.45"/>
-          <circle cx="15.5" cy="29" r="1.5" fill="rgba(200,169,110,0.35)" stroke="#C8A96E" stroke-width="0.7"/>
-          <circle cx="22" cy="31" r="1" fill="rgba(200,169,110,0.35)" stroke="#C8A96E" stroke-width="0.7"/>
-          <circle cx="25" cy="27.5" r="1.2" fill="rgba(200,169,110,0.25)" stroke="#C8A96E" stroke-width="0.7"/>
+          <circle cx="20" cy="20" r="14" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M14 20 L18.5 24.5 L26 16.5" stroke="#C8A96E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="why-title">Выверенные технологии</div>
-      <p class="why-body">Рецептура отрабатывалась месяцами. Именно поэтому — до 6 месяцев хранения без холодильника и без химии.</p>
+      <div class="why-title">Полный цикл производства</div>
+      <p class="why-body">От закупки ингредиентов до готовой продукции.</p>
     </div>
-    <div class="why-card reveal" style="--num-delay:0.15s">
+    <div class="why-card reveal" style="--num-delay:0.1s">
       <div class="why-icon">
-        <!-- Иконка: крыша / всё под одной крышей -->
         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-          <path d="M6 20 L20 7 L34 20" stroke="#C8A96E" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M10 18 L10 34 L30 34 L30 18" stroke="#C8A96E" stroke-width="1.1" stroke-linejoin="round" fill="rgba(200,169,110,0.07)"/>
-          <rect x="17" y="24" width="6" height="10" rx="1" stroke="#C8A96E" stroke-width="0.9" fill="rgba(200,169,110,0.15)"/>
-          <rect x="11.5" y="20.5" width="5" height="5" rx="0.8" stroke="#C8A96E" stroke-width="0.8" fill="rgba(200,169,110,0.12)"/>
-          <rect x="23.5" y="20.5" width="5" height="5" rx="0.8" stroke="#C8A96E" stroke-width="0.8" fill="rgba(200,169,110,0.12)"/>
+          <circle cx="20" cy="20" r="14" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M14 20 L18.5 24.5 L26 16.5" stroke="#C8A96E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="why-title">Всё под одной крышей</div>
-      <p class="why-body">Закупка, производство, упаковка, брендирование. Сертификат соответствия, договор, EDO.</p>
+      <div class="why-title">Безопасность подтверждена</div>
+      <p class="why-body">Декларация о соответствии ЕАС — гарантия качества и безопасности продукции.</p>
+    </div>
+    <div class="why-card reveal" style="--num-delay:0.2s">
+      <div class="why-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <circle cx="20" cy="20" r="14" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M14 20 L18.5 24.5 L26 16.5" stroke="#C8A96E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="why-title">Точные сроки</div>
+      <p class="why-body">Соблюдаем заявленные сроки исполнения заказов.</p>
     </div>
     <div class="why-card reveal" style="--num-delay:0.3s">
       <div class="why-icon">
-        <!-- Иконка: бриллиант / индивидуальность -->
         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-          <path d="M20 6 L34 18 L20 34 L6 18 Z" stroke="#C8A96E" stroke-width="1.1" stroke-linejoin="round" fill="rgba(200,169,110,0.07)"/>
-          <path d="M6 18 L14 12 L20 6 L26 12 L34 18" stroke="#C8A96E" stroke-width="0.8" stroke-linejoin="round" opacity="0.5"/>
-          <line x1="14" y1="12" x2="14" y2="18" stroke="#C8A96E" stroke-width="0.7" stroke-linecap="round" opacity="0.45"/>
-          <line x1="26" y1="12" x2="26" y2="18" stroke="#C8A96E" stroke-width="0.7" stroke-linecap="round" opacity="0.45"/>
-          <line x1="6" y1="18" x2="34" y2="18" stroke="#C8A96E" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="20" cy="20" r="14" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M14 20 L18.5 24.5 L26 16.5" stroke="#C8A96E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="why-title">Индивидуальность и гибкость</div>
-      <p class="why-body">Брендированная упаковка, эксклюзивные вкусы, работа под СТМ. Не адаптируем стандартное решение — создаём ваше.</p>
+      <div class="why-title">Открыты к проверкам</div>
+      <p class="why-body">Готовы к любым проверкам и подтверждениям производства.</p>
+    </div>
+    <div class="why-card reveal" style="--num-delay:0.4s">
+      <div class="why-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <circle cx="20" cy="20" r="14" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M14 20 L18.5 24.5 L26 16.5" stroke="#C8A96E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="why-title">Индивидуальный подход</div>
+      <p class="why-body">Возможна работа под СТМ — брендирование под ваш формат.</p>
+    </div>
+    <div class="why-card reveal" style="--num-delay:0.5s">
+      <div class="why-icon">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <circle cx="20" cy="20" r="14" stroke="#C8A96E" stroke-width="1.1" fill="rgba(200,169,110,0.07)"/>
+          <path d="M14 20 L18.5 24.5 L26 16.5" stroke="#C8A96E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="why-title">Договор и ЭДО</div>
+      <p class="why-body">Заключение договора о сотрудничестве, юридически прозрачные расчёты.</p>
     </div>
   </div>
 </section>
@@ -2926,7 +3028,7 @@
       <div class="founder-more" id="founderMore">
         <p>Продукт оказался особенный и капризный — я долго выверяла технологии. Например, корки лимона нужно обработать так, чтобы они получались мягкими и сочными, не горькими. Нашла свои рецепты. Запустила производство. И только потом, изучив рынок, обнаружила: я — единственный производитель в России, кто делает три вида цитрусовых цукатов в одном наборе.</p>
         <p>Это не было целью. Это стало результатом — когда делаешь продукт с характером, он сам приобретает уникальность.</p>
-        <p class="founder-note">Сегодня я веду два проекта: конфеты ручной работы и цукаты. Запустила линейку без сахара. Моя цель — дать людям возможность стать чуть более счастливыми. Мы вечно бежим в потоке — и когда останавливаемся в моменте, ощущаем вкус жизни.</p>
+        <p class="founder-note">Сегодня я веду два проекта: конфеты ручной работы и цукаты. Запустила линейку без сахара. Моя цель — дать людям возможность стать чуть более счастливыми, позволить себе маленькую роскошь. Мы вечно бежим в потоке — и когда останавливаемся, в моменте ощущаем тот самый вкус жизни.</p>
       </div>
       <button class="founder-read-more" id="founderReadMoreBtn" onclick="toggleFounderMore()">
         <span>Читать дальше</span>
@@ -2935,7 +3037,7 @@
     </div>
     <div class="reveal">
       <div class="founder-name">— Валерия Куткевич</div>
-      <div class="founder-title-text">Основатель KUTKEVICH · Санкт-Петербург · 3 года в деле</div>
+      <div class="founder-title-text">Основатель KUTKEVICH · Санкт-Петербург · 4 года в деле</div>
     </div>
   </div>
 </section>
@@ -3004,7 +3106,7 @@
       </div>
       <div class="form-group">
         <label class="form-label" for="contact-field">Телефон *</label>
-        <input class="form-input" type="tel" id="contact-field" placeholder="+7 (___) ___-__-__" autocomplete="tel" required inputmode="tel" pattern="[\+\d\s\(\)\-]{7,18}">
+        <input class="form-input" type="tel" id="contact-field" placeholder="+7 (___) ___-__-__" autocomplete="tel" required inputmode="numeric" maxlength="18" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}">
       </div>
       <div class="form-group">
         <label class="form-label" for="email-field">Email</label>
@@ -3029,16 +3131,15 @@
       <label class="form-checkbox">
         <input type="checkbox" id="privacy" required>
         <span class="check-box" aria-hidden="true"></span>
-        <span>Ознакомлен(а) с <a href="./privacy.html" target="_blank">политикой конфиденциальности</a> и условиями обработки данных</span>
+        <span>Ознакомлен(а) с <a href="./privacy" target="_blank">политикой конфиденциальности</a> и условиями обработки данных</span>
       </label>
       <label class="form-checkbox">
         <input type="checkbox" id="personal-data" required>
         <span class="check-box" aria-hidden="true"></span>
-        <span>Даю <a href="./consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с 152-ФЗ</span>
+        <span>Даю <a href="./consent" target="_blank">согласие на обработку персональных данных</a> в соответствии с 152-ФЗ</span>
       </label>
       <div class="form-buttons">
-        <button class="btn-primary" onclick="submitForm('kp')">Обсудить запрос</button>
-        <button class="btn-primary" onclick="submitForm('sample')">Получить пробный набор</button>
+        <button class="btn-primary" onclick="submitForm()">Отправить</button>
       </div>
     </div>
     <div class="form-success" id="formSuccess">
@@ -3071,11 +3172,18 @@
         <li><a href="https://t.me/valeriia_kutkevich" target="_blank" rel="noopener">Написать в Telegram</a></li>
       </ul>
     </div>
+    <div>
+      <div class="footer-heading">Производство</div>
+      <address style="font-style:normal;color:rgba(245,240,232,0.55);font-size:13px;line-height:1.6;letter-spacing:0.02em;">
+        г. Санкт-Петербург,<br>
+        Кондратьевский пр-т, 72А
+      </address>
+    </div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© KUTKEVICH, 2026 · ИП Куткевич В.А. · ИНН 391802747010 · ОГРНИП 323784700072644</span>
-    <a href="./privacy.html" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Политика конфиденциальности</a>
-    <a href="./consent.html" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Согласие на обработку ПД</a>
+    <a href="./privacy" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Политика конфиденциальности</a>
+    <a href="./consent" target="_blank" style="font-size:12px;color:rgba(245,240,232,0.25);text-decoration:none;letter-spacing:0.05em;">Согласие на обработку ПД</a>
   </div>
 </footer>
 
@@ -3084,6 +3192,85 @@
     <path d="M7 11V3M3 7l4-4 4 4" stroke="rgba(201,153,58,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </button>
+
+<!-- ── ПОПАП: ПРОБНЫЙ НАБОР (b2b only) ── -->
+<div class="modal-overlay" id="sampleModal" role="dialog" aria-modal="true" aria-labelledby="sampleModalTitle" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" type="button" aria-label="Закрыть" onclick="closeSampleModal()">×</button>
+
+    <div id="sampleModalContent">
+      <h3 class="modal-title" id="sampleModalTitle">Пробный набор — для делового знакомства</h3>
+      <p class="modal-lead">Готовим индивидуально под формат вашего бизнеса — дегустация ассортимента и варианты фасовки.</p>
+      <p class="modal-lead">Расскажите немного о себе и компании — и Валерия свяжется с вами в течение 24 часов для согласования времени и способа отправки набора.</p>
+
+      <div class="modal-disclaimer">
+        💡 Если вы — частный покупатель, спасибо за интерес! Наш ассортимент пока доступен оптовым партнёрам. Следите за нами в <a href="https://t.me/valeriia_kutkevich" target="_blank" rel="noopener">Telegram</a> — анонсируем розничные продажи.
+      </div>
+
+      <div class="modal-form">
+        <div class="form-group">
+          <label class="form-label" for="sm-name">Имя и фамилия *</label>
+          <input class="form-input" type="text" id="sm-name" placeholder="Как к вам обращаться" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sm-role">Должность</label>
+          <input class="form-input" type="text" id="sm-role" placeholder="Закупщик, руководитель, владелец…" autocomplete="organization-title">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sm-phone">Телефон *</label>
+          <input class="form-input" type="tel" id="sm-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required inputmode="numeric" maxlength="18" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sm-email">Email *</label>
+          <input class="form-input" type="email" id="sm-email" placeholder="name@company.ru" autocomplete="email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sm-company">Название компании или бренд *</label>
+          <input class="form-input" type="text" id="sm-company" placeholder="ООО «…», сеть, отель, агентство" autocomplete="organization" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sm-segment">Сфера бизнеса *</label>
+          <select class="form-select" id="sm-segment" required>
+            <option value="" disabled selected hidden>Выберите вариант</option>
+            <option>Отель / резиденция</option>
+            <option>Ресторан, кафе, кофейня</option>
+            <option>Ритейл / специализированные магазины</option>
+            <option>Ивент-агентство</option>
+            <option>Корпоративные подарки (от компании)</option>
+            <option>Дистрибьюция / опт</option>
+            <option>Другое (укажите в комментарии)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sm-city">Город *</label>
+          <input class="form-input" type="text" id="sm-city" placeholder="Санкт-Петербург" autocomplete="address-level2" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sm-comment">Комментарий</label>
+          <textarea class="form-textarea" id="sm-comment" placeholder="Повод, формат, пожелания"></textarea>
+        </div>
+        <label class="form-checkbox">
+          <input type="checkbox" id="sm-privacy" required>
+          <span class="check-box" aria-hidden="true"></span>
+          <span>Ознакомлен(а) с <a href="./privacy" target="_blank">политикой конфиденциальности</a> и условиями обработки данных</span>
+        </label>
+        <label class="form-checkbox">
+          <input type="checkbox" id="sm-personal-data" required>
+          <span class="check-box" aria-hidden="true"></span>
+          <span>Даю <a href="./consent" target="_blank">согласие на обработку персональных данных</a> в соответствии с 152-ФЗ</span>
+        </label>
+        <div class="form-buttons" style="margin-top:20px;">
+          <button class="btn-primary" type="button" onclick="submitSampleForm()" style="width:100%;">Отправить заявку</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-success" id="sampleModalSuccess">
+      <strong>Спасибо!</strong>
+      Валерия лично изучит вашу заявку и свяжется с вами в течение 24 часов для согласования времени и способа отправки набора.
+    </div>
+  </div>
+</div>
 
 <!-- ── LIQUID CURSOR ── -->
 <script>
@@ -3384,9 +3571,9 @@ window.addEventListener('scroll', function() {
 });
 
 // Форма
-var workerUrl = 'WORKER_URL'; // заменить после деплоя Worker на Cloudflare
+var workerUrl = 'https://kutkevich-form.xenonline77.workers.dev/';
 
-async function submitForm(action) {
+async function submitForm() {
   var name = document.getElementById('name').value.trim();
   var contact = document.getElementById('contact-field').value.trim();
   var email = document.getElementById('email-field').value.trim();
@@ -3394,6 +3581,8 @@ async function submitForm(action) {
   var message = document.getElementById('message').value.trim();
   var privacy = document.getElementById('privacy').checked;
   var personalData = document.getElementById('personal-data').checked;
+  // Если в селекте выбран «Хочу пробный набор» — помечаем заявку как sample
+  var action = format === 'Хочу пробный набор' ? 'sample' : 'request';
 
   if (!name || !contact) { alert('Пожалуйста, заполните имя и телефон'); return; }
   if (!privacy) { alert('Пожалуйста, ознакомьтесь с политикой конфиденциальности'); return; }
@@ -3418,6 +3607,140 @@ async function submitForm(action) {
   } catch (e) {
     alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
     btns.forEach(function(b) { b.disabled = false; b.style.opacity = ''; });
+  }
+}
+
+// Маска телефона: автоподстановка +7, разрешены только цифры, формат +7 (XXX) XXX-XX-XX
+function formatPhoneRu(raw) {
+  var digits = (raw || '').replace(/\D/g, '');
+  if (digits.length === 0) return '';
+  if (digits[0] === '8') digits = '7' + digits.slice(1);
+  if (digits[0] !== '7') digits = '7' + digits;
+  digits = digits.slice(0, 11);
+
+  var result = '+7';
+  if (digits.length > 1) result += ' (' + digits.slice(1, 4);
+  if (digits.length >= 4) result += ')';
+  if (digits.length >= 5) result += ' ' + digits.slice(4, 7);
+  if (digits.length >= 8) result += '-' + digits.slice(7, 9);
+  if (digits.length >= 10) result += '-' + digits.slice(9, 11);
+  return result;
+}
+
+function attachPhoneMask(phoneInput) {
+  if (!phoneInput) return;
+  phoneInput.addEventListener('focus', function () {
+    if (!this.value) this.value = '+7 (';
+  });
+  phoneInput.addEventListener('input', function () {
+    this.value = formatPhoneRu(this.value);
+  });
+  phoneInput.addEventListener('blur', function () {
+    var digits = this.value.replace(/\D/g, '');
+    if (digits.length <= 1) this.value = '';
+  });
+  phoneInput.addEventListener('paste', function (e) {
+    e.preventDefault();
+    var pasted = (e.clipboardData || window.clipboardData).getData('text');
+    this.value = formatPhoneRu(pasted);
+  });
+}
+
+attachPhoneMask(document.getElementById('contact-field'));
+attachPhoneMask(document.getElementById('sm-phone'));
+
+// ── ПОПАП: ПРОБНЫЙ НАБОР ──
+function openSampleModal() {
+  var modal = document.getElementById('sampleModal');
+  if (!modal) return;
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  // Сбросить success-состояние при повторном открытии
+  document.getElementById('sampleModalContent').style.display = '';
+  document.getElementById('sampleModalSuccess').classList.remove('is-visible');
+}
+
+function closeSampleModal() {
+  var modal = document.getElementById('sampleModal');
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+// Закрытие по клику на фон
+document.getElementById('sampleModal').addEventListener('click', function (e) {
+  if (e.target === this) closeSampleModal();
+});
+
+// Закрытие по Esc
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeSampleModal();
+});
+
+// Привязка ко всем кнопкам «Получить пробный набор»
+Array.from(document.querySelectorAll('a.btn-secondary')).forEach(function (a) {
+  if (a.textContent.trim() === 'Получить пробный набор') {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openSampleModal();
+    });
+  }
+});
+
+async function submitSampleForm() {
+  var name = document.getElementById('sm-name').value.trim();
+  var role = document.getElementById('sm-role').value.trim();
+  var phone = document.getElementById('sm-phone').value.trim();
+  var email = document.getElementById('sm-email').value.trim();
+  var company = document.getElementById('sm-company').value.trim();
+  var segment = document.getElementById('sm-segment').value;
+  var city = document.getElementById('sm-city').value.trim();
+  var comment = document.getElementById('sm-comment').value.trim();
+  var privacy = document.getElementById('sm-privacy').checked;
+  var personalData = document.getElementById('sm-personal-data').checked;
+
+  if (!name || !phone || !email || !company || !segment || !city) {
+    alert('Пожалуйста, заполните все обязательные поля');
+    return;
+  }
+  if (!privacy || !personalData) {
+    alert('Пожалуйста, подтвердите согласие на обработку персональных данных');
+    return;
+  }
+
+  var btn = document.querySelector('#sampleModalContent .btn-primary');
+  if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; }
+
+  try {
+    var resp = await fetch(workerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'sample',
+        name: name,
+        phone: phone,
+        email: email,
+        format: segment,
+        message: [
+          'Компания: ' + company,
+          role ? 'Должность: ' + role : null,
+          'Город: ' + city,
+          comment ? '\nКомментарий: ' + comment : null,
+        ].filter(Boolean).join('\n'),
+      })
+    });
+    if (resp.ok) {
+      document.getElementById('sampleModalContent').style.display = 'none';
+      document.getElementById('sampleModalSuccess').classList.add('is-visible');
+    } else {
+      alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+    }
+  } catch (e) {
+    alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
+    if (btn) { btn.disabled = false; btn.style.opacity = ''; }
   }
 }
 
