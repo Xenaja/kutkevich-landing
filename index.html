@@ -3120,7 +3120,6 @@
           <option>Кофейня</option>
           <option>Магазин / ритейл</option>
           <option>Корпоративный заказ</option>
-          <option>Хочу пробный набор</option>
           <option>Другое</option>
         </select>
       </div>
@@ -3204,7 +3203,7 @@
       <p class="modal-lead">Расскажите немного о себе и компании — и Валерия свяжется с вами в течение 24 часов для согласования времени и способа отправки набора.</p>
 
       <div class="modal-disclaimer">
-        💡 Если вы — частный покупатель, спасибо за интерес! Наш ассортимент пока доступен оптовым партнёрам. Следите за нами в <a href="https://t.me/valeriia_kutkevich" target="_blank" rel="noopener">Telegram</a> — анонсируем розничные продажи.
+        💡 Если вы — частный покупатель, спасибо за интерес! Наш пробный набор доступен бизнес-партнёрам. А вы можете всегда найти наши сладости <a href="#retail" onclick="closeSampleModal()">на маркетплейсах</a>.
       </div>
 
       <div class="modal-form">
@@ -3581,8 +3580,7 @@ async function submitForm() {
   var message = document.getElementById('message').value.trim();
   var privacy = document.getElementById('privacy').checked;
   var personalData = document.getElementById('personal-data').checked;
-  // Если в селекте выбран «Хочу пробный набор» — помечаем заявку как sample
-  var action = format === 'Хочу пробный набор' ? 'sample' : 'request';
+  var action = 'request';
 
   if (!name || !contact) { alert('Пожалуйста, заполните имя и телефон'); return; }
   if (!privacy) { alert('Пожалуйста, ознакомьтесь с политикой конфиденциальности'); return; }
