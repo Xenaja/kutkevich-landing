@@ -2142,6 +2142,11 @@
     width: 100%;
     box-sizing: border-box;
   }
+  .modal-form .form-select {
+    padding-right: 44px; /* место под стрелку */
+    background-position: right 14px center;
+  }
+  .modal-form .form-select.is-placeholder { color: rgba(110,90,70,0.55); }
   .modal-form .form-textarea { min-height: 80px; }
   .modal-form .form-checkbox { margin-top: 16px; align-items: flex-start; }
   .modal-form .form-checkbox span:last-child { font-size: 12px; line-height: 1.5; }
@@ -3266,7 +3271,7 @@
         <div class="form-group">
           <label class="form-label" for="sm-segment">Сфера бизнеса *</label>
           <select class="form-select" id="sm-segment" required>
-            <option value="" disabled selected hidden>Выберите вариант</option>
+            <option value="" disabled selected>Выберите вариант</option>
             <option>Отель / резиденция</option>
             <option>Ресторан, кафе, кофейня</option>
             <option>Ритейл / специализированные магазины</option>
@@ -3778,13 +3783,15 @@ async function submitSampleForm() {
   }
 }
 
-// Select placeholder colour
-const typeSelect = document.getElementById('type');
-function updateSelectColor() {
-  typeSelect.classList.toggle('is-placeholder', typeSelect.value === '');
+// Select placeholder colour — для всех селектов с form-select
+function bindSelectPlaceholderColor(sel) {
+  if (!sel) return;
+  function upd() { sel.classList.toggle('is-placeholder', sel.value === ''); }
+  upd();
+  sel.addEventListener('change', upd);
 }
-updateSelectColor();
-typeSelect.addEventListener('change', updateSelectColor);
+bindSelectPlaceholderColor(document.getElementById('type'));
+bindSelectPlaceholderColor(document.getElementById('sm-segment'));
 
 // Кнопка наверх
 var backBtn = document.getElementById('backToTop');
