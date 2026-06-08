@@ -7,7 +7,7 @@
 //   TG_CHAT_ID      — chat_id Валерии (узнать через https://api.telegram.org/bot<TOKEN>/getUpdates после первого /start)
 
 const ALLOWED_ORIGINS = ['https://kutkevich.ru', 'https://www.kutkevich.ru'];
-const TO_EMAILS = ['lera@kutkevich.ru', 'sales@kutkevich.ru'];
+const TO_EMAILS = ['sales@kutkevich.ru'];
 const FROM_EMAIL = 'Сайт KUTKEVICH <noreply@kutkevich.ru>';
 
 export default {
