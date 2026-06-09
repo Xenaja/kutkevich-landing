@@ -3332,8 +3332,8 @@
 
       <div class="modal-form">
         <div class="form-group">
-          <label class="form-label" for="pm-name">Имя</label>
-          <input class="form-input" type="text" id="pm-name" placeholder="Как к вам обращаться" autocomplete="name">
+          <label class="form-label" for="pm-name">Имя *</label>
+          <input class="form-input" type="text" id="pm-name" placeholder="Как к вам обращаться" autocomplete="name" required>
         </div>
         <div class="form-group">
           <label class="form-label" for="pm-email">Email *</label>
@@ -3885,6 +3885,10 @@ async function submitPresForm() {
   var privacy = document.getElementById('pm-privacy').checked;
   var consent = document.getElementById('pm-consent').checked;
 
+  if (!name) {
+    alert('Пожалуйста, укажите, как к вам обращаться');
+    return;
+  }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     alert('Пожалуйста, укажите корректный email');
     return;
