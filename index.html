@@ -2986,8 +2986,8 @@
   <h2 class="cta-mid-title reveal">Хотите узнать, что мы можем предложить именно вам?</h2>
   <p class="cta-mid-sub reveal">Пришлём презентацию под ваш сегмент.</p>
   <div class="cta-mid-btns reveal">
-    <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Корпоративный заказ'){s.selectedIndex=i;break;}}}">Шоколадные конфеты (отели)</a>
-    <a href="#contact" class="btn-primary" onclick="var s=document.getElementById('type');if(s){for(var i=0;i<s.options.length;i++){if(s.options[i].text==='Магазин / ритейл'){s.selectedIndex=i;break;}}}">Цукаты и мармелад (ритейл)</a>
+    <a href="#contact" class="btn-primary" onclick="event.preventDefault();openPresModal('chocolate')">Шоколадные конфеты (отели)</a>
+    <a href="#contact" class="btn-primary" onclick="event.preventDefault();openPresModal('marmelad')">Цукаты и мармелад (ритейл)</a>
   </div>
 </section>
 
@@ -3317,6 +3317,47 @@
     <div class="modal-success" id="sampleModalSuccess">
       <strong>Спасибо!</strong>
       Валерия лично изучит вашу заявку и свяжется с вами в течение 24 часов для согласования времени и способа отправки набора.
+    </div>
+  </div>
+</div>
+
+<!-- ── ПОПАП: ПОЛУЧИТЬ ПРЕЗЕНТАЦИЮ (email-цепочка) ── -->
+<div class="modal-overlay" id="presModal" role="dialog" aria-modal="true" aria-labelledby="presModalTitle" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" type="button" aria-label="Закрыть" onclick="closePresModal()">×</button>
+
+    <div id="presModalContent">
+      <h3 class="modal-title" id="presModalTitle">Получить презентацию</h3>
+      <p class="modal-lead" id="presModalLead">Оставьте email — пришлём подробную презентацию и каталог на почту.</p>
+
+      <div class="modal-form">
+        <div class="form-group">
+          <label class="form-label" for="pm-name">Имя</label>
+          <input class="form-input" type="text" id="pm-name" placeholder="Как к вам обращаться" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="pm-email">Email *</label>
+          <input class="form-input" type="email" id="pm-email" placeholder="name@company.ru" autocomplete="email" required>
+        </div>
+        <label class="form-checkbox">
+          <input type="checkbox" id="pm-privacy" required>
+          <span class="check-box" aria-hidden="true"></span>
+          <span>Ознакомлен(а) с <a href="./privacy" target="_blank">политикой конфиденциальности</a> и условиями обработки данных</span>
+        </label>
+        <label class="form-checkbox">
+          <input type="checkbox" id="pm-consent" required>
+          <span class="check-box" aria-hidden="true"></span>
+          <span>Даю <a href="./consent" target="_blank">согласие на обработку персональных данных</a> и на получение писем о продукции KUTKEVICH (152-ФЗ)</span>
+        </label>
+        <div class="form-buttons" style="margin-top:20px;">
+          <button class="btn-primary" type="button" onclick="submitPresForm()" style="width:100%;">Прислать презентацию</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-success" id="presModalSuccess">
+      <strong>Готово!</strong>
+      Первое письмо с презентацией уже летит на вашу почту. Загляните во «Входящие» (а если не видно — в «Промоакции» или «Спам»).
     </div>
   </div>
 </div>
@@ -3782,6 +3823,94 @@ async function submitSampleForm() {
     if (resp.ok) {
       document.getElementById('sampleModalContent').style.display = 'none';
       document.getElementById('sampleModalSuccess').classList.add('is-visible');
+    } else {
+      alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+    }
+  } catch (e) {
+    alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
+    if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+  }
+}
+
+// ── ПОПАП: ПОЛУЧИТЬ ПРЕЗЕНТАЦИЮ (email-цепочка) ──
+var presSegment = 'chocolate';
+var PRES_COPY = {
+  chocolate: {
+    title: 'Презентация: шоколадные конфеты',
+    lead: 'Оставьте email — пришлём презентацию по конфетам ручной работы: вкусы, форматы фасовки, брендирование и условия для отелей и бизнеса.',
+  },
+  marmelad: {
+    title: 'Презентация: цукаты и мармелад',
+    lead: 'Оставьте email — пришлём презентацию по цукатам в шоколаде и цитрусовому мармеладу: ассортимент, работа под СТМ и условия для ритейла.',
+  },
+};
+
+function openPresModal(segment) {
+  var modal = document.getElementById('presModal');
+  if (!modal) return;
+  presSegment = (segment === 'marmelad') ? 'marmelad' : 'chocolate';
+  var copy = PRES_COPY[presSegment];
+  document.getElementById('presModalTitle').textContent = copy.title;
+  document.getElementById('presModalLead').textContent = copy.lead;
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  // Сбросить success-состояние при повторном открытии
+  document.getElementById('presModalContent').style.display = '';
+  document.getElementById('presModalSuccess').classList.remove('is-visible');
+}
+
+function closePresModal() {
+  var modal = document.getElementById('presModal');
+  if (!modal) return;
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+// Закрытие по клику на фон
+document.getElementById('presModal').addEventListener('click', function (e) {
+  if (e.target === this) closePresModal();
+});
+
+// Закрытие по Esc (sampleModal уже слушает Esc отдельно — закрываем оба)
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closePresModal();
+});
+
+async function submitPresForm() {
+  var name = document.getElementById('pm-name').value.trim();
+  var email = document.getElementById('pm-email').value.trim();
+  var privacy = document.getElementById('pm-privacy').checked;
+  var consent = document.getElementById('pm-consent').checked;
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Пожалуйста, укажите корректный email');
+    return;
+  }
+  if (!privacy || !consent) {
+    alert('Пожалуйста, подтвердите согласие на обработку данных и получение писем');
+    return;
+  }
+
+  var btn = document.querySelector('#presModalContent .btn-primary');
+  if (btn) { btn.disabled = true; btn.style.opacity = '0.6'; }
+
+  try {
+    var resp = await fetch(workerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'presentation',
+        segment: presSegment,
+        name: name,
+        email: email,
+      })
+    });
+    if (resp.ok) {
+      document.getElementById('presModalContent').style.display = 'none';
+      document.getElementById('presModalSuccess').classList.add('is-visible');
     } else {
       alert('Произошла ошибка при отправке. Напишите нам напрямую: sales@kutkevich.ru');
       if (btn) { btn.disabled = false; btn.style.opacity = ''; }

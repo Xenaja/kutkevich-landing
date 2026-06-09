@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>То, что гость захочет сфотографировать — KUTKEVICH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #ede5d4; font-family: Georgia,'Times New Roman',serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .wrapper { padding: 24px 12px; background: #ede5d4; }
+    .container { width: 600px; max-width: 600px; margin: 0 auto; background: #faf8f4; }
+    .accent-bar { height: 3px; background: #E8652A; }
+    .logo-cell { padding: 40px 56px 20px; text-align: center; }
+    .logo-cell img { display: block; margin: 0 auto; max-width: 200px; height: auto; }
+    .logo-sub { font-family: Georgia,serif; font-size: 10px; letter-spacing: 0.28em; color: #a08858; text-transform: uppercase; margin-top: 10px; }
+    .divider-cell { padding: 20px 56px 0; text-align: center; }
+    .divider-line { width: 40px; height: 1px; background: #E8652A; margin: 0 auto; }
+    .eyebrow-cell { padding: 24px 56px 0; text-align: center; }
+    .eyebrow { font-family: Georgia,serif; font-size: 11px; letter-spacing: 0.22em; color: #E8652A; text-transform: uppercase; }
+    .h1-cell { padding: 14px 56px 0; text-align: center; }
+    h1 { font-family: 'Poiret One',Georgia,serif; font-weight: 400; font-size: 34px; line-height: 1.2; color: #2d1f0e; letter-spacing: 0.02em; text-align: center; margin: 0; }
+    h1 em { font-style: italic; color: #8a6a2e; }
+    .lede-cell { padding: 24px 56px 0; text-align: center; }
+    .lede { font-family: Georgia,'Times New Roman',serif; font-size: 16px; line-height: 1.7; color: #5a4530; font-style: italic; text-align: center; margin: 0; }
+    .photos-cell { padding: 36px 0 0; }
+    .photos-row { display: flex; gap: 2px; }
+    .photos-row img { width: 50%; height: auto; display: block; }
+    .body-cell { padding: 40px 56px 0; }
+    .body-text { font-family: Arial,Helvetica,sans-serif; font-size: 16px; line-height: 1.75; color: #3a2a18; }
+    .body-text p { margin: 0 0 18px; }
+    .body-text p:last-child { margin: 0; }
+    .quote-cell { padding: 36px 56px 0; }
+    .quote-block { background: #f5f0e8; border-left: 2px solid #E8652A; padding: 24px 28px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .quote-text { font-family: Georgia,'Times New Roman',serif; font-size: 16px; line-height: 1.6; color: #3a2a18; font-style: italic; margin: 0; }
+    .invite-cell { padding: 36px 56px 0; }
+    .invite-text { font-family: Arial,Helvetica,sans-serif; font-size: 16px; line-height: 1.75; color: #3a2a18; margin: 0 0 14px; }
+    .invite-italic { font-family: Arial,Helvetica,sans-serif; font-size: 15px; line-height: 1.7; color: #5a4530; font-style: italic; margin: 0; }
+    .cta-cell { padding: 32px 56px 0; display: flex; gap: 16px; }
+    .cta-primary { background: #c4a060; border: 1px solid #c4a060; color: #1c1006; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 50px; padding: 0 22px; text-align: center; text-decoration: none; text-transform: uppercase; flex: 1; display: block; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cta-secondary { background: #faf8f4; border: 1px solid #c4a060; color: #2d1f0e; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; line-height: 50px; padding: 0 22px; text-align: center; text-decoration: none; text-transform: uppercase; flex: 1; display: block; }
+    .reply-cell { padding: 20px 56px 0; text-align: center; }
+    .reply-text { font-family: Arial,Helvetica,sans-serif; font-size: 13px; line-height: 1.6; color: #7a6650; margin: 0; }
+    .reply-text a { color: #8a6a2e; }
+    .sig-cell { padding: 44px 56px 0; }
+    .sig-regards { font-family: Georgia,'Times New Roman',serif; font-size: 14px; line-height: 1.7; color: #5a4530; font-style: italic; }
+    .sig-name { font-family: 'Poiret One',Georgia,serif; font-size: 24px; line-height: 1.2; color: #2d1f0e; letter-spacing: 0.04em; padding-top: 10px; }
+    .sig-title { font-family: Arial,Helvetica,sans-serif; font-size: 11px; letter-spacing: 0.16em; color: #a08858; text-transform: uppercase; padding-top: 6px; }
+    .contacts-cell { padding: 24px 56px 0; }
+    .contacts-text { font-family: Arial,Helvetica,sans-serif; font-size: 13px; line-height: 1.9; color: #5a4530; }
+    .contacts-text a { color: #5a4530; text-decoration: none; }
+    .spacer { padding: 48px 0 0; }
+    .footer-cell { padding: 28px 56px 40px; border-top: 1px solid #e2cfaa; background: #faf8f4; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .footer-text { font-family: Arial,Helvetica,sans-serif; font-size: 11px; line-height: 1.7; color: #a08858; }
+    .footer-text a { color: #a08858; }
+    .outer-caption { padding: 18px 24px 0; text-align: center; font-family: Georgia,serif; font-size: 11px; color: #a08858; letter-spacing: 0.06em; }
+    @page { size: A4 portrait; margin: 0; }
+    @media print {
+      body { background: #ede5d4 !important; }
+      .wrapper { padding: 0; }
+      *, *::before, *::after { animation-delay: -99s !important; animation-duration: .001s !important; animation-iteration-count: 1 !important; animation-fill-mode: both !important; transition-duration: 0s !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="accent-bar"></div>
+      <div class="logo-cell">
+        <img src="../logo-simple.png" width="200" alt="KUTKEVICH">
+        <div class="logo-sub">Авторские сладости&nbsp;·&nbsp;Санкт-Петербург</div>
+      </div>
+      <div class="divider-cell"><div class="divider-line"></div></div>
+      <div class="eyebrow-cell"><div class="eyebrow">Продолжение разговора</div></div>
+      <div class="h1-cell">
+        <h1>Продукт, который<br><em>покупают снова</em></h1>
+      </div>
+      <div class="lede-cell">
+        <p class="lede">Здравствуйте, {{Name|коллега}}.<br>Несколько дней назад я отправила Вам презентацию.<br>Сегодня хочу сказать кое-что, чего там нет.</p>
+      </div>
+      <div class="photos-cell">
+        <div class="photos-row">
+          <img src="https://placehold.co/598x440/3a2a18/c4a060?text=Цукаты+в+шоколаде" alt="Цукаты в шоколаде">
+          <img src="https://placehold.co/598x440/2d1f0e/e2cfaa?text=Цитрусовый+мармелад" alt="Цитрусовый мармелад">
+        </div>
+      </div>
+      <div class="body-cell">
+        <div class="body-text">
+          <p>Покупатель берёт с&nbsp;полки, читает состав&nbsp;— и&nbsp;понимает: здесь всё честно. Свежевыжатый сок, натуральные фрукты, бельгийский шоколад. Никаких консервантов&nbsp;— и&nbsp;при этом 6&nbsp;месяцев хранения при комнатной температуре.</p>
+          <p>Такой продукт не&nbsp;нужно объяснять&nbsp;— он продаёт себя сам. И&nbsp;за&nbsp;ним возвращаются.</p>
+          <p>Стабильные поставки, закрывающие документы, ЭДО&nbsp;— всё, что нужно для&nbsp;работы с&nbsp;полкой.</p>
+        </div>
+      </div>
+      <div class="quote-cell">
+        <div class="quote-block">
+          <p class="quote-text">Лучше один раз попробовать,<br>чем сто раз прочитать.</p>
+        </div>
+      </div>
+      <div class="invite-cell">
+        <p class="invite-text">Если Вы в&nbsp;Петербурге&nbsp;— приглашаю на&nbsp;экскурсию по&nbsp;моему производству. Лично проведу дегустацию и&nbsp;расскажу все подробности. Если время или расстояние не&nbsp;позволяют&nbsp;— готова отправить дегустационный набор любой доставкой.</p>
+        <p class="invite-italic">Я&nbsp;очень хочу, чтобы Вы лично попробовали мою продукцию и&nbsp;сформировали своё мнение.</p>
+      </div>
+      <div class="cta-cell">
+        <a class="cta-primary" href="mailto:sales@kutkevich.org?subject=Экскурсия%20KUTKEVICH%20цукаты">Записаться на&nbsp;экскурсию</a>
+        <a class="cta-secondary" href="mailto:sales@kutkevich.org?subject=Дегустационный%20набор%20цукаты">Дегустационный набор</a>
+      </div>
+      <div class="reply-cell">
+        <p class="reply-text">Скорее выбирайте свой вариант взаимодействия&nbsp;— и&nbsp;<a href="mailto:sales@kutkevich.org">пишите в&nbsp;ответ</a>!</p>
+      </div>
+      <div class="sig-cell">
+        <div class="sig-regards">С&nbsp;любовью к&nbsp;делу,</div>
+        <div class="sig-name">Валерия Куткевич</div>
+        <div class="sig-title">Основатель KUTKEVICH</div>
+      </div>
+      <div class="contacts-cell">
+        <div class="contacts-text">
+          <a href="tel:+79112951937">+7 (911) 295-19-37</a><br>
+          <a href="mailto:sales@kutkevich.org">sales@kutkevich.org</a><br>
+          <a href="https://t.me/KUTKEVICH">Telegram: @KUTKEVICH</a>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="footer-cell">
+        <div class="footer-text">
+          Вы получили это письмо, потому что оставили заявку на&nbsp;<a href="https://kutkevich.ru">kutkevich.ru</a>.<br>
+          ИП&nbsp;Куткевич&nbsp;В.А. · ИНН&nbsp;391802747010 · ОГРНИП&nbsp;323784700072644<br>
+          Санкт-Петербург · <a href="mailto:sales@kutkevich.org">sales@kutkevich.org</a>
+        </div>
+      </div>
+    </div>
+    <div class="outer-caption">KUTKEVICH&nbsp;© 2026 · Письмо 2 из&nbsp;3 · Цукаты и&nbsp;мармелад</div>
+  </div>
+  <script>
+    document.fonts.ready.then(function() { setTimeout(function() { window.print(); }, 500); });
+  </script>
+</body>
+</html>
