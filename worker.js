@@ -9,7 +9,8 @@
 //   UNISENDER_API_KEY         — API-ключ из Unisender (Личный кабинет → Интеграция и API → API-ключ)
 //   UNISENDER_LIST_CHOCOLATE  — ID списка «Шоколадные конфеты» (триггер цепочки в Unisender)
 //   UNISENDER_LIST_MARMELAD   — ID списка «Цукаты и мармелад»
-//   UNISENDER_DOUBLE_OPTIN    — (необязательно) '4' = подписать сразу (по умолчанию), '3' = с письмом-подтверждением
+//   UNISENDER_DOUBLE_OPTIN    — (необязательно) '3' = подписать сразу, без письма-подтверждения (по умолчанию),
+//                               '0'/'4' = Unisender сам шлёт письмо-приглашение подтвердить подписку
 
 const ALLOWED_ORIGINS = ['https://kutkevich.ru', 'https://www.kutkevich.ru'];
 const TO_EMAILS = ['sales@kutkevich.ru'];
@@ -139,8 +140,9 @@ async function subscribeUnisender(env, { email, name, listId }) {
   params.set('list_ids', String(listId));
   params.set('fields[email]', email);
   if (name) params.set('fields[Name]', name);
-  // 4 = подписать сразу (есть явное согласие на сайте), 3 = выслать письмо-подтверждение
-  params.set('double_optin', env.UNISENDER_DOUBLE_OPTIN || '4');
+  // 3 = согласие уже получено на сайте (чекбоксы), контакт добавляется без письма-подтверждения.
+  // 0/4 — Unisender сам вышлет письмо-приглашение подтвердить подписку (нам не нужно).
+  params.set('double_optin', env.UNISENDER_DOUBLE_OPTIN || '3');
   // 2 = не перезатирать поля у уже существующего контакта
   params.set('overwrite', '2');
 
